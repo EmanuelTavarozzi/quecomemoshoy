@@ -8,12 +8,11 @@ export default class Landing extends Component{
         return( 
             <div>
                 <Container fluid= "true" className="landing-image">
-                        <h1 className="landing-title">Aprender comiendo</h1>
+                        <h1 data-aos="fade-in" className="landing-title">Aprender comiendo</h1>
                         <h3 className="motivation-phrase">Si comes bien <span>hoy</span> tu cuerpo te lo agradecerá <span>mañana</span></h3>
-    
                 </Container>
                 <Container>
-                    <h2>Encontra la comida ideal para el momento ideal</h2>
+                    <h2 data-aos="fade-in"className="landing-title">Encontra la comida ideal para el momento ideal</h2>
                 </Container>
             </div>
         )

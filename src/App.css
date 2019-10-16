@@ -1,6 +1,7 @@
 :root{
     --titulo1: 'Quicksand', sans-serif;
     --titulo2: 'Quattrocento', serif;
+    --colorPrincipal: #3EC5BD;
 }
 /********* Globales ***********/
 
@@ -89,7 +90,7 @@
 /*********** Landing ************/
 
 .landing-image{
-    background-image: url(./img//landing-food-image3.jpeg);
+    background-image: url(./img/landing.jpg);
     padding:0;
     height:80vh;
     width:100%;
@@ -111,7 +112,20 @@
     }
 }
 
-.contenedor-frases{
-    display:flex;
-    align-items: center;
+.landing-title{
+    font-family: var(--titulo1);
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 7rem;
+    margin-top: 2rem;
+}
+.motivation-phrase{
+    font-family: var(--titulo2);
+    font-size: 2rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+}
+.motivation-phrase span{
+    color:var(--colorPrincipal)
 }

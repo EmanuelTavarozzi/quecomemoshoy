@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 //import {Link} from "react-router-dom";
-import {Container} from 'reactstrap'
+import {Container, Row, Col} from 'reactstrap'
+import Card from './Card.component'
 
 export default class Landing extends Component{
 
@@ -14,6 +15,14 @@ export default class Landing extends Component{
                 <Container>
                     <h2 data-aos="fade-in"className="landing-title">Encontra la comida ideal para el momento ideal</h2>
                 </Container>
+                <Container fluid="true">
+                    <Row>
+                        <Col data-aos="fade-in" xs="12" sm="6" md="4"><Card /></Col>
+                        <Col data-aos="fade-in" xs="12" sm="6" md="4"><Card /></Col>
+                        <Col data-aos="fade-in" xs="12" sm="6" md="4"><Card /></Col>
+                    </Row>
+                </Container>
+                <h2>Hola</h2>
             </div>
         )
     }

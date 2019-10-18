@@ -116,7 +116,7 @@
     font-family: var(--titulo1);
     font-size: 3rem;
     font-weight: 700;
-    margin-bottom: 7rem;
+    margin-bottom: 5rem;
     margin-top: 2rem;
 }
 .motivation-phrase{
@@ -128,4 +128,20 @@
 }
 .motivation-phrase span{
     color:var(--colorPrincipal)
+}
+
+/* Card Component */
+
+
+.contenedorInfoCarta{
+    font-family: var(--titulo1);
+    color:black;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.contenedorCarta{
+    -webkit-box-shadow: 0px 11px 15px -5px rgba(125, 120, 120, 0.67);
+    -moz-box-shadow: 0px 11px 15px -5px rgba(125, 120, 120, 0.67);
+    box-shadow: 0px 11px 15px -5px rgba(125, 120, 120, 0.67);
 }

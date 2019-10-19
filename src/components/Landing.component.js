@@ -17,12 +17,12 @@ export default class Landing extends Component{
                 </Container>
                 <Container fluid="true">
                     <Row>
-                        <Col data-aos="fade-in" xs="12" sm="6" md="4"><Card /></Col>
-                        <Col data-aos="fade-in" xs="12" sm="6" md="4"><Card /></Col>
-                        <Col data-aos="fade-in" xs="12" sm="6" md="4"><Card /></Col>
+                        <Col data-aos="fade-in" xs="12" sm="6" md="4"><Card title={"Hey, test"} body={"How you doin?"} img={""}/></Col>
+                        <Col data-aos="fade-in" xs="12" sm="6" md="4"><Card title={"Hey, test"} body={"How you doin?"} img={""}/></Col>
+                        <Col data-aos="fade-in" xs="12" sm="6" md="4"><Card title={"Hey, test"} body={"How you doin?"} img={""}/></Col>
                     </Row>
                 </Container>
-                <h2>Hola</h2>
+                
             </div>
         )
     }

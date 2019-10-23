@@ -18,12 +18,14 @@
     margin-bottom: 0.5rem;
     
 }
-@media(max-width: 768px) {
+
+@media(max-width: 1200px) {
     .navegacion{
         text-align: center;
     }
     
 }
+
 .navegacion ul li{
     display: inline-block;
     list-style: none;
@@ -67,14 +69,16 @@
     text-align: right;
 } /*ul con li´s*/
 
-@media(max-width: 768px) {
+@media(max-width: 1200px) {
     .contenedorItems {
         text-align: center;
     }
     .navegacion ul{
-        margin-top: 1.8;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
     }
 }
+
 
 .title{
     color:#3EC5BD;
@@ -92,7 +96,7 @@
 .landing-image{
     background-image: url(./img/landing.jpg);
     padding:0;
-    height:80vh;
+    height:100vh;
     width:100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -144,4 +148,26 @@
     -webkit-box-shadow: 0px 11px 15px -5px rgba(125, 120, 120, 0.67);
     -moz-box-shadow: 0px 11px 15px -5px rgba(125, 120, 120, 0.67);
     box-shadow: 0px 11px 15px -5px rgba(125, 120, 120, 0.67);
+}
+
+/******* Banner *********/
+
+.banner{  
+    background-image: url(./img/banner.jpg);
+    padding: 0.5rem 0 0.5rem 0;
+    width:100%;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow:hidden;
+    text-align: center;
+    color:white;
+    margin: 2rem 0 2rem 0;
+    
+ }
+
+.texto-banner{
+    font-family: var(--titulo1);
+    text-align: center;
+    color:white;
 }

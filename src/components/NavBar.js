@@ -19,10 +19,10 @@ export default class NavBar extends Component{
         return(
                 <Container fluid= "true">
                 <Row className="navegacion">
-                        <Col sm="8"xs="12">
+                        <Col lg="6" md="5" sm="12" xs="12">
                             <Link className="link title" to="/">Que comemos hoy</Link>
                         </Col>
-                        <Col sm="4"xs="12">
+                        <Col lg="6" md="7" sm="12" xs="12">
                             <ul className="contenedorItems">
                                 <li>
                                     <Link className="link" to="/recipes">Recetas</Link>

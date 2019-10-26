@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 import {Container, Row, Col} from 'reactstrap'
 import Card from './Card.component'
 import Banner from './Banner.component'
+import FavoriteRecipe from './FavoriteRecipe.component'
 
 export default class Landing extends Component{
 
@@ -24,10 +25,12 @@ export default class Landing extends Component{
                     </Row>
                 </Container>
                 <Banner title={"Recetas del mes"}/>
-                {/*} Recetas favoritas {*/}
+                <FavoriteRecipe color="#efb810" likes="500"/>
+                <FavoriteRecipe color="#8a9597"likes="325"/>
+                <FavoriteRecipe color="#cd7f32"likes="120"/>
                 <Banner title={"Nosotros"}/>
+                {/*} Nosotros {*/}
 
-                
             </div>
         )
     }

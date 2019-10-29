@@ -1,10 +1,9 @@
 import React, {Component} from 'react'
-//import {Link} from "react-router-dom";
 import {Container, Row, Col} from 'reactstrap'
-import Card from './Card.component'
-import Banner from './Banner.component'
-import FavoriteRecipe from './FavoriteRecipe.component'
-
+import Card from './Landing/Card.component'
+import Banner from './Landing/Banner.component'
+import FavoriteRecipe from './Landing/FavoriteRecipe.component'
+import Contact from './Landing/Contact.component'
 
 export default class Landing extends Component{
 
@@ -30,18 +29,20 @@ export default class Landing extends Component{
                 <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="500"><FavoriteRecipe color="#8a9597"likes="325"/></div>
                 <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="500"><FavoriteRecipe color="#cd7f32"likes="120"/></div>
                 <Banner title={"Nosotros"}/>
-                {/*} Nosotros {*/}
                 <Container style={{padding:"2rem",borderRadius:"2rem"}} className="contenedorReceta" data-aos="fade-up" data-aos-duration="500">
                     <Row style={{alignItems:"center"}}xs="12" lg="12">
                         <Col lg="8" xs="8">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla felis nunc, suscipit vel tellus ac, accumsan consectetur lacus. In suscipit ligula nunc, quis sollicitudin dui congue eu. Sed fringilla lectus id ipsum viverra, sed interdum felis pellentesque. Vestibulum ac justo feugiat, maximus elit nec, tempor enim. Sed auctor nunc sit amet est vehicula dignissim. Vivamus nibh est, porta mattis neque nec, posuere accumsan sapien. Aenean blandit varius metus, eget placerat dolor accumsan egestas.</p>
+                            <p> <span style={{color:"#3EC5BD",textTransform:"uppercase"}}> ¿qué comemos hoy? </span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla felis nunc, suscipit vel tellus ac, accumsan consectetur lacus. In suscipit ligula nunc, quis sollicitudin dui congue eu. Sed fringilla lectus id ipsum viverra, sed interdum felis pellentesque. Vestibulum ac justo feugiat, maximus elit nec, tempor enim. Sed auctor nunc sit amet est vehicula dignissim. Vivamus nibh est, porta mattis neque nec, posuere accumsan sapien. Aenean blandit varius metus, eget placerat dolor accumsan egestas.</p>
                         </Col>
                         <Col lg="4" xs="4">
                             <img style={{maxWidth:"100%",color:"#3EC5BD"}} alt="No hay imagen"src={require('../img/about.png')}></img>
                         </Col>
                     </Row>
-                </Container>    
-
+                </Container>
+                <Contact />
+                <div style={{backgroundColor:"black",height:"200px"}}>
+                    <h1>Footer</h1>
+                </div>
             </div>
         )
     }

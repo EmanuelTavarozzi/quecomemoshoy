@@ -30,7 +30,7 @@ export default class About extends Component{
         return(
                 <div >
                     <Card className="contenedorCarta" onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
-                        <CardImg top width="100%"   src={require('../img/landing.jpg')}  alt="Card image cap" />
+                        <CardImg top width="100%"   src={require('../../img/landing.jpg')}  alt="Card image cap" />
                         <CardBody className="contenedorInfoCarta">
                             <CardTitle style={{fontSize:"1.6rem",fontWeight:"bolder"}}>{this.props.title}</CardTitle>
                             <CardText>{this.props.body}</CardText>

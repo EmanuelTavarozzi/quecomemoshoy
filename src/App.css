@@ -7,7 +7,12 @@
 
 body{
     font-family: var(--titulo2);
+    overflow-x: hidden;
 }
+img{
+    max-width: 100%;
+}
+
 
 
 
@@ -186,8 +191,6 @@ body{
     text-align: center;
 }
 
-
-
 .contenedorLikes{
     display:flex;
     flex-direction: row;
@@ -203,4 +206,50 @@ body{
     display:flex;
     flex-direction: row;
     justify-content: space-around;
+}
+
+/****** Contacto *******/
+
+.contenedorContacto{
+    -webkit-box-shadow: 0px 0px 7px 4px rgba(0,0,0,0.21);
+    -moz-box-shadow: 0px 0px 7px 4px rgba(0,0,0,0.21);
+    box-shadow: 0px 0px 7px 4px rgba(0,0,0,0.21);
+    border-radius: 1rem;
+}
+
+.contenedorContacto form{
+    display:flex;
+    flex-direction: column;
+    padding: 1rem;
+    color:black;
+    font-weight: bolder;
+}
+.contenedorContacto textarea{
+     -webkit-box-shadow: 0px 9px 4px -1px rgba(120, 120, 120, 0.57);
+   -moz-box-shadow: 0px 9px 4px -1px rgba(120, 120, 120, 0.57);
+   box-shadow: 0px 9px 4px -1px rgba(120, 120, 120, 0.57);
+   border:0;
+}
+.contenedorContacto label input{
+    display:inline-block;
+    margin-bottom: 1rem;
+   -webkit-box-shadow: 0px 9px 4px -1px rgba(120, 120, 120, 0.57);
+   -moz-box-shadow: 0px 9px 4px -1px rgba(120, 120, 120, 0.57);
+   box-shadow: 0px 9px 4px -1px rgba(120, 120, 120, 0.57);
+   padding:0.5rem;
+   color:black;
+}
+.btnEnviar{
+    color:black;
+    background-color: var(--colorPrincipal);
+    padding:0.5rem 0 0.5rem 0;
+    border-radius: 1rem;
+    border:0;
+    text-transform: uppercase;
+    font-weight: bolder;
+    transition: 0.7s;
+    font-size: 1.2rem;
+}
+.btnEnviar:hover{
+    background-color: rgb(140, 224, 219);
 }

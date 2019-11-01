@@ -270,8 +270,7 @@ input:focus,textarea:focus {
 
 .contenedorAbout{
     background-image: url(./img/people-working.jpg);
-    height: 60vh;
-    background-attachment: scroll;
+    height: 95vh;
     background-repeat: no-repeat;
     background-size: cover;
     display:flex;

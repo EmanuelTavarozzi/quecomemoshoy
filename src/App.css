@@ -264,3 +264,19 @@ input:focus,textarea:focus {
     background-color: rgb(152, 231, 227);
     
 }
+
+
+/*********Pagina about**********/
+
+.contenedorAbout{
+    background-image: url(./img/people-working.jpg);
+    height: 60vh;
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}

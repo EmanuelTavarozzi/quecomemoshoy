@@ -46,10 +46,10 @@ export default class FavoriteRecipe extends React.Component{
         return(
                <Container style={{marginTop:"4rem",marginBottom:"4rem"}}>
                    <Row xs="12" lg="12" styles={{alignItems:"center"}} >
-                        <Col lg="7" xs="4" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" >
+                        <Col lg="7" xs="12" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" >
                             <img alt="Contacto "src={require('../../img/contacto.PNG')}></img>
                         </Col>
-                        <Col lg="5" xs="8" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
+                        <Col lg="5" xs="12" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
                             <Container className="contenedorContacto">
                                 <form onSubmit={this.handleSubmit}>
                                     <label>
@@ -86,7 +86,6 @@ export default class FavoriteRecipe extends React.Component{
                                     </label>
                                     <button className="btnEnviar">Enviar</button>
                                 </form>
-    
                             </Container>
                         </Col>
                    </Row>

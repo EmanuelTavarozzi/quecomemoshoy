@@ -31,8 +31,8 @@ export default class Landing extends Component{
                 <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="500"><FavoriteRecipe color="#efb810" likes="500"/></div>
                 <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="500"><FavoriteRecipe color="#8a9597"likes="325"/></div>
                 <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="500"><FavoriteRecipe color="#cd7f32"likes="120"/></div>
+                
                 <Banner title={"Nosotros"}/>
-
                 <Container style={{padding:"2rem",borderRadius:"2rem"}} className="contenedorReceta" data-aos="fade-up" data-aos-duration="500">
                     <Row style={{alignItems:"center"}}xs="12" lg="12">
                         <Col lg="8" xs="8">

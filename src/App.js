@@ -26,6 +26,8 @@ export default class App extends React.Component{
             <Route exact path="/" >
               <Landing />
             </Route>
+            <Route path="/recipes/" component={Recipes}>
+            </Route>
             <Route path="/recipes/:id" component={Recipes}>
             </Route>
             <Route path="/about">

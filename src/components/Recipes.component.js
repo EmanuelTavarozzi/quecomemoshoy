@@ -18,7 +18,7 @@ constructor(){
     }
     
     render(){
-        const { match: { params } } = this.props;
+        
 
         return(
             this.state.isLoading ?

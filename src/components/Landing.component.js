@@ -50,13 +50,13 @@ export default withRouter(class Landing extends Component{
                     {this.state.recipes.length > 0 &&
                         <Row>
                             <Col data-aos="fade-right" data-aos-once="true" data-aos-delay="15050" xs="12" sm="12" md="4">
-                                <Card title={this.state.recipes[0].name} body={this.state.recipes[0].description} img={require("../img/recetas/polloalacrema.jpg")} redirectTo={() => this.redirectTo(this.state.recipes[0]._id)}/>
+                                <Card title="Comida Saludable" body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. s laoreet nisl non tempus" />
                             </Col>
                             <Col data-aos="flip-left"  data-aos-once="true" xs="12" sm="12" md="4">
-                                <Card title={this.state.recipes[1].name} body={this.state.recipes[1].description} />
+                                <Card title="Comida Saludable" body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. s laoreet nisl non tempus" />
                             </Col>
                             <Col data-aos="fade-left"  data-aos-once="true" xs="12" sm="12" md="4">
-                                <Card title={this.state.recipes[2].name} body={this.state.recipes[2].description} />
+                                <Card title="Comida Saludable" body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. s laoreet nisl non tempus" />
                             </Col>
                         </Row>
                     }

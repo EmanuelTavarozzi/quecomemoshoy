@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {Container,Col,Row} from 'reactstrap'
 import LoadingPage from './Loading.component'
 
-
 export default class Recipes extends Component{
 constructor(){
         super()
@@ -15,9 +14,12 @@ constructor(){
         setTimeout(() => {
             this.setState({isLoading:false})
         },1)
+        const { match: { params } } = this.props;
     }
     
     render(){
+        const { match: { params } } = this.props;
+
         return(
             this.state.isLoading ?
             <LoadingPage / >

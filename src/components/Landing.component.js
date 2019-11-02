@@ -5,8 +5,35 @@ import Banner from './Landing/Banner.component'
 import FavoriteRecipe from './Landing/FavoriteRecipe.component'
 import Contact from './Landing/Contact.component'
 import Footer from './Footer.component'
+import axios from 'axios'
+import { withRouter } from 'react-router-dom'
 
-export default class Landing extends Component{
+export default withRouter(class Landing extends Component{
+
+    constructor(props){
+        super(props);
+
+        this.state = {
+            recipes: [],
+        }
+        this.redirectTo = this.redirectTo.bind(this)
+    }
+
+    callAPI() {
+        axios.get("http://localhost:5000/recipes/landingRecipes", { })
+        .then(res => {
+            console.log(res);
+            this.setState({ recipes: res.data })
+        });
+    }
+    
+    componentDidMount() {
+        this.callAPI();
+    }
+
+    redirectTo(recipeId) {
+        this.props.history.push(`/recipes/${recipeId}`)
+    }
 
     render(){
         return( 
@@ -20,18 +47,30 @@ export default class Landing extends Component{
                 </Container>
 
                 <Container fluid="true">
-                    <Row>
-                        <Col data-aos="fade-right" data-aos-once="true" data-aos-delay="15050" xs="12" sm="12" md="4"><Card title={"La mejor forma de cocinar"} body={"How you doin?"} img={""}/></Col>
-                        <Col data-aos="flip-left"  data-aos-once="true" xs="12" sm="12" md="4"><Card title={"+1000 recetas"} body={"How you doin?"} img={""}/></Col>
-                        <Col data-aos="fade-left"  data-aos-once="true" xs="12" sm="12" md="4"><Card title={"El apoyo de una comunidad"} body={"How you doin?"} img={""}/></Col>
-                    </Row>
+                    {this.state.recipes.length > 0 &&
+                        <Row>
+                            <Col data-aos="fade-right" data-aos-once="true" data-aos-delay="15050" xs="12" sm="12" md="4">
+                                <Card title={this.state.recipes[0].name} body={this.state.recipes[0].description} img={require("../img/recetas/polloalacrema.jpg")} redirectTo={() => this.redirectTo(this.state.recipes[0]._id)}/>
+                            </Col>
+                            <Col data-aos="flip-left"  data-aos-once="true" xs="12" sm="12" md="4">
+                                <Card title={this.state.recipes[1].name} body={this.state.recipes[1].description} />
+                            </Col>
+                            <Col data-aos="fade-left"  data-aos-once="true" xs="12" sm="12" md="4">
+                                <Card title={this.state.recipes[2].name} body={this.state.recipes[2].description} />
+                            </Col>
+                        </Row>
+                    }
                 </Container>
                 <Banner title={"Recetas del mes"}/>
-
-                <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="500"><FavoriteRecipe color="#efb810" likes="500"/></div>
-                <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="500"><FavoriteRecipe color="#8a9597"likes="325"/></div>
-                <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="500"><FavoriteRecipe color="#cd7f32"likes="120"/></div>
-                
+             
+                {        
+                this.state.recipes.map((item,i) => 
+                    <div key={i}><div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="500">
+                        <FavoriteRecipe color="#efb810" likes={item.likes} title={item.name} procedure={item.description}/></div>                   
+                    </div>
+                    )
+                }          
+           
                 <Banner title={"Nosotros"}/>
                 <Container style={{padding:"2rem",borderRadius:"2rem"}} className="contenedorReceta" data-aos="fade-up" data-aos-duration="500">
                     <Row style={{alignItems:"center"}}xs="12" lg="12">
@@ -50,4 +89,4 @@ export default class Landing extends Component{
         )
     }
 
-}
+})

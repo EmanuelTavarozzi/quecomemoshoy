@@ -23,11 +23,10 @@ export default class App extends React.Component{
         <Router>
           <NavBar />
           <Switch>
-            <Route exact path="/">
+            <Route exact path="/" >
               <Landing />
             </Route>
-            <Route path="/recipes">
-              <Recipes />
+            <Route path="/recipes/:id" component={Recipes}>
             </Route>
             <Route path="/about">
               <About />

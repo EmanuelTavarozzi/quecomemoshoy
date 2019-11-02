@@ -2,11 +2,18 @@ const router = require('express').Router()
 let Recipe = require('../models/recipes.model')
 
 
-router.route('/').get((req,res) =>{
+router.route('/landingRecipes').get((req,res) =>{
+    Recipe.find().sort({likes: -1}).limit(3)
+        .then(recipes => res.json(recipes))
+        .catch(err => res.status(400).json('Error: ' + err))
+})
+
+/* router.route('/:id').get((req,res) =>{
     Recipe.find()
         .then(recipes => res.json(recipes))
         .catch(err => res.status(400).json('Error: ' + err))
 })
+ */
 
 
 router.route('/add').post((req,res) => {

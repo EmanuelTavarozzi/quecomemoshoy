@@ -279,3 +279,41 @@ input:focus,textarea:focus {
     flex-direction: column;
     margin-bottom: 2rem;
 }
+
+/*********Pagina Recetas**********/
+
+
+.contenedorBusqueda{
+    background-image: url(./img/landing.jpg);
+    padding:5rem;
+    height: 80vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position:relative;
+    z-index: 1;
+    text-align: center;
+}
+.contenedorIngredientes{
+    padding:0;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: white;
+    top: 20%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 85%;
+    z-index: 2;
+}
+
+.titulo{
+    font-family: Quicksand , sans-serif;
+    color: var(--colorPrincipal);
+    font-weight: 300;
+    font-size: 2.2rem;
+    text-transform: uppercase;
+}
+.formulario{
+    display: flex;
+    flex-direction: column;
+}

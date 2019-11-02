@@ -9,7 +9,6 @@ export default class About extends Component{
         super()
         this.state = {
             isLoading: true,
-            palabrasClave: ['Passion','Dedication','Trust'], // generar funcion que vaya poniendo distintas caracteristicas debajo del h1 de la pagina
         }
     }
 

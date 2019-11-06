@@ -1,6 +1,7 @@
 const router = require('express').Router()
 let Recipe = require('../models/recipes.model')
 var mongoose = require('mongoose');
+mongoose.set('useFindAndModify', false);
 
 
 router.route('/landingRecipes').get((req,res) =>{
@@ -49,6 +50,14 @@ router.route('/addRecipe').post((req,res) => {
     newRecipe.save()
         .then(() => res.json('Receta generada!'))
         .catch(err => res.json('Ha habido un error: ' + err)) 
+})
+
+router.route('/likeRecipe').post((req,res) => {
+
+    Recipe.findByIdAndUpdate(req.body._id, { $inc: { likes: 1 }})
+    .then(() => res.json('Receta likeada!'))
+    .catch(err => res.json('Ha habido un error: ' + err)) 
+   
 })
 
 module.exports = router;

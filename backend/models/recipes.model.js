@@ -10,7 +10,7 @@ const recipeSchema = new Schema({
     category:   {type:String},
     ingredients:{type:Array},
     likes:      {type:Number},
-    steps:      {type:String},
+    steps:      {type:Array},
 }, {
     timestamps: true,
 } )

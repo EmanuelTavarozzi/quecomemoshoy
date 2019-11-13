@@ -1,23 +1,54 @@
 import React, {Component} from 'react'
 import {Container,Col,Row} from 'reactstrap'
 import LoadingPage from './Loading.component'
+import Ingredients from './Recipes/Ingredients.component'
 
 
 export default class Recipes extends Component{
 constructor(){
         super()
         this.state = {
-            isLoading: true
+            isLoading: false,
+            ingredientes: [],
+            ingrediente:'',
+            nombre:''
         }
+        this.onAddItem = this.onAddItem.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
 
-    componentDidMount(){
+    /*componentDidMount(){
         setTimeout(() => {
             this.setState({isLoading:false})
         },1)
     }
+    */
+   handleChange(event){
+       const value = event.target.value
+       this.setState({
+           ingrediente:value
+       })
+
+   }
     
+   onAddItem = (event) => {
+        this.setState(state =>{
+            const ingredientes = [...state.ingredientes,state.ingrediente]
+            
+            return{
+                ingredientes,
+                ingrediente:'',
+            }
+         })
+         
+        event.preventDefault();
+    }
+
     render(){
+        const ingredients = this.state.ingredientes.map((ing) =>
+            <Ingredients text={ing}></Ingredients>
+        )
+
         return(
             this.state.isLoading ?
             <LoadingPage / >
@@ -28,13 +59,14 @@ constructor(){
                         <Col style={{borderRight:"1px solid #3EC5BD",margin:"0.5rem"}}>
                             <p className="titulo">Agregar ingredientes</p>
                             <form className="formulario">
-                                <input placeholder="Ingrese el nombre del plato" />
-                                <input placeholder="Ingrese su ingrediente" />
-                                <button>Agregar</button>
+                                <input type="text" value={this.state.nombre} placeholder="Ingrese el nombre del plato" />
+                                <input type="text" value={this.state.ingrediente} onChange={this.handleChange} placeholder="Ingrese su ingrediente" />
+                                <button onClick={this.onAddItem}>Agregar</button>
                             </form>
                         </Col>
                         <Col className="ingredientes" style={{margin:"0.5rem"}}>
                             <p className="titulo">Ingredientes</p>
+                            <p>{ingredients}</p>
                         </Col>
                     </Row>
                 </Container>

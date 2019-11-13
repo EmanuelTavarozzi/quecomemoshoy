@@ -25,9 +25,9 @@ constructor(){
             <div>
                 <Container className="contenedorBusqueda" fluid="true" data-aos="fade-zoom-in" data-aos-easing="ease-in-back"data-aos-delay="300" data-aos-offset="0">
                     <Row className="contenedorIngredientes" >
-                        <Col className="formulario" style={{borderRight:"1px solid #3EC5BD",margin:"0.5rem"}}>
+                        <Col style={{borderRight:"1px solid #3EC5BD",margin:"0.5rem"}}>
                             <p className="titulo">Agregar ingredientes</p>
-                            <form>
+                            <form className="formulario">
                                 <input placeholder="Ingrese el nombre del plato" />
                                 <input placeholder="Ingrese su ingrediente" />
                                 <button>Agregar</button>

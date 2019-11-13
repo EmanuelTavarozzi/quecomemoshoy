@@ -3,7 +3,6 @@ import {Container,Col,Row} from 'reactstrap'
 import LoadingPage from './Loading.component'
 import Ingredients from './Recipes/Ingredients.component'
 
-
 export default class Recipes extends Component{
 constructor(){
         super()
@@ -21,6 +20,7 @@ constructor(){
         setTimeout(() => {
             this.setState({isLoading:false})
         },1)
+        const { match: { params } } = this.props;
     }
     */
    handleChange(event){
@@ -45,9 +45,13 @@ constructor(){
     }
 
     render(){
+<<<<<<< HEAD
         const ingredients = this.state.ingredientes.map((ing) =>
             <Ingredients text={ing}></Ingredients>
         )
+=======
+        
+>>>>>>> 60ef4ee66aea4f276405189575d53ee7a422f140
 
         return(
             this.state.isLoading ?

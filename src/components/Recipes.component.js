@@ -45,13 +45,9 @@ constructor(){
     }
 
     render(){
-<<<<<<< HEAD
         const ingredients = this.state.ingredientes.map((ing) =>
             <Ingredients text={ing}></Ingredients>
         )
-=======
-        
->>>>>>> 60ef4ee66aea4f276405189575d53ee7a422f140
 
         return(
             this.state.isLoading ?

@@ -31,8 +31,15 @@ constructor(){
    }
     
    onAddItem = (event) => {
+       let array = this.state.ingredientes
        if(this.state.ingrediente === ""){
             alert("Ingrese el campo por favor")
+       }
+       if(array.length === 10){
+           alert("Cantidad máxima")
+       }
+       else if(array.includes(this.state.ingrediente)){
+           alert("Ingrediente ya ingresado, ingrese otro por favor")
        }
        else(
         this.setState(state =>{
@@ -71,6 +78,7 @@ constructor(){
                             <p className="titulo">Ingredientes</p>
                             <Row>
                                 {ingredients}
+                                {/*}Falta agregar que queden bien los ingredientes cuando son más de 5 en una fila{*/}
                             </Row>
                         </Col>
                     </Row>

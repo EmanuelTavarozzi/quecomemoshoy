@@ -324,6 +324,7 @@ input:focus,textarea:focus {
 
 .contenedorIngredientes{
     font-family: var(--titulo1);
+    font-size: 1.3rem;
 }
 
 .contenedorIngredientes label input{
@@ -341,15 +342,15 @@ input:focus,textarea:focus {
    
 }
 .contenedorIngredientes input:focus {
-    border: 3px solid rgb(128, 224, 220);
+    border: 3px solid var(--colorPrincipal);
 }
 
 .contenedorIngredientes button {
     color:var(--colorPrincipal);
     display:inline-block;
-    background-color: var(--colorPrincipal);
+    background-color: white;
     border:0;
-    color:white;
+    color:var(--colorPrincipal);
     text-transform: uppercase;
     margin: 0 auto;
     margin-bottom: 1rem;
@@ -357,12 +358,11 @@ input:focus,textarea:focus {
     padding: 15px 32px;
     width:50%;
     text-align: center;
-    -webkit-box-shadow: 0px 22px 25px -9px rgba(0, 0, 0, 0.22);
-    -moz-box-shadow: 0px 22px 25px -9px rgba(0, 0, 0, 0.22);
-    box-shadow: 0px 22px 25px -9px rgba(104, 100, 100, 0.22);
+    box-shadow: 0px 15px 20px rgba(95, 99, 97, 0.4);
     letter-spacing: 2px;
     transition:0.5s;
 }
 .contenedorIngredientes button:hover{
-    background-color: rgb(23, 109, 103);
+    background-color: var(--colorPrincipal);
+    color:white;
 }

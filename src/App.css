@@ -12,6 +12,10 @@ body{
 img{
     max-width: 100%;
 }
+h1{
+    font-family: 'Give You Glory',
+    cursive;
+}
 
 
 
@@ -286,7 +290,8 @@ input:focus,textarea:focus {
 .contenedorBusqueda{
     background-image: url(./img/landing.jpg);
     padding:5rem;
-    height: 80vh;
+    height: 100%;
+    max-height: 100%;
     background-repeat: no-repeat;
     background-size: cover;
     position:relative;
@@ -360,9 +365,33 @@ input:focus,textarea:focus {
     text-align: center;
     box-shadow: 0px 15px 20px rgba(95, 99, 97, 0.4);
     letter-spacing: 2px;
-    transition:0.5s;
+    transition:0.4s;
+    
 }
 .contenedorIngredientes button:hover{
     background-color: var(--colorPrincipal);
     color:white;
+}
+
+.contenedorIngredientes .btn-buscar{
+    color:black;
+    display:inline-block;
+    background-color: #3EC5BD;
+    border:0;
+    text-transform: uppercase;
+    padding: 15px 32px;
+    width:30%;
+    margin-top: 2rem;
+    font-weight: 500;
+}
+
+.contenedorIngredientes .btn-buscar:hover{
+    background-color: var(--colorPrincipal);
+    color:white;
+    border-radius: 2rem;
+
+}
+
+.hoy-comemos{ 
+    
 }

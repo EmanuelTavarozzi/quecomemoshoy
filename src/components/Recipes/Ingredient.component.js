@@ -29,9 +29,10 @@ export default class Ingredient extends React.Component{
             borderRadius:"60px",
             marginBottom:"1rem",
             color:"black",
-            fontSize:"1.3rem"
+            fontSize:"1.3rem",
+            padding:"1rem"
         };
-        const arrayRojos = ["Tomate"]
+        const arrayRojos = ["Tomate"] /* Pensar si hacerlo con una consulta y llenar el state o de otra manera */
         const arrayVerdes = ["Lechuga"]
         if(arrayVerdes.includes(this.props.text)){
             style.backgroundColor= "green"

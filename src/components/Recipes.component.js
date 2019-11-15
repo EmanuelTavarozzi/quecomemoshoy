@@ -56,16 +56,16 @@ constructor(){
 
     render(){
         const ingredients = this.state.ingredientes.map((ing) =>
-            <Col> <Ingredient text={ing}></Ingredient></Col>
+            <Col lg="auto" sm="auto"> <Ingredient text={ing}></Ingredient></Col>
         )
-
+        
         return(
             this.state.isLoading ?
             <LoadingPage / >
             :
             <div>
                 <Container className="contenedorBusqueda" fluid="true" data-aos="fade-zoom-in" data-aos-easing="ease-in-back"data-aos-delay="300" data-aos-offset="0">
-                    <Row className="contenedorIngredientes" >
+                    <Row className="contenedorIngredientes">
                         <Col style={{borderRight:"1px solid #3EC5BD",margin:"0.5rem"}}>
                             <p className="titulo">Agregar ingredientes</p>
                             <form className="formulario">
@@ -82,6 +82,12 @@ constructor(){
                             </Row>
                         </Col>
                     </Row>
+                    <Row className="contenedorIngredientes">
+                        <button class="btn-buscar">Buscar Receta</button>
+                    </Row>
+                </Container>
+                <Container className="contenedorBusquedaRecetas">
+                    <h1>Hoy comemos...</h1>
                 </Container>
             </div>
             )

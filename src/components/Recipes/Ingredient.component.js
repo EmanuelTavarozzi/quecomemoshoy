@@ -10,6 +10,7 @@ export default class Ingredient extends React.Component{
         }
         this.handleMouseEnter = this.handleMouseEnter.bind(this)
         this.handleMouseLeave = this.handleMouseLeave.bind(this)
+        
     }
 
     handleMouseEnter(){
@@ -22,13 +23,15 @@ export default class Ingredient extends React.Component{
             opacity:0
         })
     }
+
+    
     
     render(){
         let style={
             backgroundColor:"",
             borderRadius:"60px",
             marginBottom:"1rem",
-            color:"black",
+            color:"white",
             fontSize:"1.3rem",
             padding:"1rem"
         };
@@ -41,7 +44,7 @@ export default class Ingredient extends React.Component{
             style.backgroundColor = "red"
         }
         return(
-            <p onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} style={style}> {this.props.text} <img style={{opacity:this.state.opacity,maxWidth:"20px", maxHeight:"20px",transition: "opacity 0.2s ease"}} alt="No hay imagen"src={Cross}></img> </p>
+            <p onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} style={style}> {this.props.text} <img key={this.props.text} onClick={() => this.props.method(this.props.text)} style={{opacity:this.state.opacity,maxWidth:"15px", maxHeight:"15px",transition: "opacity 0.2s ease"}} alt="No hay imagen"src={Cross}></img> </p>
         )
         }
 }

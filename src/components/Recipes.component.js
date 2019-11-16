@@ -14,6 +14,7 @@ constructor(){
         }
         this.onAddItem = this.onAddItem.bind(this)
         this.handleChange = this.handleChange.bind(this)
+        this.removeItem = this.removeItem.bind(this)
     }
 
     componentDidMount(){
@@ -54,9 +55,15 @@ constructor(){
         event.preventDefault();
     }
 
+    removeItem(text) {
+        this.setState({
+            ingredientes: this.state.ingredientes.filter(ingr => ingr !== text) // Filtra por el texto enviado por el ingrediente determinado y lo elimina del array para actualizar el estado lo que hace que se ejecute render de nuevo.
+        })
+    }
+
     render(){
-        const ingredients = this.state.ingredientes.map((ing) =>
-            <Col lg="auto" sm="auto"> <Ingredient text={ing}></Ingredient></Col>
+        let ingredients = this.state.ingredientes.map((ing) =>
+            <Col data-aos="fade-down" lg="auto" sm="auto"> <Ingredient text={ing} method={this.removeItem}></Ingredient></Col>
         )
         
         return(
@@ -66,7 +73,7 @@ constructor(){
             <div>
                 <Container className="contenedorBusqueda" fluid="true" data-aos="fade-zoom-in" data-aos-easing="ease-in-back"data-aos-delay="300" data-aos-offset="0">
                     <Row className="contenedorIngredientes">
-                        <Col style={{borderRight:"1px solid #3EC5BD",margin:"0.5rem"}}>
+                        <Col className="borde">
                             <p className="titulo">Agregar ingredientes</p>
                             <form className="formulario">
                                 <label><input type="text" value={this.state.nombre} placeholder="Ingrese el nombre del plato" /></label>
@@ -86,8 +93,9 @@ constructor(){
                         <button class="btn-buscar">Buscar Receta</button>
                     </Row>
                 </Container>
+                <h1 style={{textAlign:"center",margin:"4rem 0 2rem 0",fontSize:"4rem"}}>Hoy comemos...</h1>
                 <Container className="contenedorBusquedaRecetas">
-                    <h1>Hoy comemos...</h1>
+                    
                 </Container>
             </div>
             )

@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Container,Col,Row} from 'reactstrap'
 import LoadingPage from './Loading.component'
 import Ingredient from './Recipes/Ingredient.component'
+import RecipesCard from './Recipes/RecipesCard.component'
 
 export default class Recipes extends Component{
 constructor(){
@@ -10,7 +11,8 @@ constructor(){
             isLoading: true,
             ingredientes: [],
             ingrediente:'',
-            nombre:''
+            nombre:'',
+            recipes: []
         }
         this.onAddItem = this.onAddItem.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -85,7 +87,6 @@ constructor(){
                             <p className="titulo">Ingredientes</p>
                             <Row>
                                 {ingredients}
-                                {/*}Falta agregar que queden bien los ingredientes cuando son más de 5 en una fila{*/}
                             </Row>
                         </Col>
                     </Row>
@@ -95,7 +96,13 @@ constructor(){
                 </Container>
                 <h1 style={{textAlign:"center",margin:"4rem 0 2rem 0",fontSize:"4rem"}}>Hoy comemos...</h1>
                 <Container className="contenedorBusquedaRecetas">
-                    
+                    < RecipesCard name = "Ensalada de atún"
+                    text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan ullamcorper posuere. Morbi sit amet imperdiet quam, in gravida sapien. Curabitur mattis nisl sed elit ullamcorper, vel convallis ipsum dapibus. Ut fringilla neque et congue suscipit. Sed quis varius leo. Vivamus in nisi sed velit volutpat efficitur et id mauris. Aenean sit amet lectus ipsum. Nulla a ligula sit amet nisi finibus ornare lobortis vel mi. Duis faucibus mollis tortor sit amet eleifend. Phasellus facilisis eros eros, non rhoncus ex mattis ut. Vivamus sit amet elementum purus, eget luctus tortor. Proin tempor laoreet felis, at pharetra ipsum aliquet quis. Suspendisse et elit et tortor tristique r" id = "1" isVegan = { true} isTacc = { true}
+                    />
+                    < RecipesCard name = "Ensalada de atún"
+                    text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan ullamcorper posuere. Morbi sit amet imperdiet quam, in gravida sapien. Curabitur mattis nisl sed elit ullamcorper, vel convallis ipsum dapibus. Ut fringilla neque et congue suscipit. Sed quis varius leo. Vivamus in nisi sed velit volutpat efficitur et id mauris. Aenean sit amet lectus ipsum. Nulla a ligula sit amet nisi finibus ornare lobortis vel mi. Duis faucibus mollis tortor sit amet eleifend. Phasellus facilisis eros eros, non rhoncus ex mattis ut. Vivamus sit amet elementum purus, eget luctus tortor. Proin tempor laoreet felis, at pharetra ipsum aliquet quis. Suspendisse et elit et tortor tristique r" id = "1" isVegan = { true} isTacc = { true}
+                    />
+
                 </Container>
             </div>
             )

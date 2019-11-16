@@ -406,3 +406,38 @@ input:focus,textarea:focus {
     }
 
 }
+
+.btn-verReceta{
+    color:black;
+    display:inline-block;
+    width:100%;
+    border:0;
+    text-transform: uppercase;
+    font-weight: bolder;
+    padding: 15px 32px;
+    margin-top: 1rem;
+    border-radius: 2rem;
+    font-weight: 400;
+    background-color: var(--colorPrincipal);
+    color:white;
+    border-radius: 2rem;
+    font-family: var(--titulo1);
+    font-size: 1.2rem;
+    transition:0.5s;
+}
+.btn-verReceta:hover{
+    background-color: rgb(29, 170, 161);
+}
+.tituloComida{
+    color:var(--colorPrincipal);
+    letter-spacing: 0.2rem;
+    font-size: 3rem;
+}
+
+.contenedorRecetaBusqueda{
+    -webkit-box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.25);
+    padding:1.2rem;
+    margin-bottom: 1.4rem;
+}

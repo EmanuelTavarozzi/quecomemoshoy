@@ -102,7 +102,6 @@ constructor(){
                     < RecipesCard name = "Ensalada de atún"
                     text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan ullamcorper posuere. Morbi sit amet imperdiet quam, in gravida sapien. Curabitur mattis nisl sed elit ullamcorper, vel convallis ipsum dapibus. Ut fringilla neque et congue suscipit. Sed quis varius leo. Vivamus in nisi sed velit volutpat efficitur et id mauris. Aenean sit amet lectus ipsum. Nulla a ligula sit amet nisi finibus ornare lobortis vel mi. Duis faucibus mollis tortor sit amet eleifend. Phasellus facilisis eros eros, non rhoncus ex mattis ut. Vivamus sit amet elementum purus, eget luctus tortor. Proin tempor laoreet felis, at pharetra ipsum aliquet quis. Suspendisse et elit et tortor tristique r" id = "1" isVegan = { true} isTacc = { true}
                     />
-
                 </Container>
             </div>
             )

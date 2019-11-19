@@ -390,6 +390,12 @@ input:focus,textarea:focus {
 
 }
 
+.contenedorIngredientes .btn-buscar:disabled {
+    background-color: grey;
+    color: white;
+
+}
+
 .borde{
     border-right: 1px solid #3EC5BD;
     margin:0.5rem;

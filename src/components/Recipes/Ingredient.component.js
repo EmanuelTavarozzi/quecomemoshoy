@@ -7,19 +7,14 @@ export default class Ingredient extends React.Component{
         super()
         this.state = {
             opacity:0,
-            style: {
-                borderRadius: "60px",
-                marginBottom: "1rem",
-                color: "black",
-                fontSize: "1.3rem",
-                padding: "1rem"
-            },
-            backgroundColor:""
-            
+            arrayVerdes:["lechuga"], // Arrays a llenar con la consulta a la base
+            arrayRojos:["tomate"],
+            arrayAmarillos:["banana","choclo"],
+            arrayNaranjas:["mandarina"],
+            arrayMarrones:["nueces"]
         }
         this.handleMouseEnter = this.handleMouseEnter.bind(this)
         this.handleMouseLeave = this.handleMouseLeave.bind(this)
-        this.getRandomColor = this.getRandomColor.bind(this)   
     }
 
     
@@ -35,26 +30,43 @@ export default class Ingredient extends React.Component{
         })
     }
 
-    componentDidMount(){
-        let color = this.getRandomColor()
-        this.setState({
-            backgroundColor:color
-        })
-    }
+    
+    
 
-    getRandomColor() {
-        var letters = '0123456789ABCDEF';
-        var color = '#';
-        for (var i = 0; i < 6; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
-        }
-        return color;
-
-    }
     render(){
+        let style = {
+            borderRadius: "60px",
+            marginBottom: "1rem",
+            color: "black",
+            fontSize: "1.3rem",
+            padding: "1rem",
+            backgroundColor: "",
+            textTransform: "uppercase"
+        }
+        let string = this.props.text
+        let stringlower = string.toLowerCase()
+        switch(true){
+            case this.state.arrayVerdes.includes(stringlower):
+                style.backgroundColor = "#33FF57"
+                break
+            case this.state.arrayAmarillos.includes(this.props.text):
+                style.backgroundColor = "#e5e619"
+                break
+            case this.state.arrayRojos.includes(this.props.text):
+                style.backgroundColor = "#FF4F33"
+                break
+            case this.state.arrayNaranjas.includes(this.props.text):
+                style.backgroundColor = "#FFBD33"
+                break   
+            case this.state.arrayMarrones.includes(this.props.text):
+                style.backgroundColor = "#C6894C"
+                break
+            default:
+                style.backgroundColor = "#3EC5BD"
+        }
         
         return(
-            <p onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} style={{backgroundColor: this.state.backgroundColor}}> {this.props.text} <img key={this.props.text} onClick={() => this.props.method(this.props.text)} style={{opacity:this.state.opacity,maxWidth:"15px", maxHeight:"15px",transition: "opacity 0.2s ease"}} alt="No hay imagen"src={Cross}></img> </p>
-        )
+            <p onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} style={style}> {this.props.text} <img key={this.props.text} onClick={() => this.props.method(this.props.text)} style={{opacity:this.state.opacity,maxWidth:"15px", maxHeight:"15px",transition: "opacity 0.2s ease"}} alt="No hay imagen"src={Cross}></img> </p>
+            )
         }
 }

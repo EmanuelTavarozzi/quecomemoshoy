@@ -11,15 +11,17 @@ constructor(){
         this.state = {
             isLoading: true,
             isLoadingResultados: false,
-            ingredientes: [],
+            ingredientes: [], // Para hacer la consulta hay que tomar los ingredientes desde acá y buscar en la colección.
             ingrediente:'',
             nombre:'',
-            recipes: []
+            recipes: [], // Array para llenar con recetas provenientes de la búsqueda
+            argumentsReady: false
         }
         this.onAddItem = this.onAddItem.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.removeItem = this.removeItem.bind(this)
         this.buscarRecetas = this.buscarRecetas.bind(this)
+        
     }
 
     componentDidMount(){
@@ -30,22 +32,23 @@ constructor(){
     
    handleChange(event){
        const value = event.target.value
+       const nombre = event.target.name
        this.setState({
-           ingrediente:value
+           [nombre]:value
        })
 
    }
     
    onAddItem = (event) => {
        let array = this.state.ingredientes
-       if(this.state.ingrediente === ""){
-            alert("Ingrese el campo por favor")
-       }
        if(array.length === 10){
            alert("Cantidad máxima")
        }
        else if(array.includes(this.state.ingrediente)){
            alert("Ingrediente ya ingresado, ingrese otro por favor")
+       }
+       else if(this.state.ingrediente === "") {
+           alert("Ingrese el campo por favor")
        }
        else(
         this.setState(state =>{
@@ -66,19 +69,22 @@ constructor(){
         })
     }
 
-    buscarRecetas(){
-        this.setState({
-            isLoadingResultados:true
-        })
-        setTimeout(() => {
-            this.setState({isLoadingResultados:false})
-        },2000)
+    buscarRecetas(event){
+        
+            this.setState({
+                isLoadingResultados:true
+            })
+            setTimeout(() => {
+                this.setState({isLoadingResultados:false})
+            },3000)
+        
     }
+    
     
 
     render(){
         let ingredients = this.state.ingredientes.map((ing) =>
-            <Col data-aos="fade-down" lg="auto" sm="auto"> <Ingredient text={ing} method={this.removeItem}></Ingredient></Col>
+            <Col data-aos="fade-down" lg="auto" sm="auto"> <Ingredient text={ing} method={this.removeItem}></Ingredient></Col>   
         )
         
         return(
@@ -91,8 +97,8 @@ constructor(){
                         <Col className="borde">
                             <p className="titulo">Agregar ingredientes</p>
                             <form className="formulario">
-                                <label><input type="text" value={this.state.nombre} placeholder="Ingrese el nombre del plato" /></label>
-                                <label><input type="text" value={this.state.ingrediente} onChange={this.handleChange} placeholder="Ingrese su ingrediente (max 10)" /></label>
+                                <label><input type="text" style={{textTransform:"uppercase"}} name="nombre" value={this.state.nombre} onChange={this.handleChange} placeholder="Ingrese el nombre del plato" /></label>
+                                <label><input type="text" style={{textTransform:"uppercase"}} name="ingrediente" value={this.state.ingrediente} onChange={this.handleChange} placeholder="Ingrese su ingrediente (max 10)" /></label>
                                 <button onClick={this.onAddItem}>Agregar</button>
                             </form>
                         </Col>
@@ -104,7 +110,7 @@ constructor(){
                         </Col>
                     </Row>
                     <Row className="contenedorIngredientes">
-                        <Link to="contenedorResultados" smooth={true} duration={1200} offset={-50}><button onClick={this.buscarRecetas}class="btn-buscar">Buscar Receta</button></Link>
+                        <Link to="contenedorResultados" smooth={true} duration={1200} offset={-50}><button disabled={this.state.ingredientes.length === 0} onClick={this.buscarRecetas}class="btn-buscar">Buscar Receta</button></Link>
                     </Row>
                 </Container>
                 <h1 id="contenedorResultados"style={{textAlign:"center",margin:"4rem 0 2rem 0",fontSize:"4rem"}}>Hoy comemos...</h1>
@@ -112,7 +118,7 @@ constructor(){
                 {this.state.isLoadingResultados ? 
             
                 <Container style={{display:"flex",alignItems:"center" , justifyContent:"center",height:"800px"}}>
-                    <Spinner style={{ width: '10rem', height: '10rem' }} type="grow" />
+                    <Spinner style={{ width: '10rem', height: '10rem' }} type="grow" color="info" />
                 </Container>
                 
                 :

@@ -6,12 +6,23 @@ export default class Ingredient extends React.Component{
     constructor(){
         super()
         this.state = {
-            opacity:0
+            opacity:0,
+            style: {
+                borderRadius: "60px",
+                marginBottom: "1rem",
+                color: "black",
+                fontSize: "1.3rem",
+                padding: "1rem"
+            },
+            backgroundColor:""
+            
         }
         this.handleMouseEnter = this.handleMouseEnter.bind(this)
         this.handleMouseLeave = this.handleMouseLeave.bind(this)
-        
+        this.getRandomColor = this.getRandomColor.bind(this)   
     }
+
+    
 
     handleMouseEnter(){
         this.setState({
@@ -24,27 +35,26 @@ export default class Ingredient extends React.Component{
         })
     }
 
-    
-    
+    componentDidMount(){
+        let color = this.getRandomColor()
+        this.setState({
+            backgroundColor:color
+        })
+    }
+
+    getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+
+    }
     render(){
-        let style={
-            backgroundColor:"",
-            borderRadius:"60px",
-            marginBottom:"1rem",
-            color:"white",
-            fontSize:"1.3rem",
-            padding:"1rem"
-        };
-        const arrayRojos = ["Tomate"] /* Pensar si hacerlo con una consulta y llenar el state o de otra manera */
-        const arrayVerdes = ["Lechuga"]
-        if(arrayVerdes.includes(this.props.text)){
-            style.backgroundColor= "green"
-        }
-        else if(arrayRojos.includes(this.props.text)){
-            style.backgroundColor = "red"
-        }
+        
         return(
-            <p onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} style={style}> {this.props.text} <img key={this.props.text} onClick={() => this.props.method(this.props.text)} style={{opacity:this.state.opacity,maxWidth:"15px", maxHeight:"15px",transition: "opacity 0.2s ease"}} alt="No hay imagen"src={Cross}></img> </p>
+            <p onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} style={{backgroundColor: this.state.backgroundColor}}> {this.props.text} <img key={this.props.text} onClick={() => this.props.method(this.props.text)} style={{opacity:this.state.opacity,maxWidth:"15px", maxHeight:"15px",transition: "opacity 0.2s ease"}} alt="No hay imagen"src={Cross}></img> </p>
         )
         }
 }

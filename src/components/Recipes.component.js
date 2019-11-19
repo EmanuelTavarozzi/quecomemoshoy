@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-import {Container,Col,Row} from 'reactstrap'
+import {Container,Col,Row,Spinner} from 'reactstrap'
+import {Link } from 'react-scroll'
 import LoadingPage from './Loading.component'
 import Ingredient from './Recipes/Ingredient.component'
 import RecipesCard from './Recipes/RecipesCard.component'
@@ -9,6 +10,7 @@ constructor(){
         super()
         this.state = {
             isLoading: true,
+            isLoadingResultados: false,
             ingredientes: [],
             ingrediente:'',
             nombre:'',
@@ -17,6 +19,7 @@ constructor(){
         this.onAddItem = this.onAddItem.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.removeItem = this.removeItem.bind(this)
+        this.buscarRecetas = this.buscarRecetas.bind(this)
     }
 
     componentDidMount(){
@@ -63,6 +66,16 @@ constructor(){
         })
     }
 
+    buscarRecetas(){
+        this.setState({
+            isLoadingResultados:true
+        })
+        setTimeout(() => {
+            this.setState({isLoadingResultados:false})
+        },2000)
+    }
+    
+
     render(){
         let ingredients = this.state.ingredientes.map((ing) =>
             <Col data-aos="fade-down" lg="auto" sm="auto"> <Ingredient text={ing} method={this.removeItem}></Ingredient></Col>
@@ -91,18 +104,27 @@ constructor(){
                         </Col>
                     </Row>
                     <Row className="contenedorIngredientes">
-                        <button class="btn-buscar">Buscar Receta</button>
+                        <Link to="contenedorResultados" smooth={true} duration={1200} offset={-50}><button onClick={this.buscarRecetas}class="btn-buscar">Buscar Receta</button></Link>
                     </Row>
                 </Container>
-                <h1 style={{textAlign:"center",margin:"4rem 0 2rem 0",fontSize:"4rem"}}>Hoy comemos...</h1>
+                <h1 id="contenedorResultados"style={{textAlign:"center",margin:"4rem 0 2rem 0",fontSize:"4rem"}}>Hoy comemos...</h1>
+                
+                {this.state.isLoadingResultados ? 
+            
+                <Container style={{display:"flex",alignItems:"center" , justifyContent:"center",height:"800px"}}>
+                    <Spinner style={{ width: '10rem', height: '10rem' }} type="grow" />
+                </Container>
+                
+                :
                 <Container className="contenedorBusquedaRecetas">
                     < RecipesCard name = "Ensalada de atún"
-                    text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan ullamcorper posuere. Morbi sit amet imperdiet quam, in gravida sapien. Curabitur mattis nisl sed elit ullamcorper, vel convallis ipsum dapibus. Ut fringilla neque et congue suscipit. Sed quis varius leo. Vivamus in nisi sed velit volutpat efficitur et id mauris. Aenean sit amet lectus ipsum. Nulla a ligula sit amet nisi finibus ornare lobortis vel mi. Duis faucibus mollis tortor sit amet eleifend. Phasellus facilisis eros eros, non rhoncus ex mattis ut. Vivamus sit amet elementum purus, eget luctus tortor. Proin tempor laoreet felis, at pharetra ipsum aliquet quis. Suspendisse et elit et tortor tristique r" id = "1" isVegan = { true} isTacc = { true}
+                    text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan ullamcorper posuere. Morbi sit amet imperdiet quam, in gravida sapien. Curabitur mattis nisl sed elit ullamcorper, vel convallis ipsum dapibus. Ut fringilla neque et congue suscipit. Sed quis varius leo. Vivamus in nisi sed velit volutpat efficitur et id mauris. Aenean sit amet lectus ipsum. Nulla a ligula sit amet nisi finibus ornare lobortis vel mi. Duis faucibus mollis tortor sit amet eleifend. Phasellus facilisis eros eros, non rhoncus ex mattis ut. Vivamus sit amet elementum purus, eget luctus tortor. Proin tempor laoreet felis, at pharetra ipsum aliquet quis. Suspendisse et elit et tortor tristique r" id = "1" isVegan = { false} isTacc = { true}
                     />
                     < RecipesCard name = "Ensalada de atún"
-                    text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan ullamcorper posuere. Morbi sit amet imperdiet quam, in gravida sapien. Curabitur mattis nisl sed elit ullamcorper, vel convallis ipsum dapibus. Ut fringilla neque et congue suscipit. Sed quis varius leo. Vivamus in nisi sed velit volutpat efficitur et id mauris. Aenean sit amet lectus ipsum. Nulla a ligula sit amet nisi finibus ornare lobortis vel mi. Duis faucibus mollis tortor sit amet eleifend. Phasellus facilisis eros eros, non rhoncus ex mattis ut. Vivamus sit amet elementum purus, eget luctus tortor. Proin tempor laoreet felis, at pharetra ipsum aliquet quis. Suspendisse et elit et tortor tristique r" id = "1" isVegan = { true} isTacc = { true}
+                    text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan ullamcorper posuere. Morbi sit amet imperdiet quam, in gravida sapien. Curabitur mattis nisl sed elit ullamcorper, vel convallis ipsum dapibus. Ut fringilla neque et congue suscipit. Sed quis varius leo. Vivamus in nisi sed velit volutpat efficitur et id mauris. Aenean sit amet lectus ipsum. Nulla a ligula sit amet nisi finibus ornare lobortis vel mi. Duis faucibus mollis tortor sit amet eleifend. Phasellus facilisis eros eros, non rhoncus ex mattis ut. Vivamus sit amet elementum purus, eget luctus tortor. Proin tempor laoreet felis, at pharetra ipsum aliquet quis. Suspendisse et elit et tortor tristique r" id = "1" isVegan = { true} isTacc = { false}
                     />
                 </Container>
+                }
             </div>
             )
     }

@@ -6,7 +6,7 @@ export default class NavBar extends Component{
     constructor(){
         super()
         this.state = {
-            isLogged: false,
+            isLogged: false,  // esto es lo que hay que cambiar desde login para que se cargue la ruta del perfil y el nombre de la persona en la navbar
             username: "Iniciar sesión"
         }
         this.handleChange = this.handleChange.bind(this)
@@ -31,7 +31,11 @@ export default class NavBar extends Component{
                                     <Link className="link" to="/about">Nosotros</Link>
                                 </li>
                                 <li>
+                                    {!this.state.isLogged ?
                                     <Link className="linkLogin" to="/login" onChange={this.handleChange}>{this.state.username}</Link>
+                                    :
+                                    <Link className="linkLogin" to="/profile" onChange={this.handleChange}>{this.state.username}</Link>
+                                    }
                                 </li>
                             </ul>
                         </Col>

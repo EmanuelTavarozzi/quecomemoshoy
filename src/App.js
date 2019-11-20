@@ -8,14 +8,13 @@ import Recipes from './components/Recipes.component'
 import Landing from './components/Landing.component'
 import About from './components/About.component'
 import Login from './components/Login.component'
+import Profile from './components/Profile.component'
+import Recipe from './components/Recipes/Recipe.component'
 
 export default class App extends React.Component{
 
   constructor(props){
     super()
-    this.state = {
-      logged : false
-    }
   }
   
   render(){
@@ -28,7 +27,8 @@ export default class App extends React.Component{
             </Route>
             <Route path="/recipes/" component={Recipes}>
             </Route>
-            <Route path="/recipes/:id" component={Recipes}>
+            <Route path="/recipes/:id">
+              <Recipe />
             </Route>
             <Route path="/about">
               <About />
@@ -36,6 +36,13 @@ export default class App extends React.Component{
             <Route path="/login">
               <Login />
             </Route>
+            <Route path="/profile">
+              <Profile />
+            </Route>
+            <Route path="/recipe">
+              <Recipe />
+            </Route>
+            }
           </Switch>
         </Router> 
     );

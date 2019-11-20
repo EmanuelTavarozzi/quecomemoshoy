@@ -455,9 +455,9 @@ input:focus,textarea:focus {
 
 .contenedorForm{
     text-align: center;
-    margin-left: 10rem;
-    margin-right: 10rem;
-    margin-top: 6rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    margin-top: 3rem;
     margin-bottom: 2rem;
     padding:3rem;
     -webkit-box-shadow: 0px 6px 11px 0px rgba(0, 0, 0, 0.25);
@@ -506,7 +506,7 @@ input:focus,textarea:focus {
 .login-form{
     display: flex;
     flex-direction: column;
-    
+    margin-top: 1.5rem;
 }
 
 
@@ -515,14 +515,18 @@ input:focus,textarea:focus {
 .login-form label input {
     display: inline-block;
     margin-bottom: 1rem;
-    -webkit-box-shadow: 0px 22px 25px -9px rgba(0, 0, 0, 0.22);
-    -moz-box-shadow: 0px 22px 25px -9px rgba(0, 0, 0, 0.22);
-    box-shadow: 0px 22px 25px -9px rgba(0, 0, 0, 0.22);
+    -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     padding: 0.5rem;
     border: 0;
     display: block;
     width: 100%;
     color: black;
+    font-size: 1.2rem;
+}
+.login-form label input:focus{
+    border:1px solid var(--colorPrincipal);
 }
 
 .btn-log{
@@ -545,3 +549,35 @@ input:focus,textarea:focus {
     background-color: rgb(33, 141, 134);
 }
 
+/***** Receta particular *********/
+
+.contenedorRecetaParticular {
+    background-image: url(./img/recetas/polloalacrema.jpg);
+    padding:5rem;
+    height: 100%;
+    max-height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position:relative;
+    z-index: 1;
+    text-align: center;
+    
+}
+
+@media(max-width: 768px) {
+    .contenedorRecetaParticular{
+        padding:2rem;
+    }
+}
+.contenedorDescripcion {
+    padding: 0;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: white;
+    top: 20%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 85%;
+    z-index: 2;
+}

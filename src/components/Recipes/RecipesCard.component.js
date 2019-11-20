@@ -1,5 +1,7 @@
 import React from 'react'
 import {Container, Row, Col} from 'react-bootstrap'
+import {Link, Route} from 'react-router-dom'
+import Recipe from './Recipe.component'
 //import axios from 'axios'
 
 
@@ -52,7 +54,8 @@ export default class RecipesCard extends React.Component{
                             {this.props.isTacc ? <img style={{maxWidth:"80px"}}src={require('../../img/sintacc-icon.png')} alt="TaccIcon"></img>: <div></div>}
                         </Col>
                          <Col lg="4" xs="12">
-                            <button className="btn-verReceta"> Ver receta </button>
+                            <Link to="/recipe"><button className="btn-verReceta"> Ver receta </button></Link>
+                                <Route path="/recipe" component={Recipe}></Route>   
                         </Col> 
                     </Row>
 

@@ -55,7 +55,9 @@ export default class RecipesCard extends React.Component{
                         </Col>
                          <Col lg="4" xs="12">
                             <Link to="/recipe"><button className="btn-verReceta"> Ver receta </button></Link>
-                                <Route path="/recipe" component={Recipe}></Route>   
+                                <Route path="/recipe">
+                                    <Recipe text="" src="C:/Users/Emanuel/Desktop/Proyectos/quecomemoshoy/src/img/landing.jpg"/>    
+                                </Route>   
                         </Col> 
                     </Row>
 

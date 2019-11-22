@@ -41,7 +41,8 @@ export default class Ingredient extends React.Component{
             fontSize: "1.3rem",
             padding: "1rem",
             backgroundColor: "",
-            textTransform: "uppercase"
+            textTransform: "uppercase",
+            textAlign:"center"
         }
         let string = this.props.text
         let stringlower = string.toLowerCase()

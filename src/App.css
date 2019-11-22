@@ -620,3 +620,18 @@ input:focus,textarea:focus {
     background-color: var(--colorPrincipal);
     color: white;
 }
+
+
+/***** Crear Receta ******/
+
+.banner{
+    background-image: url(./img/banner.jpg);
+    background-position: center;
+    height: 40vh;
+    color:black;
+    margin-top: 0;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--titulo1);
+}

@@ -31,12 +31,16 @@ export default class NavBar extends Component{
                                     <Link className="link" to="/about">Nosotros</Link>
                                 </li>
                                 <li>
+                                    <Link className="link" to="/createRecipe">Crear Receta</Link>
+                                </li>
+                                <li>
                                     {!this.state.isLogged ?
                                     <Link className="linkLogin" to="/login" onChange={this.handleChange}>{this.state.username}</Link>
                                     :
                                     <Link className="linkLogin" to="/profile" onChange={this.handleChange}>{this.state.username}</Link>
                                     }
                                 </li>
+                                
                             </ul>
                         </Col>
                 </Row>

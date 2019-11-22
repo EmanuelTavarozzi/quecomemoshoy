@@ -50,13 +50,13 @@ export default class RecipesCard extends React.Component{
                             <h3 style={{fontSize:"4rem",marginBottom:"4rem",textTransform:"uppercase",color:"white"}}>{this.state.titulo}</h3>
                         </Col>
                     </Row>
-                    <Row style={{borderRadius:"1rem",border:"5px solid grey ",alignItems:"center",padding:"2rem"}}className="contenedorIngredientes">
+                    <Row style={{borderRadius:"1rem",border:"5px solid grey ",alignItems:"center",padding:"2rem"}}className="contenedorIngredientes" >
                         <Col xs="12"> 
                             <p>{this.state.descrip}</p>
                         </Col>
                     </Row>
                 </Container>
-                <Container style={{textAlign:"center",backgroundColor:"#00AAC1",marginTop:"2rem",marginBottom:"2rem",padding:"1rem",borderRadius:"2rem",color:"white"}}>
+                <Container style={{textAlign:"center",backgroundColor:"#00AAC1",marginTop:"2rem",marginBottom:"2rem",padding:"1rem",borderRadius:"2rem",color:"white"}} data-aos="zoom-out">
                     <Row style={{justifyContent:"center",backgroundColor:"00AAC1"}}>
                         <p style={{fontSize:"2rem"}}>Lista de ingredientes</p>
                     </Row>
@@ -64,7 +64,7 @@ export default class RecipesCard extends React.Component{
                         {ingredientes}  
                     </Row>
                 </Container>
-                <Container style={{textAlign:"center",backgroundColor:"#3EC5BD",marginTop:"2rem",marginBottom:"2rem",padding:"1rem",borderRadius:"2rem",color:"white"}}>
+                <Container style={{textAlign:"center",backgroundColor:"#3EC5BD",marginTop:"2rem",marginBottom:"2rem",padding:"1rem",borderRadius:"2rem",color:"white"}} data-aos="zoom-out">
                     <Row style={{justifyContent:"center"}}>
                         <p style={{fontSize:"2rem"}}>Recomendaciones</p>
                     </Row>
@@ -78,7 +78,7 @@ export default class RecipesCard extends React.Component{
 
                 <Container fluid={true} className="pasosReceta">
                     
-                    <Row style={{alignItems:"center",margin:"2rem 0 2rem 0"}}>
+                    <Row style={{alignItems:"center",margin:"2rem 0 2rem 0"}}data-aos="fade-right">
                         <Col lg="8" xs="12">
                             <h2 style={{textAlign:"center"}}>Primer paso</h2>
                             <div style={{display:"flex",justifyContent:"center",flexDirection:"column"}}>
@@ -92,7 +92,7 @@ export default class RecipesCard extends React.Component{
                         </Col>    
                     </Row>
 
-                    <Row style={{alignItems:"center",margin:"2rem 0 2rem 0"}}>
+                    <Row style={{alignItems:"center",margin:"2rem 0 2rem 0"}} data-aos="fade-right">
                         
                         <Col lg="8" xs="12">
                             <h2 style={{textAlign:"center"}}>Segundo paso</h2>
@@ -107,7 +107,7 @@ export default class RecipesCard extends React.Component{
                         </Col> 
                     </Row>
 
-                    <Row style={{alignItems:"center",margin:"2rem 0 2rem 0"}}>
+                    <Row style={{alignItems:"center",margin:"2rem 0 2rem 0"}} data-aos="fade-right">
                         <Col lg="8" xs="12">
                             <h2 style={{textAlign:"center"}}>Tercer paso</h2>
                             <div style={{display:"flex",justifyContent:"center",flexDirection:"column"}}>
@@ -119,13 +119,13 @@ export default class RecipesCard extends React.Component{
                         <Col lg="4" xs="12">
                             <img className="picture-box" alt="Foto de la receta"  src={require("../../img/recetas/polloalacrema.jpg")}></img>
                         </Col>    
-                    </Row>
+                    </Row >
                     <h1 style={{textAlign:"center"}}>A disfrutar!</h1>
-                    <Row style={{justifyContent:"center",marginBottom:"2rem",padding:"1rem"}}>
+                    <Row style={{justifyContent:"center",marginBottom:"2rem",padding:"1rem"}} data-aos="zoom-out">
                         <img style={{textAlign:"center"}}alt="recetaFinal" className="picture-box" src={require("../../img/recetas/polloalacrema.jpg")}></img>
                     </Row>
                 </Container>
-                <Row style={{margin:"0rem 1rem 2rem 1rem"}}>
+                <Row style={{margin:"0rem 1rem 2rem 1rem"}} data-aos="fade-right">
                
                     <button onClick={this.handleFavorite}className="btn-fav">agregar a recetas favorita <FontAwesomeIcon style={{color:"white"}} className="iconos"icon={faHeart} size="1x"/></button>
                

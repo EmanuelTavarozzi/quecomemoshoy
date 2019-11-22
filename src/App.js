@@ -10,6 +10,7 @@ import About from './components/About.component'
 import Login from './components/Login.component'
 import Profile from './components/Profile.component'
 import Recipe from './components/Recipes/Recipe.component'
+import CreateRecipe from './components/CreateRecipe.component'
 
 export default class App extends React.Component{
 
@@ -41,6 +42,9 @@ export default class App extends React.Component{
             </Route>
             <Route path="/recipe">
               <Recipe />
+            </Route>
+            <Route path="/createRecipe">
+              <CreateRecipe />
             </Route>
             }
           </Switch>

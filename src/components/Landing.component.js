@@ -32,7 +32,7 @@ export default withRouter(class Landing extends Component{
     }
 
     redirectTo(recipeId) {
-        this.props.history.push(`/recipes/${recipeId}`)
+        this.props.history.push(`/recipe/${recipeId}`)
     }
 
     render(){
@@ -61,16 +61,16 @@ export default withRouter(class Landing extends Component{
                         </Row>
                     }
                 </Container>
-                <Banner title={"Recetas del mes"}/>
-             
+                <Banner title={"Recetas del mes"}/>  
+                <div style={{textAlign:'center'}}>
                 {        
                 this.state.recipes.map((item,i) => 
-                    <div key={i}><div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="500">
+                    <div key={i} style={{cursor:'pointer', display:"inline-block"}} onClick= {()=> this.redirectTo(item._id)}><div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="500">
                         <FavoriteRecipe color="#efb810" likes={item.likes} title={item.name} procedure={item.description}/></div>                   
                     </div>
                     )
-                }          
-           
+                } 
+                </div>
                 <Banner title={"Nosotros"}/>
                 <Container style={{padding:"2rem",borderRadius:"2rem"}} className="contenedorReceta" data-aos="fade-up" data-aos-duration="500">
                     <Row style={{alignItems:"center"}}xs="12" lg="12">

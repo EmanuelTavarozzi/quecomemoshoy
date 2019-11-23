@@ -18,8 +18,10 @@ export default class Recipe extends React.Component {
     }
 
     callAPI() {
-        const _id = "5da0996a1c9d4400009a43a2"
-        axios.get(`http://localhost:5000/recipes/${_id}`)
+        // const _id = "5da0996a1c9d4400009a43a2"
+        const { match: { params } } = this.props;
+        console.log(params)
+        axios.get(`http://localhost:5000/recipes/${params.id}`)
 
             .then(res => {
                 console.log(res);

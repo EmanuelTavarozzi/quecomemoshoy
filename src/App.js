@@ -28,8 +28,7 @@ export default class App extends React.Component{
             </Route>
             <Route path="/recipes/" component={Recipes}>
             </Route>
-            <Route path="/recipes/:id">
-              <Recipe />
+            <Route path="/recipe/:id" component={Recipe}>              
             </Route>
             <Route path="/about">
               <About />
@@ -39,9 +38,6 @@ export default class App extends React.Component{
             </Route>
             <Route path="/profile">
               <Profile />
-            </Route>
-            <Route path="/recipe">
-              <Recipe />
             </Route>
             <Route path="/createRecipe">
               <CreateRecipe />

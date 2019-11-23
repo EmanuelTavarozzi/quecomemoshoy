@@ -11,7 +11,7 @@ router.route('/landingRecipes').get((req,res) =>{
 })
 
 router.route('/:id').get((req,res) =>{
-    Recipe.find({_id: req.params.id})
+    Recipe.findOne({_id: req.params.id})
         .then(recipes => res.json(recipes))
         .catch(err => res.status(400).json('Error: ' + err))
 })

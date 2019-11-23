@@ -115,6 +115,8 @@ constructor(){
                 </Container>
                 <h1 id="contenedorResultados"style={{textAlign:"center",margin:"4rem 0 2rem 0",fontSize:"4rem"}}>Hoy comemos...</h1>
                 
+
+                
                 {this.state.isLoadingResultados ? 
             
                 <Container style={{display:"flex",alignItems:"center" , justifyContent:"center",height:"800px"}}>

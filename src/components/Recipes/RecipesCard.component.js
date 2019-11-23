@@ -32,7 +32,7 @@ export default class RecipesCard extends React.Component{
                <Container className="contenedorRecetaBusqueda" width="80%" data-aos="fade-down" data-aos-once={true}>
                     <Row style={{justifyContent:""}}>
                         <Col lg="8" xs="12">
-                            <h2 className="tituloComida"style={{margin:0}}> {this.props.name}</h2>
+                            <h2 className="tituloComida"style={{margin:0, textTransform: 'capitalize'}}> {this.props.name}</h2>
                         </Col>
                         
                     </Row>
@@ -54,10 +54,7 @@ export default class RecipesCard extends React.Component{
                             {this.props.isTacc ? <img style={{maxWidth:"80px"}}src={require('../../img/sintacc-icon.png')} alt="TaccIcon"></img>: <div></div>}
                         </Col>
                          <Col lg="4" xs="12">
-                            <Link to="/recipe"><button className="btn-verReceta"> Ver receta </button></Link>
-                                <Route path="/recipe">
-                                    <Recipe text="" src="C:/Users/Emanuel/Desktop/Proyectos/quecomemoshoy/src/img/landing.jpg"/>    
-                                </Route>   
+                            <Link to={`/recipe/${this.props.id}`} ><button className="btn-verReceta"> Ver receta </button></Link>
                         </Col> 
                     </Row>
 

@@ -11,6 +11,7 @@ import Login from './components/Login.component'
 import Profile from './components/Profile.component'
 import Recipe from './components/Recipes/Recipe.component'
 import CreateRecipe from './components/CreateRecipe.component'
+import ScrollToTop from './components/ScrollToTop.component'
 
 export default class App extends React.Component{
 
@@ -21,6 +22,7 @@ export default class App extends React.Component{
   render(){
     return (
         <Router>
+          <ScrollToTop />
           <NavBar />
           <Switch>
             <Route exact path="/" >

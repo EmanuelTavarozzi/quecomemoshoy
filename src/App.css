@@ -669,7 +669,7 @@ input:focus,textarea:focus {
 .btn-image{
     color:#3EC5BD;
     margin:0.5rem 0 0.5rem 0.5rem;
-    padding:0.5rem 0 0.5rem 0.5rem;
+    padding:0.5rem;
     border-radius: 1rem;
     transition:0.2s;
 }
@@ -677,4 +677,30 @@ input:focus,textarea:focus {
 .btn-image:hover{
     background-color:#3EC5BD;
     color:white;
+}
+.btn-buscar {
+    color: black;
+    display: inline-block;
+    background-color: #3EC5BD;
+    border: 0;
+    text-transform: uppercase;
+    padding: 15px 32px;
+    margin-top: 5rem;
+    font-weight: 500;
+    font-family: var(--titulo1);
+    transition: 0.3s;
+    text-align: center;
+    width:100%;
+}
+
+ .btn-buscar:hover {
+    background-color: var(--colorPrincipal);
+    color: white;
+    border-radius: 2rem;
+
+}
+ .btn-buscar:disabled {
+    background-color: grey;
+    color: white;
+
 }

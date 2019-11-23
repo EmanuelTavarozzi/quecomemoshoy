@@ -2,7 +2,9 @@ import React from 'react'
 import {Container,Row,Col} from 'reactstrap'
 import Loading from './Loading.component'
 import Ingredient from './Recipes/Ingredient.component'
-import { faPlusCircle,faCamera } from '@fortawesome/free-solid-svg-icons';
+import Paso from './Recipes/Paso.component'
+import Footer from './Footer.component'
+import { faPlusCircle,faCamera,faImage } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default class CreateRecipe extends React.Component{
@@ -16,19 +18,28 @@ export default class CreateRecipe extends React.Component{
             descripcion:"",
             foto:"",
             pasos:[],
+            paso:"",
+            image:"",
             isLoading:true
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleClick = this.handleClick.bind(this)
         this.removeItem = this.removeItem.bind(this)
-        this.onAddItem = this.onAddItem.bind(this)
+        this.removePaso = this.removePaso.bind(this)
+        this.onAddIngrediente = this.onAddIngrediente.bind(this)
+        this.handleImage = this.handleImage.bind(this)
+        this.onAddPaso = this.onAddPaso.bind(this)
     }
     componentDidMount(){
         setTimeout(() => {
             this.setState({
                 isLoading:false
             })
-        }, 1000);
+        }, 100);
+    }
+
+    handleClick() {
+        this.setState({ descripcion: "" })
     }
 
     handleChange(event){
@@ -39,7 +50,7 @@ export default class CreateRecipe extends React.Component{
         })
     }
 
-    onAddItem = (event) => {
+    onAddIngrediente = (event) => {
        let array = this.state.ingredientes
        if(array.length === 10){
            alert("Cantidad máxima")
@@ -62,18 +73,44 @@ export default class CreateRecipe extends React.Component{
         )
         event.preventDefault();
     }
-    handleClick(){
-        this.setState({descripcion:""})
-    }
-
+    
     removeItem(text) {
         this.setState({
             ingredientes: this.state.ingredientes.filter(ingr => ingr !== text) // Filtra por el texto enviado por el ingrediente determinado y lo elimina del array para actualizar el estado lo que hace que se ejecute render de nuevo.
         })
     }
+
+    onAddPaso = (event) => {
+        event.preventDefault();
+        const paso = {
+            text : this.state.paso,
+            img : this.state.image
+        }
+        this.setState(state => {
+            const pasos = [...state.pasos, paso]
+
+            return {
+                pasos,
+                paso: '',
+            }
+        }) 
+    }
+
+    removePaso(text) {
+        this.setState({
+            pasos: this.state.pasos.filter(paso => paso.text !== text) // Filtra por el texto enviado por el ingrediente determinado y lo elimina del array para actualizar el estado lo que hace que se ejecute render de nuevo.
+        })
+    }
+
+    handleImage(){
+        alert("Click on picture")
+    }
     render(){
         const ingredientes = this.state.ingredientes.map((ing) =>
              <Col data-aos="fade-up" lg="auto" sm="auto"> <Ingredient text={ing} method={this.removeItem}></Ingredient></Col>
+        )
+        const pasos = this.state.pasos.map((paso,index) => 
+            <Col  lg="12" sm="12"> <Paso paso={index + 1}text={paso.text} image={paso.img} method={this.removePaso}></Paso></Col>
         )
         return(
             this.state.isLoading ?
@@ -98,7 +135,7 @@ export default class CreateRecipe extends React.Component{
                                 <input type="text" name="nombre" value={this.state.nombre} onChange={this.handleChange} placeholder="Ingrese nombre de la receta"></input>
                                 <div style={{display:"flex",justifyContent:"space-between"}}>
                                     <label>Ingredientes: </label>
-                                    <button onClick={this.onAddItem}style={{border:0,backgroundColor:"white"}}><FontAwesomeIcon style={{color:"#3EC5BD"}} className="iconos"icon={faPlusCircle} size="1x"/></button>
+                                    <button onClick={this.onAddIngrediente}style={{border:0,backgroundColor:"white"}}><FontAwesomeIcon style={{color:"#3EC5BD"}} className="iconos"icon={faPlusCircle} size="1x"/></button>
                                 </div>
                                 <input type="text" name="ingrediente" value={this.state.ingrediente} onChange={this.handleChange} placeholder="Ingrese los ingredientes"></input>
                                 <Row>{ingredientes}</Row>
@@ -114,15 +151,26 @@ export default class CreateRecipe extends React.Component{
                                         placeholder="Descripción de la receta"
                                         >
                                 </textarea>
-                                <button className="btn-foto"style={{width:"100%",backgroundColor:"white",border:"1px solid black"}}>
+                                <button className="btn-foto" style={{width:"100%",backgroundColor:"white",border:"1px solid black"}}>
                                     <p>Agregar foto principal de la receta</p>
-                                   <FontAwesomeIcon style={{color:"#3EC5BD"}} className="iconos"icon={faCamera} size="2x"/>
+                                    <FontAwesomeIcon style={{color:"#3EC5BD"}} className="iconos"icon={faCamera} size="2x"/>
                                 </button>
-                                <label style={{marginTop:"1rem"}}>Pasos: </label>
+                                <div style={{display:"flex",justifyContent:"space-between",marginTop:"1rem"}}>
+                                    <label>Pasos: </label>
+                                    <button onClick={this.onAddPaso}style={{border:0,backgroundColor:"white"}}><FontAwesomeIcon style={{color:"#3EC5BD"}} className="iconos"icon={faPlusCircle} size="1x"/></button>
+                                </div>
+                                <div style={{display:"flex",justifyContent:"space-between"}}>
+                                    <input type="text" name="paso" value={this.state.paso} onChange={this.handleChange} placeholder="Ingrese el paso"></input>
+                                    <FontAwesomeIcon onClick={this.handleImage} className="iconos btn-image"icon={faImage} size="2x"/>
+                                </div>
+                                <Row>
+                                    {pasos}
+                                </Row>
                             </form>
                         </Col>
                     </Row>
                 </Container>
+                <Footer />
             </div>
         )
     }

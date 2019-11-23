@@ -644,6 +644,7 @@ input:focus,textarea:focus {
 
 .contenedorFormulario {
     font-size: 1.6rem;
+    margin-bottom: 10rem;
 }
 
 
@@ -663,4 +664,17 @@ input:focus,textarea:focus {
 
 .btn-foto:hover{
     background-color: aqua;
+}
+
+.btn-image{
+    color:#3EC5BD;
+    margin:0.5rem 0 0.5rem 0.5rem;
+    padding:0.5rem 0 0.5rem 0.5rem;
+    border-radius: 1rem;
+    transition:0.2s;
+}
+
+.btn-image:hover{
+    background-color:#3EC5BD;
+    color:white;
 }

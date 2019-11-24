@@ -79,47 +79,46 @@ export default class RecipesCard extends React.Component{
                 <Container fluid={true} className="pasosReceta">
                     
                     <Row style={{alignItems:"center",margin:"2rem 0 2rem 0"}}data-aos="fade-right">
+                        <Col lg="4" xs="12">
+                           <h2 style={{textAlign:"center"}}>Primer paso</h2>
+                        </Col>   
                         <Col lg="8" xs="12">
-                            <h2 style={{textAlign:"center"}}>Primer paso</h2>
+                            
                             <div style={{display:"flex",justifyContent:"center",flexDirection:"column"}}>
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar vehicula urna, ac blandit erat gravida eu. Sed tincidunt, nulla vitae ornare sollicitudin, nisl libero facilisis diam, eu volutpat erat ex a nisi. Nunc varius nibh sit amet elit consectetur, sit amet vulputate nunc dapibus. Nullam ultrices ex eget felis venenatis, sit amet elementum arcu gravida. Duis ultrices metus elit. Phasellus in ultrices mauris. In elementum lobortis mauris, at auctor purus sodales at. Nullam lobortis velit urna, id pharetra neque sollicitudin vestibulum. Sed metus ipsum, tincidunt sed elementum ac, semper porta odio. Ut condimentum ornare mi et blandit.
                                 </p>
                             </div>
                         </Col>
-                        <Col lg="4" xs="12">
-                            <img className="picture-box" alt="Foto de la receta"  src={require("../../img/recetas/polloalacrema.jpg")}></img>
-                        </Col>    
                     </Row>
 
-                    <Row style={{alignItems:"center",margin:"2rem 0 2rem 0"}} data-aos="fade-right">
-                        
+                    <Row style={{alignItems:"center",margin:"2rem 0 2rem 0"}}data-aos="fade-right">
+                        <Col lg="4" xs="12">
+                           <h2 style={{textAlign:"center"}}>Segundo paso</h2>
+                        </Col>   
                         <Col lg="8" xs="12">
-                            <h2 style={{textAlign:"center"}}>Segundo paso</h2>
+                            
                             <div style={{display:"flex",justifyContent:"center",flexDirection:"column"}}>
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar vehicula urna, ac blandit erat gravida eu. Sed tincidunt, nulla vitae ornare sollicitudin, nisl libero facilisis diam, eu volutpat erat ex a nisi. Nunc varius nibh sit amet elit consectetur, sit amet vulputate nunc dapibus. Nullam ultrices ex eget felis venenatis, sit amet elementum arcu gravida. Duis ultrices metus elit. Phasellus in ultrices mauris. In elementum lobortis mauris, at auctor purus sodales at. Nullam lobortis velit urna, id pharetra neque sollicitudin vestibulum. Sed metus ipsum, tincidunt sed elementum ac, semper porta odio. Ut condimentum ornare mi et blandit.
                                 </p>
                             </div>
                         </Col>
-                        <Col lg="4" xs="12">
-                            <img className="picture-box" alt="Foto de la receta"  src={require("../../img/recetas/polloalacrema.jpg")}></img>
-                        </Col> 
                     </Row>
 
-                    <Row style={{alignItems:"center",margin:"2rem 0 2rem 0"}} data-aos="fade-right">
+                    <Row style={{alignItems:"center",margin:"2rem 0 2rem 0"}}data-aos="fade-right">
+                        <Col lg="4" xs="12">
+                           <h2 style={{textAlign:"center"}}>Tercer paso</h2>
+                        </Col>   
                         <Col lg="8" xs="12">
-                            <h2 style={{textAlign:"center"}}>Tercer paso</h2>
+                            
                             <div style={{display:"flex",justifyContent:"center",flexDirection:"column"}}>
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar vehicula urna, ac blandit erat gravida eu. Sed tincidunt, nulla vitae ornare sollicitudin, nisl libero facilisis diam, eu volutpat erat ex a nisi. Nunc varius nibh sit amet elit consectetur, sit amet vulputate nunc dapibus. Nullam ultrices ex eget felis venenatis, sit amet elementum arcu gravida. Duis ultrices metus elit. Phasellus in ultrices mauris. In elementum lobortis mauris, at auctor purus sodales at. Nullam lobortis velit urna, id pharetra neque sollicitudin vestibulum. Sed metus ipsum, tincidunt sed elementum ac, semper porta odio. Ut condimentum ornare mi et blandit.
                                 </p>
                             </div>
                         </Col>
-                        <Col lg="4" xs="12">
-                            <img className="picture-box" alt="Foto de la receta"  src={require("../../img/recetas/polloalacrema.jpg")}></img>
-                        </Col>    
-                    </Row >
+                    </Row>
                     <h1 style={{textAlign:"center"}}>A disfrutar!</h1>
                     <Row style={{justifyContent:"center",marginBottom:"2rem",padding:"1rem"}} data-aos="zoom-out">
                         <img style={{textAlign:"center"}}alt="recetaFinal" className="picture-box" src={require("../../img/recetas/polloalacrema.jpg")}></img>

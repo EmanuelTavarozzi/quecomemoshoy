@@ -8,6 +8,7 @@ import Footer from './Footer.component'
 import axios from 'axios'
 import { withRouter } from 'react-router-dom'
 
+
 export default withRouter(class Landing extends Component{
 
     constructor(props){

@@ -7,25 +7,25 @@ export default class sessionManager{
         this.localstorage=window.localStorage;
     }
 
-    login(mail){
-        this.localstorage.setItem('user',mail)
+    login(mail,name){
+        this.localstorage.setItem('usermail',mail)
+        this.localstorage.setItem('username',name)
     }
 
     logout(){
-        this.localstorage.removeItem('user');
+        this.localstorage.clear()
     }
 
     isLogged(){
-        return Boolean(this.localstorage.getItem('user'))
+        return Boolean(this.localstorage.getItem('username'))
     }
 
     getUserData(){
 
     }
 
-    getUserName(){ //todo obtener nombre 
-        const mail = this.localstorage.getItem('user')
-        return mail
+    getUserName(){ 
+        return this.localstorage.getItem('username')        
 
     }
 

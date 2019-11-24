@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Redirect } from "react-router-dom";
+//import { Redirect } from "react-router-dom";
 import { Container, Row, Col } from 'reactstrap'
 import LoadingPage from './Loading.component'
 import axios from 'axios'
@@ -57,11 +57,11 @@ export default withRouter(class Landing extends Component {
             })
                 .then(res => {
                     console.log(res);
-                    if (res.data == "Usuario existente") {
+                    if (res.data === "Usuario existente") {
                         alert("Usuario existente")
                     }
                     else {
-                        this.sessionManager.login(this.state.mail)
+                        this.sessionManager.login(this.state.mail,this.state.name)
                         this.props.updateUser()
                         this.props.history.push('/')
                     }
@@ -84,11 +84,11 @@ export default withRouter(class Landing extends Component {
             })
                 .then(res => {
                     console.log(res);
-                    if (res.data == "Usuario no encontrado") {
+                    if (res.data === "Usuario no encontrado") {
                         alert("Usuario no encontrado")
                     }
-                    else {
-                        this.sessionManager.login(this.state.mail)
+                    else {                        
+                        this.sessionManager.login(this.state.mail,res.data.name)
                         this.props.updateUser()
                         this.props.history.push('/')
                     }

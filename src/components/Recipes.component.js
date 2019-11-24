@@ -124,18 +124,20 @@ constructor(){
                         {/* </Link> */}
                     </Row>
                 </Container>
+
+
+                {this.state.isLoadingResultados ?           
+                <React.Fragment>
+                
                 <h1 id="contenedorResultados"style={{textAlign:"center",margin:"4rem 0 2rem 0",fontSize:"4rem"}}>Hoy comemos...</h1>
                 
-
-                
-                {this.state.isLoadingResultados ? 
-            
                 <Container style={{display:"flex",alignItems:"center" , justifyContent:"center",height:"800px"}}>
                     <Spinner style={{ width: '10rem', height: '10rem' }} type="grow" color="info" />
                 </Container>
+
+                </React.Fragment>
                 
                 : this.state.recipes.length ?
-
                 
                 <Container className="contenedorBusquedaRecetas">
                     {this.state.recipes.map((recipe, index) =>

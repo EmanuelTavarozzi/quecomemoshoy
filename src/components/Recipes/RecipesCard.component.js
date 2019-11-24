@@ -1,7 +1,7 @@
 import React from 'react'
 import {Container, Row, Col} from 'react-bootstrap'
-import {Link, Route} from 'react-router-dom'
-import Recipe from './Recipe.component'
+import {Link} from 'react-router-dom'
+//import Recipe from './Recipe.component'
 //import axios from 'axios'
 
 

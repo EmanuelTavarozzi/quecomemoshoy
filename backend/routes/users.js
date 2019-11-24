@@ -16,6 +16,19 @@ router.route('/login').post((req, res) =>{
     }
 )
 
+router.route('/userdata').post((req,res) =>{
+    User.findOne({mail: req.body.mail}) 
+        .then(user => {
+            if(user){
+                res.json(user)
+            }
+            else{
+                res.json('Usuario no encontrado')
+            }
+        })               
+        .catch(err => res.status(400).json('Error: '+ err))
+    }
+)
 
 router.route('/add').post((req,res) => {         
 

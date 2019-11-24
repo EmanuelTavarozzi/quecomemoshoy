@@ -4,7 +4,7 @@ import Loading from './Loading.component'
 import Ingredient from './Recipes/Ingredient.component'
 import Paso from './Recipes/Paso.component'
 import Footer from './Footer.component'
-import { faPlusCircle,faCamera,faImage } from '@fortawesome/free-solid-svg-icons';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default class CreateRecipe extends React.Component{
@@ -122,7 +122,7 @@ export default class CreateRecipe extends React.Component{
              <Col data-aos="fade-up" lg="auto" sm="auto"> <Ingredient text={ing} method={this.removeItem}></Ingredient></Col>
         )
         const pasos = this.state.pasos.map((paso,index) => 
-            <Col  lg="12" sm="12"> <Paso paso={index + 1}text={paso.text} image={paso.img} method={this.removePaso}></Paso></Col>
+            <Col data-aos="fade-down" lg="12" sm="12"> <Paso paso={index + 1}text={paso.text} image={paso.img} method={this.removePaso}></Paso></Col>
         )
         return(
             this.state.isLoading ?
@@ -143,15 +143,15 @@ export default class CreateRecipe extends React.Component{
                     <Row>
                         <Col lg="12">
                             <form onSubmit={this.handleSubmit}>
-                                <label>Nombre: </label>
-                                <input type="text" name="nombre" value={this.state.nombre} onChange={this.handleChange} placeholder="Ingrese nombre de la receta"></input>
-                                <div style={{display:"flex",justifyContent:"space-between"}}>
+                                <label data-aos="fade-up">Nombre: </label>
+                                <input data-aos="fade-up" type="text" name="nombre" value={this.state.nombre} onChange={this.handleChange} placeholder="Ingrese nombre de la receta"></input>
+                                <div data-aos="fade-right" style={{display:"flex",justifyContent:"space-between"}}>
                                     <label>Ingredientes: </label>
                                     <button onClick={this.onAddIngrediente}style={{border:0,backgroundColor:"white"}}><FontAwesomeIcon style={{color:"#3EC5BD"}} className="iconos"icon={faPlusCircle} size="1x"/></button>
                                 </div>
-                                <input type="text" name="ingrediente" value={this.state.ingrediente} onChange={this.handleChange} placeholder="Ingrese los ingredientes"></input>
+                                <input data-aos="fade-right" type="text" name="ingrediente" value={this.state.ingrediente} onChange={this.handleChange} placeholder="Ingrese los ingredientes"></input>
                                 <Row>{ingredientes}</Row>
-                                <label>Descripción: </label>
+                                <label data-aos="fade-left">Descripción: </label>
                                 <textarea
                                         style={{resize:"none"}}
                                         name="descripcion"
@@ -161,22 +161,19 @@ export default class CreateRecipe extends React.Component{
                                         onChange={this.handleChange}
                                         value={this.state.descripcion}
                                         placeholder="Descripción de la receta"
+                                        data-aos="fade-left"
                                         >
                                 </textarea>
-                                <button className="btn-foto" style={{width:"100%",backgroundColor:"white",border:"1px solid black"}}>
-                                    <p>Agregar foto principal de la receta</p>
-                                    <FontAwesomeIcon style={{color:"#3EC5BD"}} className="iconos"icon={faCamera} size="2x"/>
-                                </button>
-                                <div>
+                                <p data-aos="fade-up">Foto principal de la receta</p>
+                                <input data-aos="fade-up"id="file-input" type="file" />
+                                <div data-aos="fade-down">
                                     <div style={{display:"flex",justifyContent:"space-between",marginTop:"1rem"}}>
                                         <label>Pasos: </label>
-                                        <button onClick={this.onAddPaso}style={{border:0,backgroundColor:"white"}}><FontAwesomeIcon style={{color:"#3EC5BD"}} className="iconos"icon={faPlusCircle} size="1x"/></button>
                                     </div>
                                     <div style={{display:"flex",justifyContent:"space-between"}}>
                                         <input type="text" name="paso" value={this.state.paso} onKeyPress={this.keyPressed}onChange={this.handleChange} placeholder="Ingrese el paso"></input>
-                                        <FontAwesomeIcon onClick={this.handleImage} className="iconos btn-image"icon={faImage} size="2x"/>
+                                        <FontAwesomeIcon onClick={this.handleImage} className="iconos btn-image"icon={faPlusCircle} size="3x"/>
                                     </div>
-                                    <input type="file" size="1"></input>
                                 </div>
                                 <Row>
                                     {pasos}

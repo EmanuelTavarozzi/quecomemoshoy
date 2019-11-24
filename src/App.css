@@ -688,8 +688,7 @@ input:focus,textarea:focus {
     margin-top: 5rem;
     font-weight: 500;
     font-family: var(--titulo1);
-    transition: 0.3s;
-    text-align: center;
+    transition: 0.6s;
     width:100%;
 }
 
@@ -704,3 +703,12 @@ input:focus,textarea:focus {
     color: white;
 
 }
+.contenedorFormulario form button{
+    text-align: center;
+}
+
+.image-upload:hover{
+    background-color: #3EC5BD;
+    color:white;
+}
+

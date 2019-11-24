@@ -45,13 +45,13 @@ export default class Ingredient extends React.Component{
         
         return(
             <Row style={style} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
-                <Col lg="3" xs="3">
+                <Col lg="1" xs="3">
                     <p style={{margin:0}}>{this.props.paso}</p>
                 </Col>
-                <Col lg="6" xs="6">
+                <Col lg="10" xs="6">
                     <p style={{margin:0,display:"block",wordBreak:"break-word"}}> {this.props.text}</p>
                 </Col>
-                <Col lg="3" xs="3">
+                <Col lg="1" xs="3">
                     <img key={this.props.text} onClick={() => this.props.method(this.props.text)} style={{opacity:this.state.opacity,maxWidth:"25px", maxHeight:"25px",transition: "opacity 0.2s ease"}} alt="No hay imagen"src={Cross}></img>
                 </Col>
             </Row>

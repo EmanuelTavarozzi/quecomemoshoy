@@ -7,6 +7,9 @@ import Contact from './Landing/Contact.component'
 import Footer from './Footer.component'
 import axios from 'axios'
 import { withRouter } from 'react-router-dom'
+import Card1 from '../img/card1.jpg'
+import Card2 from '../img/card2.jpg'
+import Card3 from '../img/card3.jpg'
 
 
 export default withRouter(class Landing extends Component{
@@ -48,19 +51,19 @@ export default withRouter(class Landing extends Component{
                 </Container>
 
                 <Container fluid="true">
-                    {this.state.recipes.length > 0 &&
+                    
                         <Row>
                             <Col data-aos="fade-right" data-aos-once="true" data-aos-delay="15050" xs="12" sm="12" md="4">
-                                <Card title="Comida Saludable" body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. s laoreet nisl non tempus" />
+                                <Card title="Cocina más fácil" body="Ingresa los ingredientes, busca una receta y listo! Ya estas listo para cocinar" img={Card1} />
                             </Col>
                             <Col data-aos="flip-left"  data-aos-once="true" xs="12" sm="12" md="4">
-                                <Card title="Comida Saludable" body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. s laoreet nisl non tempus" />
+                                <Card title="Cambia la rutina" body="Una buena alimentación proviene de una alimentación variada" img={Card2}/>
                             </Col>
                             <Col data-aos="fade-left"  data-aos-once="true" xs="12" sm="12" md="4">
-                                <Card title="Comida Saludable" body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. s laoreet nisl non tempus" />
+                                <Card title="Compartí momentos" body="Sorprende a amigos y familiares con nuevas recetas" img={Card3}/>
                             </Col>
                         </Row>
-                    }
+                    
                 </Container>
                 <Banner title={"Recetas del mes"}/>  
                 <div style={{textAlign:'center'}}>
@@ -76,7 +79,8 @@ export default withRouter(class Landing extends Component{
                 <Container style={{padding:"2rem",borderRadius:"2rem"}} className="contenedorReceta" data-aos="fade-up" data-aos-duration="500">
                     <Row style={{alignItems:"center"}}xs="12" lg="12">
                         <Col lg="8" xs="8">
-                            <p> <span style={{color:"#3EC5BD",textTransform:"uppercase"}}> ¿qué comemos hoy? </span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla felis nunc, suscipit vel tellus ac, accumsan consectetur lacus. In suscipit ligula nunc, quis sollicitudin dui congue eu. Sed fringilla lectus id ipsum viverra, sed interdum felis pellentesque. Vestibulum ac justo feugiat, maximus elit nec, tempor enim. Sed auctor nunc sit amet est vehicula dignissim. Vivamus nibh est, porta mattis neque nec, posuere accumsan sapien. Aenean blandit varius metus, eget placerat dolor accumsan egestas.</p>
+                            <p> <span style={{color:"#3EC5BD",textTransform:"uppercase"}}> ¿qué comemos hoy? </span> nace como un proyecto que busca mejorar la alimentación de las personas haciendo más simple y rápida la forma de encontrar recetas que venzan las típicas dietas tradicionales. Nuestro objetivo es lograr que la alimentación saludable y variada no sea un peso en la vida de las personas, si no, que sea un objetivo por el cual las personas luchen y disfruten a la vez. 
+                            </p>
                             <Button style={{backgroundColor:"#3EC5BD",border:"#4CC4BD",transition:"1s",padding:"1rem 2rem 1rem 2rem",marginTop:"1rem"}}>Conocenos!</Button>
                         </Col>
                         <Col lg="4" xs="4">

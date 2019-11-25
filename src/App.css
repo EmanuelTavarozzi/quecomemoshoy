@@ -91,6 +91,9 @@ h1{
         margin-top: 1.5rem;
         margin-bottom: 1.5rem;
     }
+    .linkLogin{
+        padding: 0.4rem;
+    }
 }
 
 
@@ -378,6 +381,7 @@ input:focus,textarea:focus {
     padding: 15px 32px;
     margin-top: 2rem;
     font-weight: 500;
+    width:50%
 }
 
 .contenedorIngredientes .btn-buscar:hover{

@@ -45,7 +45,9 @@ export default class About extends Component{
                     <Col xs="12">
                         
                         <Container style={{backgroundColor:"white",borderRadius:"2rem",padding:"1rem",textAlign:"center",marginTop:"1rem"}} data-aos="fade-down">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non consequat magna, a pretium ipsum. Praesent consectetur sapien ac vehicula ultrices. Proin rutrum eros elit, sit amet porttitor quam ultrices eget. Pellentesque pulvinar dui id nisl imperdiet, nec luctus orci dapibus. Etiam at nulla sed enim tincidunt feugiat. Proin egestas, sem et feugiat eleifend, purus nulla fringilla nulla, non consequat mauris lorem in sem. Ut auctor felis vel pretium tempus. Praesent laoreet quam in magna dignissim, ac tincidunt lectus gravida.</p>
+                        <p>QUE COMEMOS HOY está conformado de un gran equipo que busca brindar a todos nuestros usuarios la mejor de las experiencias a través de nuestra página web y de los servicios nutricionales que otorgamos. Es por esto que día a día trabajamos para poder lograr el objetivo de promover una alimentación variada y saludable a todo aquel que esté dispuesto.
+                        Creemos en todo lo que hacemos con nuestros servicios y estamos dispuestos a un crecimiento constante.
+                        </p>
                         <div >
                         </div>
                         </Container>
@@ -69,7 +71,8 @@ export default class About extends Component{
                     </Row>
                         <Row xs="12" lg="12" style={{alignItems:"center"}}>
                                 <Col xs="12" lg="10" styles={{textAlign:"right"}}>
-                                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit.Cras efficitur gravida turpis, id egestas sapien convallis in .Suspendisse vitae egestas mi.Vivamus tincidunt, leo nec consequat auctor, metus elit dictum massa, sit amet bibendum dui est nec tortor.Praesent dapibus vulputate tristique.Pellentesque tempus erat eget tempus facilisis.Etiam volutpat non lectus nec egestas.Aliquam eget augue ac nisl luctus venenatis.Aliquam et lectus a arcu tempus laoreet ut ut ex.Sed rhoncus dolor sed scelerisque vestibulum.Integer sed porttitor neque.Nulla vel arcu non elit porttitor hendrerit a sit amet diam.Duis non augue sed velit varius sodales. </p>
+                                    <p>Buscamos brindar siempre la mejor atención posible a nuestros clientes, apoyándolos en todas las etapas del proceso y estando dispuestos ante cualquier duda o ayuda que el cliente necesite. Tanto como para nuestros clientes como para nuestros nutricionistas, creemos que el verdadero poder constructivo está en trabajar todos juntos, basándonos en que todos salgamos ganadores en las distintas situaciones que enfrentamos.
+                                    </p>
                                 </Col>
                                 <Col xs="12" lg="2">
                                     <img style={{borderRadius:"1.5rem",maxWidth:"100%"}} alt="No hay imagen"src={require('../img/dedicados.jpg')}></img>
@@ -92,7 +95,8 @@ export default class About extends Component{
                     </Row>
                         <Row xs="12" lg="12" style={{alignItems:"center"}}>
                                 <Col xs="12" lg="10" styles={{textAlign:"right"}}>
-                                    < p > Lorem ipsum dolor sit amet, consectetur adipiscing elit.Cras efficitur gravida turpis, id egestas sapien convallis in .Suspendisse vitae egestas mi.Vivamus tincidunt, leo nec consequat auctor, metus elit dictum massa, sit amet bibendum dui est nec tortor.Praesent dapibus vulputate tristique.Pellentesque tempus erat eget tempus facilisis.Etiam volutpat non lectus nec egestas.Aliquam eget augue ac nisl luctus venenatis.Aliquam et lectus a arcu tempus laoreet ut ut ex.Sed rhoncus dolor sed scelerisque vestibulum.Integer sed porttitor neque.Nulla vel arcu non elit porttitor hendrerit a sit amet diam.Duis non augue sed velit varius sodales. </p>
+                                    < p >La responsabilidad es clave dentro de una empresa, ya que como exigimos a nuestros clientes a ser responsables de su alimentación, también exigimos a todo nuestro equipo que cumpla con su trabajo, y se haga responsable del mismo con la mayor dedicación que alguien pueda dar hacia su trabajo.
+                                     </p>
                                 </Col>
                                 <Col xs="12" lg="2">
                                     <img style={{borderRadius:"1.5rem",maxWidth:"100%"}} alt="No hay imagen"src={require('../img/responsables.jpg')}></img>
@@ -115,7 +119,8 @@ export default class About extends Component{
                     </Row>
                         <Row xs="12" lg="12" style={{alignItems:"center"}}>
                                 <Col xs="12" lg="10" styles={{textAlign:"right"}}>
-                                    < p > Lorem ipsum dolor sit amet, consectetur adipiscing elit.Cras efficitur gravida turpis, id egestas sapien convallis in .Suspendisse vitae egestas mi.Vivamus tincidunt, leo nec consequat auctor, metus elit dictum massa, sit amet bibendum dui est nec tortor.Praesent dapibus vulputate tristique.Pellentesque tempus erat eget tempus facilisis.Etiam volutpat non lectus nec egestas.Aliquam eget augue ac nisl luctus venenatis.Aliquam et lectus a arcu tempus laoreet ut ut ex.Sed rhoncus dolor sed scelerisque vestibulum.Integer sed porttitor neque.Nulla vel arcu non elit porttitor hendrerit a sit amet diam.Duis non augue sed velit varius sodales. </p>
+                                    < p > Vivimos en tiempos donde no hay tiempo que perder, y sabemos que en nuestros clientes esto tampoco es distinto, por lo tanto, buscamos ser lo más productivos y eficientes posibles.Nuestra idea se basa en mejorar lo mejor posible la salud y alimentación de nuestros clientes por esto es que somos una de las páginas líderes del sector.
+ </p>
                                 </Col>
                                 <Col xs="12" lg="2">
                                     <img style={{borderRadius:"1.5rem",maxWidth:"100%"}} alt="No hay imagen"src={require('../img/productivos.jpg')}></img>

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Card, CardImg, CardText, CardBody, CardTitle, Button} from 'reactstrap'
+import {Card, CardImg, CardText, CardBody, CardTitle} from 'reactstrap'
 import PropTypes from 'prop-types'
 const defaultimg = require('../../img/landing.jpg');
 
@@ -31,11 +31,10 @@ export default class About extends Component{
         return(
                 <div >
                     <Card className="contenedorCarta" onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
-                        <CardImg top width="100%"   src={this.props.img}  alt="Card image cap" />
+                        <CardImg top width="50%" style={{width:"600px",height:"300px"}}  src={this.props.img}  alt="Card image cap" />
                         <CardBody className="contenedorInfoCarta">
                             <CardTitle style={{fontSize:"1.6rem",fontWeight:"bolder"}}>{this.props.title}</CardTitle>
                             <CardText>{this.props.body}</CardText>
-                            <Button onClick={this.props.redirectTo} style={{opacity:this.state.opacity,transition: "opacity 0.3s ease-in-out", backgroundColor:"#3EC5BD",border:"#4CC4BD"}}>Ver más</Button>
                         </CardBody>
                     </Card>
                 </div>

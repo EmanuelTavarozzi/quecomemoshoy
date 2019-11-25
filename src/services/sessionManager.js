@@ -1,3 +1,4 @@
+import axios from "axios";
 
 
 
@@ -21,11 +22,17 @@ export default class sessionManager{
     }
 
     getUserData(){
-
+        return axios.post('http://localhost:5000/users/userdata',{
+            mail: this.getUserMail()
+        }).then((res)=> res.data)
     }
 
     getUserName(){ 
         return this.localstorage.getItem('username')        
+
+    }
+    getUserMail(){ 
+        return this.localstorage.getItem('usermail')        
 
     }
 

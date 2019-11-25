@@ -28,16 +28,18 @@ export default class NavBar extends Component{
                                 <li>
                                     <Link className="link" to="/about">Nosotros</Link>
                                 </li>
+                                {this.props.isLogged &&
                                 <li>
                                     <Link className="link" to="/createRecipe">Crear Receta</Link>
                                 </li>
+                                }
                                 <li>
                                     {!this.props.isLogged ?
                                     <Link className="linkLogin" to="/login">Iniciar Sesion</Link>
                                     :
                                     <React.Fragment>
                                         <Link className="linkLogin" to="/profile">{this.props.username}</Link>
-                                        <Button onClick={this.handleLogout} style={{transition: "opacity 0.3s ease-in-out", backgroundColor:"#3EC5BD",border:"#4CC4BD"}}>Logout
+                                        <Button onClick={this.handleLogout} style={{backgroundColor:"#3EC5BD",border:"#4CC4BD", marginLeft:"1rem",fontSize: "1.4rem",marginTop:"-0.5rem"}}>Logout
                                         </Button>
                                     </React.Fragment>
                                     }

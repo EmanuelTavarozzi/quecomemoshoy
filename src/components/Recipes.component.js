@@ -91,7 +91,6 @@ constructor(){
         
     }
     
-    
 
     render(){
         let ingredients = this.state.ingredientes.map((ing) =>
@@ -120,24 +119,27 @@ constructor(){
                             </Row>
                         </Col>
                     </Row>
-                    <Row className="contenedorIngredientes">
-                        {/* <Link to="contenedorResultados" smooth={true} duration={1200} offset={-50}> */}
-                            <button disabled={!this.state.nombre && this.state.ingredientes.length === 0} onClick={this.buscarRecetas}class="btn-buscar">Buscar Receta</button>
-                        {/* </Link> */}
+                    <Row className="contenedorIngredientes">                       
+                            <button style={{width:"auto"}}disabled={!this.state.nombre && this.state.ingredientes.length === 0} onClick={this.buscarRecetas}class="btn-buscar">Buscar Receta</button>
+                
                     </Row>
                 </Container>
                 
-
-                <h1 id="contenedorResultados"style={{textAlign:"center",margin:"4rem 0 2rem 0",fontSize:"4rem"}}>Hoy comemos...</h1>
-                
+                <div id="contenedorResultados">
                 { this.state.isLoadingResultados ? 
 
+                <React.Fragment>
+                <h1 style={{textAlign:"center",margin:"4rem 0 2rem 0",fontSize:"4rem"}}>Hoy comemos...</h1>
+                
                 <Container style={{display:"flex",alignItems:"center" , justifyContent:"center",height:"800px"}}>
                     <Spinner style={{ width: '10rem', height: '10rem' }} type="grow" color="info" />
                 </Container>           
                 
+                </React.Fragment>
+
                 : this.state.recipes.length ?
-                
+                <React.Fragment>
+                <h1 style={{textAlign:"center",margin:"4rem 0 2rem 0",fontSize:"4rem"}}>Hoy comemos...</h1>
                 <Container className="contenedorBusquedaRecetas">
                     {this.state.recipes.map((recipe, index) =>
                     < RecipesCard key={index} name={recipe.name}
@@ -145,9 +147,15 @@ constructor(){
                     />
                     )}                       
                 </Container>
-                : //this.state.existSearch ?
-                    <p>No hay resultados para su busqueda</p>                
+                </React.Fragment>
+                : 
+                <React.Fragment>
+                {this.state.existSearch && 
+                <h4 style={{textAlign:"center",color:"red", marginTop:"4rem", marginBottom:"4rem"}}>No hay resultados para su busqueda</h4> 
+                    }  
+                </React.Fragment>            
                 }
+            </div>
             </div>
             )
     }

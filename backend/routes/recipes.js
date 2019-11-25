@@ -47,11 +47,18 @@ router.route('/addRecipe').post((req,res) => {
         name: req.body.name,
         description: req.body.description,
         ingredients: req.body.ingredients,
-        steps: req.body.steps
+        steps: req.body.steps,
+        usermail: req.body.usermail
     })
 
     newRecipe.save()
-        .then(() => res.json('Receta generada!'))
+        .then((recipe) => {
+            return res.json({
+                message: 'Receta generada!',
+                recipeid: recipe._id
+        })
+        }
+            )
         .catch(err => res.json('Ha habido un error: ' + err)) 
 })
 

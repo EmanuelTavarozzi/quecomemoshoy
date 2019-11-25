@@ -30,6 +30,21 @@ router.route('/userdata').post((req,res) =>{
     }
 )
 
+router.route('/addFavoriteRecipe').post((req,res) => {
+    User.findOneAndUpdate({mail:req.body.mail},{$push: {favoriteRecipes: req.body.recipeid}},{new: true})
+    .then(user => {
+        if(user){
+            res.json("Receta agregada con exito")
+
+        }
+        else{
+            res.json('Usuario no encontrado')
+        }
+    })
+
+
+})
+
 router.route('/add').post((req,res) => {         
 
     User.findOne({mail: req.body.mail}) 

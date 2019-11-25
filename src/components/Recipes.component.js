@@ -13,6 +13,7 @@ constructor(){
         this.state = {
             isLoading: true,
             isLoadingResultados: false,
+            existSearch: false,
             ingredientes: [], // Para hacer la consulta hay que tomar los ingredientes desde acá y buscar en la colección.
             ingrediente:'',
             nombre:'',
@@ -73,7 +74,8 @@ constructor(){
 
     buscarRecetas(event){
             this.setState({
-                isLoadingResultados:true
+                isLoadingResultados:true,
+                existSearch: true
             })
             scroll.scrollTo(document.getElementById('contenedorResultados').offsetTop);
             axios.post("http://localhost:5000/recipes/searchRecipe/", {name:this.state.nombre,ingredients:this.state.ingredientes})
@@ -124,18 +126,15 @@ constructor(){
                         {/* </Link> */}
                     </Row>
                 </Container>
-
-
-                {this.state.isLoadingResultados ?           
-                <React.Fragment>
                 
+
                 <h1 id="contenedorResultados"style={{textAlign:"center",margin:"4rem 0 2rem 0",fontSize:"4rem"}}>Hoy comemos...</h1>
                 
+                { this.state.isLoadingResultados ? 
+
                 <Container style={{display:"flex",alignItems:"center" , justifyContent:"center",height:"800px"}}>
                     <Spinner style={{ width: '10rem', height: '10rem' }} type="grow" color="info" />
-                </Container>
-
-                </React.Fragment>
+                </Container>           
                 
                 : this.state.recipes.length ?
                 
@@ -144,11 +143,10 @@ constructor(){
                     < RecipesCard key={index} name={recipe.name}
                     text={recipe.description} id={recipe._id} isVegan = { false} isTacc = { true}
                     />
-                    )
-                    }                       
+                    )}                       
                 </Container>
-                : 
-                    <p>No hay resultados para su busqueda</p>
+                : //this.state.existSearch ?
+                    <p>No hay resultados para su busqueda</p>                
                 }
             </div>
             )

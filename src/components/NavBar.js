@@ -1,20 +1,18 @@
 import React, {Component} from 'react'
 import {Link} from "react-router-dom";
-import {Container, Row, Col} from 'reactstrap'
+import {Container, Row, Col, Button} from 'reactstrap'
+
 
 export default class NavBar extends Component{
     constructor(){
         super()
-        this.state = {
-            isLogged: false,  // esto es lo que hay que cambiar desde login para que se cargue la ruta del perfil y el nombre de la persona en la navbar
-            username: "Iniciar sesión"
-        }
-        this.handleChange = this.handleChange.bind(this)
+        this.handleLogout = this.handleLogout.bind(this)
     }   
 
-    handleChange(){
-        this.state.isLogged === false ? this.setState({ username: "Viviana", isLogged:true}) : this.setState({username: "Iniciar sesión",isLogged:false})
+    handleLogout(){
+        this.props.logout()
     }
+
     render(){
         return(
                 <Container fluid= "true">
@@ -34,10 +32,14 @@ export default class NavBar extends Component{
                                     <Link className="link" to="/createRecipe">Crear Receta</Link>
                                 </li>
                                 <li>
-                                    {!this.state.isLogged ?
-                                    <Link className="linkLogin" to="/login" onChange={this.handleChange}>{this.state.username}</Link>
+                                    {!this.props.isLogged ?
+                                    <Link className="linkLogin" to="/login">Iniciar Sesion</Link>
                                     :
-                                    <Link className="linkLogin" to="/profile" onChange={this.handleChange}>{this.state.username}</Link>
+                                    <React.Fragment>
+                                        <Link className="linkLogin" to="/profile">{this.props.username}</Link>
+                                        <Button onClick={this.handleLogout} style={{transition: "opacity 0.3s ease-in-out", backgroundColor:"#3EC5BD",border:"#4CC4BD"}}>Logout
+                                        </Button>
+                                    </React.Fragment>
                                     }
                                 </li>
                                 

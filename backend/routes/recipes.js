@@ -11,33 +11,36 @@ router.route('/landingRecipes').get((req,res) =>{
 })
 
 router.route('/:id').get((req,res) =>{
-    Recipe.find({_id: req.params.id})
+    Recipe.findOne({_id: req.params.id})
         .then(recipes => res.json(recipes))
         .catch(err => res.status(400).json('Error: ' + err))
 })
 
 router.route('/searchRecipe').post((req,res) =>{
 
-    if (name == ''){
-        Recipe.find({ingredients: { $all: ingredients}})    
+    if (req.body.name == '' || !req.body.name ){
+        Recipe.find({ingredients: { $all: req.body.ingredients}})    
         .then(recipes => res.json(recipes))
         .catch(err => res.status(400).json('Error: ' + err))
     }
 
-    else if (ingredients == ''){
+    else if (!req.body.ingredients || req.body.ingredients.length == 0){
         Recipe.find({ name: {  $regex: '.*' + req.body.name.toLowerCase() + '.*' }})    
         .then(recipes => res.json(recipes))
         .catch(err => res.status(400).json('Error: ' + err))
     }
     else{
     //Ingredientes y nombre
-    Recipe.find({ingredients: { $all: ingredients}, name: {  $regex: '.*' + req.body.name.toLowerCase() + '.*' }})    
+    Recipe.find({ingredients: { $all: req.body.ingredients}, name: {  $regex: '.*' + req.body.name.toLowerCase() + '.*' }})    
         .then(recipes => res.json(recipes))
         .catch(err => res.status(400).json('Error: ' + err))
     }
+    //todo que no venga nada
 })
  
 router.route('/addRecipe').post((req,res) => {
+
+    // to do a lowercase, nombres e ingredientes
 
      const newRecipe = new Recipe({ // Creo nueva receta
         _id: mongoose.Types.ObjectId(),

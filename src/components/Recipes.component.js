@@ -1,9 +1,11 @@
 import React, {Component} from 'react'
 import {Container,Col,Row,Spinner} from 'reactstrap'
-import {Link } from 'react-scroll'
+import * as Scroll from 'react-scroll';
 import LoadingPage from './Loading.component'
 import Ingredient from './Recipes/Ingredient.component'
 import RecipesCard from './Recipes/RecipesCard.component'
+import axios from 'axios'
+const scroll = Scroll.animateScroll;
 
 export default class Recipes extends Component{
 constructor(){
@@ -11,6 +13,7 @@ constructor(){
         this.state = {
             isLoading: true,
             isLoadingResultados: false,
+            existSearch: false,
             ingredientes: [], // Para hacer la consulta hay que tomar los ingredientes desde acá y buscar en la colección.
             ingrediente:'',
             nombre:'',
@@ -70,13 +73,21 @@ constructor(){
     }
 
     buscarRecetas(event){
-        
             this.setState({
-                isLoadingResultados:true
+                isLoadingResultados:true,
+                existSearch: true
             })
-            setTimeout(() => {
-                this.setState({isLoadingResultados:false})
-            },3000)
+            scroll.scrollTo(document.getElementById('contenedorResultados').offsetTop);
+            axios.post("http://localhost:5000/recipes/searchRecipe/", {name:this.state.nombre,ingredients:this.state.ingredientes})
+            .then(res => {
+                console.log(res);
+                setTimeout(()=> {
+                    this.setState({isLoadingResultados:false, recipes: res.data})
+                }, 2000
+                )
+                // verificar catcheo de error
+            });
+            
         
     }
     
@@ -110,26 +121,32 @@ constructor(){
                         </Col>
                     </Row>
                     <Row className="contenedorIngredientes">
-                        <Link to="contenedorResultados" smooth={true} duration={1200} offset={-50}><button disabled={this.state.ingredientes.length === 0} onClick={this.buscarRecetas}class="btn-buscar">Buscar Receta</button></Link>
+                        {/* <Link to="contenedorResultados" smooth={true} duration={1200} offset={-50}> */}
+                            <button disabled={!this.state.nombre && this.state.ingredientes.length === 0} onClick={this.buscarRecetas}class="btn-buscar">Buscar Receta</button>
+                        {/* </Link> */}
                     </Row>
                 </Container>
+                
+
                 <h1 id="contenedorResultados"style={{textAlign:"center",margin:"4rem 0 2rem 0",fontSize:"4rem"}}>Hoy comemos...</h1>
                 
-                {this.state.isLoadingResultados ? 
-            
+                { this.state.isLoadingResultados ? 
+
                 <Container style={{display:"flex",alignItems:"center" , justifyContent:"center",height:"800px"}}>
                     <Spinner style={{ width: '10rem', height: '10rem' }} type="grow" color="info" />
-                </Container>
+                </Container>           
                 
-                :
+                : this.state.recipes.length ?
+                
                 <Container className="contenedorBusquedaRecetas">
-                    < RecipesCard name = "Ensalada de atún"
-                    text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan ullamcorper posuere. Morbi sit amet imperdiet quam, in gravida sapien. Curabitur mattis nisl sed elit ullamcorper, vel convallis ipsum dapibus. Ut fringilla neque et congue suscipit. Sed quis varius leo. Vivamus in nisi sed velit volutpat efficitur et id mauris. Aenean sit amet lectus ipsum. Nulla a ligula sit amet nisi finibus ornare lobortis vel mi. Duis faucibus mollis tortor sit amet eleifend. Phasellus facilisis eros eros, non rhoncus ex mattis ut. Vivamus sit amet elementum purus, eget luctus tortor. Proin tempor laoreet felis, at pharetra ipsum aliquet quis. Suspendisse et elit et tortor tristique r" id = "1" isVegan = { false} isTacc = { true}
+                    {this.state.recipes.map((recipe, index) =>
+                    < RecipesCard key={index} name={recipe.name}
+                    text={recipe.description} id={recipe._id} isVegan = { false} isTacc = { true}
                     />
-                    < RecipesCard name = "Ensalada de atún"
-                    text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan ullamcorper posuere. Morbi sit amet imperdiet quam, in gravida sapien. Curabitur mattis nisl sed elit ullamcorper, vel convallis ipsum dapibus. Ut fringilla neque et congue suscipit. Sed quis varius leo. Vivamus in nisi sed velit volutpat efficitur et id mauris. Aenean sit amet lectus ipsum. Nulla a ligula sit amet nisi finibus ornare lobortis vel mi. Duis faucibus mollis tortor sit amet eleifend. Phasellus facilisis eros eros, non rhoncus ex mattis ut. Vivamus sit amet elementum purus, eget luctus tortor. Proin tempor laoreet felis, at pharetra ipsum aliquet quis. Suspendisse et elit et tortor tristique r" id = "1" isVegan = { true} isTacc = { false}
-                    />
+                    )}                       
                 </Container>
+                : //this.state.existSearch ?
+                    <p>No hay resultados para su busqueda</p>                
                 }
             </div>
             )

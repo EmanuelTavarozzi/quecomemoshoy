@@ -1,10 +1,11 @@
 import React from 'react'
 
 import {Container, Row, Col} from 'react-bootstrap'
+import axios from 'axios'
 
 
 
-export default class FavoriteRecipe extends React.Component{
+export default class ContactComponent extends React.Component{
     constructor(){
         super()
         this.state = {
@@ -36,12 +37,16 @@ export default class FavoriteRecipe extends React.Component{
         if(this.state.nombre === "" || this.state.email === "" || this.state.consulta === "")
             alert("Por favor, ingrese todos los campos!")
         else{
-            const string = `Your name is ${this.state.nombre} with email ${this.state.email} and your question ${this.state.consulta}`
-            alert(string)
-            this.setState({nombre:"",email:"",consulta:"Por favor, escriba su consulta"})
+            axios.post("http://localhost:5000/contact/addMessage", {
+                name: this.state.nombre,
+                mail: this.state.email,
+                comments: this.state.consulta}
+                .then(res => alert("Se envió el mensaje correctamente"))
+                .catch(res => res.json("Hubo un error")))
         }
         event.preventDefault();
     }
+
     render(){
         return(
                <Container style={{marginTop:"4rem",marginBottom:"4rem"}}>
@@ -84,7 +89,7 @@ export default class FavoriteRecipe extends React.Component{
                                         placeholder="Por favor, escriba su consulta">
                                     </textarea>
                                     </label>
-                                    <button className="btnEnviar">Enviar</button>
+                                    <button className="btnEnviar" >Enviar</button>
                                 </form>
                             </Container>
                         </Col>

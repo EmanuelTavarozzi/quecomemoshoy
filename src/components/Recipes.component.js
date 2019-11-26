@@ -24,7 +24,7 @@ constructor(){
         this.handleChange = this.handleChange.bind(this)
         this.removeItem = this.removeItem.bind(this)
         this.buscarRecetas = this.buscarRecetas.bind(this)
-        
+        this.handleKeyPressed = this.handleKeyPressed.bind(this)
     }
 
     componentDidMount(){
@@ -41,6 +41,8 @@ constructor(){
        })
 
    }
+
+
     
    onAddItem = (event) => {
        let array = this.state.ingredientes
@@ -63,7 +65,19 @@ constructor(){
             }
          })
         )
-        event.preventDefault();
+    }
+
+    handleKeyPressed(event) {
+        const nombre = event.target.name
+        if(event.key === 'Enter') {
+            if(nombre === 'nombre') {
+                if(this.state.nombre !== '') {
+                    this.buscarRecetas()
+                }
+            } else {
+                this.onAddItem(event)
+            }
+        }
     }
 
     removeItem(text) {
@@ -107,9 +121,9 @@ constructor(){
                         <Col className="borde">
                             <p className="titulo">Agregar ingredientes</p>
                             <form className="formulario">
-                                <label><input type="text" style={{textTransform:"uppercase"}} name="nombre" value={this.state.nombre} onChange={this.handleChange} placeholder="Ingrese el nombre del plato" /></label>
-                                <label><input type="text" style={{textTransform:"uppercase"}} name="ingrediente" value={this.state.ingrediente} onChange={this.handleChange} placeholder="Ingrese su ingrediente (max 10)" /></label>
-                                <button onClick={this.onAddItem}>Agregar</button>
+                                <label><input type="text" style={{textTransform:"uppercase"}} name="nombre" value={this.state.nombre} onChange={this.handleChange} onKeyPress={this.handleKeyPressed} placeholder="Ingrese el nombre del plato" /></label>
+                                <label><input type="text" style={{textTransform:"uppercase"}} name="ingrediente" value={this.state.ingrediente} onChange={this.handleChange} onKeyPress={this.handleKeyPressed} placeholder="Ingrese su ingrediente (max 10)" /></label>
+                                <button type="button" onClick={this.onAddItem}>Agregar</button>
                             </form>
                         </Col>
                         <Col className="ingredientes" style={{margin:"0.5rem"}}>
@@ -120,8 +134,7 @@ constructor(){
                         </Col>
                     </Row>
                     <Row className="contenedorIngredientes">                       
-                            <button style={{width:"auto"}}disabled={!this.state.nombre && this.state.ingredientes.length === 0} onClick={this.buscarRecetas}class="btn-buscar">Buscar Receta</button>
-                
+                        <button style={{width:"auto"}}disabled={!this.state.nombre && this.state.ingredientes.length === 0} onClick={this.buscarRecetas}class="btn-buscar">Buscar Receta</button>
                     </Row>
                 </Container>
                 

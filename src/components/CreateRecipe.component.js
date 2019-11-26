@@ -6,8 +6,11 @@ import Paso from './Recipes/Paso.component'
 import Footer from './Footer.component'
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import axios from 'axios'
+import { withRouter } from 'react-router-dom'
+import sessionManager from '../services/sessionManager'
 
-export default class CreateRecipe extends React.Component{
+export default withRouter (class CreateRecipe extends React.Component{
     constructor(){
         super()
         this.state={
@@ -22,6 +25,7 @@ export default class CreateRecipe extends React.Component{
             image:"",
             isLoading:true
         }
+        this.sessionManager = new sessionManager()
         this.handleChange = this.handleChange.bind(this)
         this.handleClick = this.handleClick.bind(this)
         this.removeItem = this.removeItem.bind(this)
@@ -82,10 +86,8 @@ export default class CreateRecipe extends React.Component{
 
     onAddPaso = (event) => {
         //event.preventDefault();
-        const paso = {
-            text : this.state.paso,
-            img : this.state.image
-        }
+        const paso = this.state.paso
+        
         this.setState(state => {
             const pasos = [...state.pasos, paso]
 
@@ -98,17 +100,43 @@ export default class CreateRecipe extends React.Component{
 
     removePaso(text) {
         this.setState({
-            pasos: this.state.pasos.filter(paso => paso.text !== text) // Filtra por el texto enviado por el ingrediente determinado y lo elimina del array para actualizar el estado lo que hace que se ejecute render de nuevo.
+            pasos: this.state.pasos.filter(paso => paso !== text) // Filtra por el texto enviado por el ingrediente determinado y lo elimina del array para actualizar el estado lo que hace que se ejecute render de nuevo.
         })
     }
 
     handleImage(){
-        alert("Click on picture")
+        this.onAddPaso()
     }
 
     handleSubmit(event){
+
         event.preventDefault()
-        alert("Submit")
+        this.setState({ isLoading:true })
+
+        if (this.state.nombre === "" && this.state.descripcion === "") {
+            alert("Por favor, ingrese todos los campos")
+        } else {
+            axios.post("http://localhost:5000/recipes/addRecipe/", {
+                name: this.state.nombre,
+                description: this.state.descripcion,
+                ingredients: this.state.ingredientes,
+                steps: this.state.pasos,
+                usermail: this.sessionManager.getUserMail()
+            })
+                .then(res => {
+                    console.log(res);
+                    setTimeout(()=> { 
+                        this.setState({isLoading:false}) 
+                        this.props.history.push(`/recipe/${res.data.recipeid}`)
+                         
+                    },2000)
+                                     
+                    }
+
+                )
+        }
+        // event.preventDefault()
+        // alert("Submit")
     }
 
     keyPressed(event) {
@@ -122,7 +150,7 @@ export default class CreateRecipe extends React.Component{
              <Col data-aos="fade-up" lg="auto" sm="auto"> <Ingredient text={ing} method={this.removeItem}></Ingredient></Col>
         )
         const pasos = this.state.pasos.map((paso,index) => 
-            <Col data-aos="fade-down" lg="12" sm="12"> <Paso paso={index + 1}text={paso.text} image={paso.img} method={this.removePaso}></Paso></Col>
+            <Col lg="12" sm="12"> <Paso paso={index + 1}text={paso} method={this.removePaso}></Paso></Col>
         )
         return(
             this.state.isLoading ?
@@ -178,7 +206,7 @@ export default class CreateRecipe extends React.Component{
                                 <Row>
                                     {pasos}
                                 </Row>
-                                <button className="btn-buscar"onClick={this.handleSubmit}>Publicar receta</button>
+                                <button type="submit" className="btn-buscar">Publicar receta</button>
                             </form>
                         </Col>
                     </Row>
@@ -187,4 +215,4 @@ export default class CreateRecipe extends React.Component{
             </div>
         )
     }
-}
+})

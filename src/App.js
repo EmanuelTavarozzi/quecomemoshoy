@@ -14,7 +14,7 @@ import CreateRecipe from './components/CreateRecipe.component'
 import ScrollToTop from './components/ScrollToTop.component'
 import sessionManager from './services/sessionManager'
 
-export default class App extends React.Component{
+export default  class App extends React.Component{
 
   constructor(props){
     super()
@@ -25,6 +25,7 @@ export default class App extends React.Component{
     }
     this.logout = this.logout.bind(this)
     this.updateUser = this.updateUser.bind(this)
+
   }
   
   logout(){
@@ -33,6 +34,7 @@ export default class App extends React.Component{
             isLogged: this.sessionManager.isLogged(),  // esto es lo que hay que cambiar desde login para que se cargue la ruta del perfil y el nombre de la persona en la navbar
             username: this.sessionManager.isLogged() ? this.sessionManager.getUserName() : ''
         })
+        window.location.pathname = '/'
   }
   updateUser(){
     this.setState({
@@ -72,5 +74,4 @@ export default class App extends React.Component{
     );
   }
 }
-
 

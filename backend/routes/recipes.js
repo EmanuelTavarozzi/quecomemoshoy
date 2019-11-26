@@ -10,6 +10,32 @@ router.route('/landingRecipes').get((req,res) =>{
         .catch(err => res.status(400).json('Error: ' + err))
 })
 
+router.route('/getRecipesByIds').post((req, res) => {
+    Recipe.find({'_id': { $in: req.body.ids}})
+    .then(recipes => res.json(recipes))
+    .catch(err => res.status(400).json('Error: ' + err))
+})
+
+router.route('/deleteRecipeById').post((req,res)=> {
+    // todo arreglar si receta no existe
+    // eliminar de favoritos de otros usuarios
+    
+    Recipe.deleteOne({'_id': req.body.id})
+    .then(recipe => {
+        if (!recipe){
+            res.status(200).json("receta inexistente")
+        }
+        res.json("Receta eliminada con exito")
+    })
+    .catch(err => res.status(400).json('Error: ' + err))
+})
+
+router.route('/getRecipesByUserMail').post((req, res) => {
+    Recipe.find({'usermail': req.body.usermail})
+    .then(recipes => res.json(recipes))
+    .catch(err => res.status(400).json('Error: ' + err))
+})
+
 router.route('/:id').get((req,res) =>{
     Recipe.findOne({_id: req.params.id})
         .then(recipes => res.json(recipes))
@@ -47,11 +73,18 @@ router.route('/addRecipe').post((req,res) => {
         name: req.body.name,
         description: req.body.description,
         ingredients: req.body.ingredients,
-        steps: req.body.steps
+        steps: req.body.steps,
+        usermail: req.body.usermail
     })
 
     newRecipe.save()
-        .then(() => res.json('Receta generada!'))
+        .then((recipe) => {
+            return res.json({
+                message: 'Receta generada!',
+                recipeid: recipe._id
+        })
+        }
+            )
         .catch(err => res.json('Ha habido un error: ' + err)) 
 })
 

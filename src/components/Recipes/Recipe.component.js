@@ -5,16 +5,28 @@ import Footer from '../Footer.component'
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios'
+import sessionManager from '../../services/sessionManager'
 
 
 
 export default class Recipe extends React.Component {
     constructor() {
         super()
+
         this.state = {
             recipe: {},
+            checkFavorite: ''
         }
+        this.sessionManager = new sessionManager()
         this.handleFavorite = this.handleFavorite.bind(this)
+        this.checkFavorite = this.checkFavorite.bind(this)
+
+    }
+
+    checkFavorite(id){
+       
+            return  this.sessionManager.getUserData().then((user)=> user.favoriteRecipes.includes(id)) 
+       
     }
 
     callAPI() {
@@ -25,8 +37,15 @@ export default class Recipe extends React.Component {
 
             .then(res => {
                 console.log(res);
-                this.setState({ recipe: res.data })
-
+                if (this.sessionManager.isLogged()) {
+                this.checkFavorite(res.data._id).then((checkFavorite)=> {
+                    console.log(checkFavorite)
+                    this.setState({ recipe: res.data, checkFavorite })
+                })
+            }
+            else{
+                this.setState({ recipe: res.data, checkFavorite:false })
+            }                               
                 // verificar catcheo de error
             });
     }
@@ -35,9 +54,25 @@ export default class Recipe extends React.Component {
         this.callAPI();
     }
 
-    handleFavorite() {
-        alert("Agregado a receta favorita")
+    handleFavorite() {       
+        axios.post('http://localhost:5000/recipes/likeRecipe',{
+            _id: this.state.recipe._id 
+        }
+        ).then(() => {
+            axios.post('http://localhost:5000/users/addFavoriteRecipe',{
+                mail: this.sessionManager.getUserMail(),
+                recipeid: this.state.recipe._id
+            }).then(()=> {
+                alert("Receta agregada a favoritos con exito")
+                this.setState({
+                    checkFavorite:true
+                })
+            })
+                
+        })       
     }
+
+
     render() {
         const pasos = [
             'Primer paso',
@@ -121,11 +156,14 @@ export default class Recipe extends React.Component {
                         </Row>
                     </Container>
                 }
+                { this.sessionManager.isLogged() &&  !this.state.checkFavorite &&           
+
                 <Row style={{ margin: "0rem 1rem 2rem 1rem" }} data-aos="fade-right">
 
                     <button onClick={this.handleFavorite} className="btn-fav">agregar a recetas favorita <FontAwesomeIcon style={{ color: "white" }} className="iconos" icon={faHeart} size="1x" /></button>
 
                 </Row>
+                }
                 <Footer />
             </div>
         )

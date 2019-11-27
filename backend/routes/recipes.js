@@ -74,6 +74,7 @@ router.route('/addRecipe').post((req,res) => {
         description: req.body.description,
         ingredients: req.body.ingredients,
         steps: req.body.steps,
+        recomendation: req.body.recomendation,
         usermail: req.body.usermail
     })
 

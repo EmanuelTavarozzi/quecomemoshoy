@@ -50,8 +50,7 @@ export default class RecipesCard extends React.Component{
                     </Row>
                     <Row style={{marginTop:"0.5rem"}}>  
                         <Col style={{textAlign:"right",padding:"0"}}lg="8" xs="12">
-                            {this.props.isVegan ? <img style={{maxWidth:"80px"}}src={require('../../img/vegan-icon.png')} alt="VeganIcon"></img> : <div></div>}
-                            {this.props.isTacc ? <img style={{maxWidth:"80px"}}src={require('../../img/sintacc-icon.png')} alt="TaccIcon"></img>: <div></div>}
+                            
                         </Col>
                          <Col lg="4" xs="12">
                             <Link to={`/recipe/${this.props.id}`} ><button className="btn-verReceta"> Ver receta </button></Link>

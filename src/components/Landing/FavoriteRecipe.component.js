@@ -11,6 +11,7 @@ export default class FavoriteRecipe extends React.Component{
         super()
         this.state = {
             recipes: [],
+            color: ["#efb810", "#c0c0c0", "#cd7f32"]
         }
     }
 
@@ -39,7 +40,7 @@ export default class FavoriteRecipe extends React.Component{
                                     <FontAwesomeIcon style={{color:"#3EC5BD"}} className="iconos"icon={faThumbsUp} size="2x"/>
                                     <h3 className="iconos" style={{marginLeft:"1rem"}}>{this.props.likes}</h3>
                                 </div>
-                                <FontAwesomeIcon className="iconos"style={{color:this.props.color}}icon={faTrophy} size="2x"/> 
+                                <FontAwesomeIcon className="iconos" style={{color:this.state.color[this.props.index]}} icon={faTrophy} size="2x"/> 
                             </div>  
                         </Col>
                    </Row>

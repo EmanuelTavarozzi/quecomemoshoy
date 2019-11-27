@@ -11,7 +11,9 @@ export default class Ingredient extends React.Component{
             arrayRojos:["tomate"],
             arrayAmarillos:["banana","choclo"],
             arrayNaranjas:["mandarina"],
-            arrayMarrones:["nueces"]
+            arrayMarrones:["nueces"],
+            arrayMorados:["uva"],
+            arrayBlancos: ["papas"]
         }
         this.handleMouseEnter = this.handleMouseEnter.bind(this)
         this.handleMouseLeave = this.handleMouseLeave.bind(this)
@@ -37,7 +39,7 @@ export default class Ingredient extends React.Component{
         let style = {
             borderRadius: "60px",
             marginBottom: "1rem",
-            color: "black",
+            color: "white",
             fontSize: "1.3rem",
             padding: "1rem",
             backgroundColor: "",
@@ -52,6 +54,7 @@ export default class Ingredient extends React.Component{
                 break
             case this.state.arrayAmarillos.includes(this.props.text):
                 style.backgroundColor = "#e5e619"
+                style.color="black"
                 break
             case this.state.arrayRojos.includes(this.props.text):
                 style.backgroundColor = "#FF4F33"
@@ -61,6 +64,13 @@ export default class Ingredient extends React.Component{
                 break   
             case this.state.arrayMarrones.includes(this.props.text):
                 style.backgroundColor = "#C6894C"
+                break
+            case this.state.arrayMorados.includes(this.props.text):
+                style.backgroundColor = "#AB3CE7"
+                break
+            case this.state.arrayBlancos.includes(this.props.text):
+                style.backgroundColor = "#E3E0DE"
+                style.color = "black"
                 break
             default:
                 style.backgroundColor = "#3EC5BD"

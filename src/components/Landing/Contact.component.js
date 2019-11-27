@@ -11,7 +11,7 @@ export default class ContactComponent extends React.Component{
         this.state = {
             nombre:"",
             email:"",
-            consulta:"Por favor, escriba su consulta" 
+            consulta:"" 
         }
     
         this.handleChange= this.handleChange.bind(this)
@@ -34,6 +34,7 @@ export default class ContactComponent extends React.Component{
     }
 
     handleSubmit(event){
+       
         if(this.state.nombre === "" || this.state.email === "" || this.state.consulta === "")
             alert("Por favor, ingrese todos los campos!")
         else{
@@ -79,7 +80,7 @@ export default class ContactComponent extends React.Component{
                                     </label>
                                     <label>
                                     <textarea
-                                        style={{width:"100%",borderRadius:"0.5rem",resize:"none"}}
+                                        style={{width:"100%",borderRadius:"0.5rem",resize:"none",backgroundColor:"white"}}
                                         name="consulta"
                                         rows="8"
                                         maxLength="500"

@@ -15,7 +15,7 @@ export default class NavBar extends Component{
 
     render(){
         return(
-                <Container fluid= "true">
+                <Container fluid={true}>
                 <Row className="navegacion">
                         <Col lg="6" md="5" sm="12" xs="12">
                             <Link className="link title" to="/">Que comemos hoy</Link>
@@ -39,7 +39,7 @@ export default class NavBar extends Component{
                                     :
                                     <React.Fragment>
                                         <Link className="linkLogin" to="/profile">{this.props.username}</Link>
-                                        <Button onClick={this.handleLogout} style={{backgroundColor:"#3EC5BD",border:"#4CC4BD", marginLeft:"1rem",fontSize: "1.4rem",marginTop:"-0.5rem"}}>Logout
+                                        <Button onClick={this.handleLogout} style={{padding:"0.3rem",backgroundColor:"#3EC5BD",border:"#4CC4BD", marginLeft:"1rem",fontSize: "1.4rem",marginTop:"-0.5rem"}}>Logout
                                         </Button>
                                     </React.Fragment>
                                     }

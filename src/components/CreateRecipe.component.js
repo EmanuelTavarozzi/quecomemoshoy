@@ -23,6 +23,7 @@ export default withRouter (class CreateRecipe extends React.Component{
             pasos:[],
             paso:"",
             image:"",
+            recomendacion:"",
             isLoading:true
         }
         this.sessionManager = new sessionManager()
@@ -35,7 +36,13 @@ export default withRouter (class CreateRecipe extends React.Component{
         this.onAddPaso = this.onAddPaso.bind(this)
         this.keyPressed = this.keyPressed.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleFile = this.handleFile.bind(this)
     }
+
+    handleFile(e){
+        console.log(e.target.value) // Acá actualizamos el estado guardando la url local del archivo, que es lo que terminamos guardando en la base para después recuperar
+    }
+
     componentDidMount(){
         setTimeout(() => {
             this.setState({
@@ -121,6 +128,7 @@ export default withRouter (class CreateRecipe extends React.Component{
                 description: this.state.descripcion,
                 ingredients: this.state.ingredientes,
                 steps: this.state.pasos,
+                recomendation: this.state.recomendacion,
                 usermail: this.sessionManager.getUserMail()
             })
                 .then(res => {
@@ -150,7 +158,7 @@ export default withRouter (class CreateRecipe extends React.Component{
              <Col data-aos="fade-up" lg="auto" sm="auto"> <Ingredient text={ing} method={this.removeItem}></Ingredient></Col>
         )
         const pasos = this.state.pasos.map((paso,index) => 
-            <Col lg="12" sm="12"> <Paso paso={index + 1}text={paso} method={this.removePaso}></Paso></Col>
+            <Col lg="12" sm="12" className="animated fadeInDown"> <Paso paso={index + 1}text={paso} method={this.removePaso}></Paso></Col>
         )
         return(
             this.state.isLoading ?
@@ -192,8 +200,10 @@ export default withRouter (class CreateRecipe extends React.Component{
                                         data-aos="fade-left"
                                         >
                                 </textarea>
+                                <label>Recomendaciones:</label>
+                                <input data-aos="fade-right" type="text" name="recomendacion" value={this.state.recomendacion} onChange={this.handleChange} placeholder="Ingrese recomendaciones para hacer la receta"></input>
                                 <p data-aos="fade-up">Foto principal de la receta</p>
-                                <input data-aos="fade-up"id="file-input" type="file" />
+                                <input data-aos="fade-up"id="file-input" type="file" onChange={this.handleFile}/>
                                 <div data-aos="fade-down">
                                     <div style={{display:"flex",justifyContent:"space-between",marginTop:"1rem"}}>
                                         <label>Pasos: </label>

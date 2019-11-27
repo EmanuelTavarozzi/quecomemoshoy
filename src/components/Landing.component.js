@@ -21,6 +21,11 @@ export default withRouter(class Landing extends Component{
             recipes: [],
         }
         this.redirectTo = this.redirectTo.bind(this)
+        this.handleGoToAbout = this.handleGoToAbout.bind(this)
+    }
+
+    handleGoToAbout() {
+        this.props.history.push(`/about`)
     }
 
     callAPI() {
@@ -68,9 +73,9 @@ export default withRouter(class Landing extends Component{
                 <Banner title={"Recetas del mes"}/>  
                 <div style={{textAlign:'center'}}>
                 {        
-                this.state.recipes.map((item,i) => 
+                this.state.recipes.map((item,i) => // Acá necesitamos mandar la url de la imagen local como parámetro, si no, se muestra siempre la misma.
                     <div key={i} style={{cursor:'pointer', display:"inline-block"}} onClick= {()=> this.redirectTo(item._id)}><div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="500">
-                        <FavoriteRecipe color="#efb810" likes={item.likes} title={item.name} procedure={item.description}/></div>                   
+                        <FavoriteRecipe likes={item.likes} title={item.name} procedure={item.description} index={i}/></div>              
                     </div>
                     )
                 } 
@@ -81,7 +86,7 @@ export default withRouter(class Landing extends Component{
                         <Col lg="8" xs="8">
                             <p> <span style={{color:"#3EC5BD",textTransform:"uppercase"}}> ¿qué comemos hoy? </span> nace como un proyecto que busca mejorar la alimentación de las personas haciendo más simple y rápida la forma de encontrar recetas que venzan las típicas dietas tradicionales. Nuestro objetivo es lograr que la alimentación saludable y variada no sea un peso en la vida de las personas, si no, que sea un objetivo por el cual las personas luchen y disfruten a la vez. 
                             </p>
-                            <Button style={{backgroundColor:"#3EC5BD",border:"#4CC4BD",transition:"1s",padding:"1rem 2rem 1rem 2rem",marginTop:"1rem"}}>Conocenos!</Button>
+                            <Button onClick={this.handleGoToAbout}style={{backgroundColor:"#3EC5BD",border:"#4CC4BD",transition:"1s",padding:"1rem 2rem 1rem 2rem",marginTop:"1rem"}}>Conocenos!</Button>
                         </Col>
                         <Col lg="4" xs="4">
                             <img style={{maxWidth:"100%",color:"#3EC5BD"}} alt="No hay imagen"src={require('../img/about.png')}></img>

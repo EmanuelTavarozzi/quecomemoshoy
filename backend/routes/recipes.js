@@ -79,7 +79,8 @@ router.route('/addRecipe').post((req,res) => {
         ingredients: ingredients.map((ingredient)=> ingredient.toLowerCase()),
         steps: req.body.steps,
         usermail: req.body.usermail,
-        imageurl: req.body.imageurl
+        imageurl: req.body.imageurl,
+        recomendation: req.body.recomendation,
     })
 
     newRecipe.save()

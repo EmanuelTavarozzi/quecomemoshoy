@@ -23,14 +23,15 @@ export default withRouter (class CreateRecipe extends React.Component{
             pasos:[],
             paso:"",
             image:"",
-            isLoading:true,
             arrayVerdes:[], // Arrays a llenar con la consulta a la base
             arrayRojos:[],
             arrayAmarillos:[],
             arrayNaranjas:[],
             arrayMarrones:[],
             arrayBlancos:[],
-            arrayMorados:[]
+            arrayMorados:[],
+            recomendacion:"",
+            isLoading:true
         }
         this.sessionManager = new sessionManager()
         this.handleChange = this.handleChange.bind(this)
@@ -170,7 +171,8 @@ export default withRouter (class CreateRecipe extends React.Component{
                 ingredients: this.state.ingredientes,
                 steps: this.state.pasos,
                 usermail: this.sessionManager.getUserMail(),
-                imageurl
+                imageurl,
+                recomendation: this.state.recomendacion,
             })
                 .then(res => {
                     console.log(res);
@@ -208,7 +210,7 @@ export default withRouter (class CreateRecipe extends React.Component{
              </Col>
         )
         const pasos = this.state.pasos.map((paso,index) => 
-            <Col lg="12" sm="12"> <Paso paso={index + 1}text={paso} method={this.removePaso}></Paso></Col>
+            <Col lg="12" sm="12" className="animated fadeInDown"> <Paso paso={index + 1}text={paso} method={this.removePaso}></Paso></Col>
         )
         return(
             this.state.isLoading ?
@@ -249,6 +251,8 @@ export default withRouter (class CreateRecipe extends React.Component{
                                         data-aos="fade-left"
                                         >
                                 </textarea>
+                                <label>Recomendaciones:</label>
+                                <input data-aos="fade-right" type="text" name="recomendacion" value={this.state.recomendacion} onChange={this.handleChange} placeholder="Ingrese recomendaciones para hacer la receta"></input>
                                 <p data-aos="fade-up">Foto principal de la receta</p>
                                 <input data-aos="fade-up"id="file-input" name="image" onChange={this.handleChangeImage} type="file" accept=".jpg, .jpeg, .png" />
                                 <div data-aos="fade-down">

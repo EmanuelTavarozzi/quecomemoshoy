@@ -1,12 +1,22 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
-
 import Footer from '../Footer.component'
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios'
 import sessionManager from '../../services/sessionManager'
+import Paso1 from '../../img/plate1.png'
+import Paso2 from '../../img/plate2.png'
+import Paso3 from '../../img/plate3.png'
+import Paso4 from '../../img/plate4.png'
+import Paso5 from '../../img/plate5.png'
+import Paso6 from '../../img/plate6.png'
+import Paso7 from '../../img/plate7.png'
+import Paso8 from '../../img/plate8.png'
+import Paso9 from '../../img/plate9.png'
+import Paso10 from '../../img/plate10.png'
 const imageDefault = require("../../img/recetas/polloalacrema.jpg");
+
 
 export default class Recipe extends React.Component {
     constructor() {
@@ -81,6 +91,19 @@ export default class Recipe extends React.Component {
             'Noveno paso',
             'Decimo paso',
         ]
+        
+        const img=[
+            Paso1,
+            Paso2,
+            Paso3,
+            Paso4,
+            Paso5,
+            Paso6,
+            Paso7,
+            Paso8,
+            Paso9,
+            Paso10,
+        ]
 
         return (
             <div>
@@ -127,20 +150,20 @@ export default class Recipe extends React.Component {
                 {this.state.recipe.steps && 
 
                     <Container fluid={true} className="pasosReceta">
-
-                        {this.state.recipe.steps.map((step, index) =>
+ 
+                        {this.state.recipe.steps.map((step, index) => // agregar foto para cada paso del plato con el número
 
                             <Row key={index} style={{ alignItems: "center", margin: "2rem 0 2rem 0" }} data-aos="fade-right">
                                 <Col lg="8" xs="12">
-                                    <h2 style={{ textAlign: "center" }}>{pasos[index]}</h2>
-                                    <div style={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
+                                    <h2 style={{ textAlign: "center" }}>{pasos[index]}</h2> 
+                                    <div style={{ display: "flex", justifyContent: "center", flexDirection: "column", fontSize:"1.3rem" }}>
                                         <p>
                                             {step}
                                         </p>
                                     </div>
                                 </Col>
                                 <Col lg="4" xs="12">
-                                    <img className="picture-box" alt="Foto de la receta" src={require("../../img/recetas/polloalacrema.jpg")}></img>
+                                    <img  alt="Foto de la receta" src={img[index]}></img> 
                                 </Col>
                             </Row>
                         )}

@@ -48,6 +48,7 @@ export default withRouter(class Landing extends Component {
     handleSignUp(event) {
         if (this.state.email === "" && this.state.password === "" && this.state.name === "" && this.state.lastname === "") {
             alert("Por favor, ingrese todos los campos")
+        
         } else {
             axios.post("http://localhost:5000/users/add/", {
                 name: this.state.name,
@@ -129,10 +130,10 @@ export default withRouter(class Landing extends Component {
                                 <div className="animated fadeInUp">
                                     <Row className="login-form">
                                         <Col>
-                                            <form style={{ display: "flex", flexDirection: "column" }}>
+                                            <form style={{ display: "flex", flexDirection: "column" }} onSubmit={this.handleLogIn}>
                                                 <label><input value={this.state.mail} name="mail" placeholder="Correo electrónico" type="email" onChange={this.handleChange}></input></label>
-                                                <label><input value={this.state.password} name="password" placeholder="Contraseña" onChange={this.handleChange}></input></label>
-                                                <button onClick={this.handleLogIn} className="btn-log">Log In</button>
+                                                <label><input value={this.state.password} name="password" type="password"placeholder="Contraseña" onChange={this.handleChange}></input></label>
+                                                <button className="btn-log">Log In</button>
                                             </form>
                                         </Col>
                                     </Row>
@@ -142,13 +143,13 @@ export default withRouter(class Landing extends Component {
                                 <div className="animated fadeInDown">
                                     <Row className="login-form">
                                         <Col>
-                                            <form style={{ display: "flex", flexDirection: "column" }}>
+                                            <form style={{ display: "flex", flexDirection: "column" }} onSubmit={this.handleSignUp}>
 
-                                                <label><input value={this.state.mail} name="mail" placeholder="Correo electrónico" onChange={this.handleChange}></input></label>
-                                                <label><input value={this.state.password} name="password" placeholder="Contraseña" onChange={this.handleChange}></input></label>
+                                                <label><input value={this.state.mail} name="mail" placeholder="Correo electrónico" type="email"onChange={this.handleChange}></input></label>
+                                                <label><input value={this.state.password} name="password" type="password"placeholder="Contraseña" onChange={this.handleChange}></input></label>
                                                 <label><input value={this.state.name} name="name" placeholder="Nombre" onChange={this.handleChange}></input></label>
                                                 <label><input value={this.state.lastname} name="lastname" placeholder="Apellido" onChange={this.handleChange}></input></label>
-                                                <button onClick={this.handleSignUp} className="btn-log"> Sign Up</button>
+                                                <button className="btn-log"> Sign Up</button>
 
                                             </form>
                                         </Col>

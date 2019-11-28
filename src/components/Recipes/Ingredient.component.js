@@ -6,7 +6,7 @@ export default class Ingredient extends React.Component{
         super()
         this.state = {
             opacity:0,
-        };
+        }
         this.handleMouseEnter = this.handleMouseEnter.bind(this)
         this.handleMouseLeave = this.handleMouseLeave.bind(this)
     }   
@@ -26,7 +26,7 @@ export default class Ingredient extends React.Component{
         let style = {
             borderRadius: "60px",
             marginBottom: "1rem",
-            color: "black",
+            color: "white",
             fontSize: "1.3rem",
             padding: "1rem",
             backgroundColor: "",
@@ -49,6 +49,7 @@ export default class Ingredient extends React.Component{
                 break
             case this.props.arrayAmarillos.includes(stringlower):
                 style.backgroundColor = "#e5e619"
+                style.color="black"
                 break
             case this.props.arrayRojos.includes(stringlower):
                 style.backgroundColor = "#FF4F33"
@@ -58,6 +59,13 @@ export default class Ingredient extends React.Component{
                 break   
             case this.props.arrayMarrones.includes(stringlower):
                 style.backgroundColor = "#C6894C"
+                break
+            case this.props.arrayMorados.includes(this.props.text):
+                style.backgroundColor = "#AB3CE7"
+                break
+            case this.props.arrayBlancos.includes(this.props.text):
+                style.backgroundColor = "#E3E0DE"
+                style.color = "black"
                 break
             default:
                 style.backgroundColor = "#3EC5BD"

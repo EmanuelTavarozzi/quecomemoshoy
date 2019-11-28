@@ -12,7 +12,8 @@ const recipeSchema = new Schema({
     likes:      {type:Number},
     steps:      {type:Array},
     usermail:   {type:String},
-    imageurl:      {type:String}
+    imageurl:      {type:String},
+    recomendation: {type:String},
 }, {
     timestamps: true,
 } )

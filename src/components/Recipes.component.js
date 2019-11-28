@@ -184,7 +184,7 @@ constructor(){
                 <Container className="contenedorBusquedaRecetas">
                     {this.state.recipes.map((recipe, index) =>
                     < RecipesCard key={index} name={recipe.name} image={recipe.imageurl}
-                    text={recipe.description} id={recipe._id} isVegan = { false} isTacc = { true}
+                    text={recipe.description} id={recipe._id} 
                     />
                     )}                       
                 </Container>

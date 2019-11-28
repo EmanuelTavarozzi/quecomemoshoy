@@ -57,7 +57,8 @@ router.route('/add').post((req,res) => {
                     mail: req.body.mail,
                     password: req.body.password,         
                     name: req.body.name,            
-                    lastname: req.body.lastname,          
+                    lastname: req.body.lastname,   
+                    isNutricionist: false       
                      
                 })
                 newUser.save()

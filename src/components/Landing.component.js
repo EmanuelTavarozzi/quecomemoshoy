@@ -11,7 +11,6 @@ import Card1 from '../img/card1.jpg'
 import Card2 from '../img/card2.jpg'
 import Card3 from '../img/card3.jpg'
 
-
 export default withRouter(class Landing extends Component{
 
     constructor(props){
@@ -69,8 +68,8 @@ export default withRouter(class Landing extends Component{
                 <div style={{textAlign:'center'}}>
                 {        
                 this.state.recipes.map((item,i) => 
-                    <div key={i} style={{cursor:'pointer', display:"inline-block"}} onClick= {()=> this.redirectTo(item._id)}><div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="500">
-                        <FavoriteRecipe color="#efb810" likes={item.likes} title={item.name} procedure={item.description}/></div>                   
+                    <div key={i} style={{cursor:'pointer', display:"inline-block", width: "80%"}} onClick= {()=> this.redirectTo(item._id)}><div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="500">
+                        <FavoriteRecipe image={item.imageurl} color="#efb810" likes={item.likes} title={item.name} procedure={item.description}/></div>                   
                     </div>
                     )
                 } 

@@ -18,19 +18,28 @@ constructor(){
             ingrediente:'',
             nombre:'',
             recipes: [], // Array para llenar con recetas provenientes de la búsqueda
-            argumentsReady: false
+            argumentsReady: false,
+            arrayVerdes:[], // Arrays a llenar con la consulta a la base
+            arrayRojos:[],
+            arrayAmarillos:[],
+            arrayNaranjas:[],
+            arrayMarrones:[],
+            arrayBlancos:[],
+            arrayMorados:[]
         }
         this.onAddItem = this.onAddItem.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.removeItem = this.removeItem.bind(this)
         this.buscarRecetas = this.buscarRecetas.bind(this)
         this.handleKeyPressed = this.handleKeyPressed.bind(this)
+        this.callIngredientsAPI = this.callIngredientsAPI.bind(this)
     }
 
     componentDidMount(){
         setTimeout(() => {
             this.setState({isLoading:false})
-        },500)
+        },500);
+        this.callIngredientsAPI();
     }
     
    handleChange(event){
@@ -42,8 +51,6 @@ constructor(){
 
    }
 
-
-    
    onAddItem = (event) => {
        let array = this.state.ingredientes
        if(array.length === 10){
@@ -105,10 +112,31 @@ constructor(){
         
     }
     
+    callIngredientsAPI() {
+        axios.get("http://localhost:5000/ingredient/getIngredients")
+        .then((res => {
+            console.log(res.data);
+            this.setState({
+                arrayAmarillos: res.data.amarillos,
+                arrayMarrones: res.data.marrones,
+                arrayNaranjas: res.data.naranjas,
+                arrayRojos: res.data.rojos,
+                arrayVerdes: res.data.verdes,
+                arrayBlancos: res.data.blancos,
+                arrayMorados: res.data.morados,
+            })
+        }))
+    }
 
     render(){
         let ingredients = this.state.ingredientes.map((ing) =>
-            <Col data-aos="fade-down" lg="auto" sm="auto"> <Ingredient text={ing} method={this.removeItem}></Ingredient></Col>   
+            <Col data-aos="fade-down" lg="auto" sm="auto"> 
+                <Ingredient arrayVerdes={this.state.arrayVerdes} arrayRojos={this.state.arrayRojos}
+                arrayAmarillos={this.state.arrayAmarillos} arrayMarrones={this.state.arrayMarrones}
+                arrayNaranjas={this.state.arrayNaranjas} arrayBlancos={this.state.arrayBlancos}
+                arrayMorados={this.state.arrayMorados}
+                 text={ing} method={this.removeItem}></Ingredient>
+            </Col>   
         )
         
         return(
@@ -155,7 +183,7 @@ constructor(){
                 <h1 style={{textAlign:"center",margin:"4rem 0 2rem 0",fontSize:"4rem"}}>Hoy comemos...</h1>
                 <Container className="contenedorBusquedaRecetas">
                     {this.state.recipes.map((recipe, index) =>
-                    < RecipesCard key={index} name={recipe.name}
+                    < RecipesCard key={index} name={recipe.name} image={recipe.imageurl}
                     text={recipe.description} id={recipe._id} isVegan = { false} isTacc = { true}
                     />
                     )}                       

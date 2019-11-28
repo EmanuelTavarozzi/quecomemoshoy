@@ -23,11 +23,17 @@ export default withRouter (class CreateRecipe extends React.Component{
             pasos:[],
             paso:"",
             image:"",
-            isLoading:true
+            isLoading:true,
+            arrayVerdes:[], // Arrays a llenar con la consulta a la base
+            arrayRojos:[],
+            arrayAmarillos:[],
+            arrayNaranjas:[],
+            arrayMarrones:[],
+            arrayBlancos:[],
+            arrayMorados:[]
         }
         this.sessionManager = new sessionManager()
         this.handleChange = this.handleChange.bind(this)
-        this.handleClick = this.handleClick.bind(this)
         this.removeItem = this.removeItem.bind(this)
         this.removePaso = this.removePaso.bind(this)
         this.onAddIngrediente = this.onAddIngrediente.bind(this)
@@ -35,17 +41,19 @@ export default withRouter (class CreateRecipe extends React.Component{
         this.onAddPaso = this.onAddPaso.bind(this)
         this.keyPressed = this.keyPressed.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.callIngredientsAPI = this.callIngredientsAPI.bind(this);
+        this.handleChangeImage = this.handleChangeImage.bind(this);
+        this.sendForm = this.sendForm.bind(this)
     }
+
     componentDidMount(){
         setTimeout(() => {
             this.setState({
                 isLoading:false
             })
         }, 100);
-    }
 
-    handleClick() {
-        this.setState({ descripcion: "" })
+        this.callIngredientsAPI();
     }
 
     handleChange(event){
@@ -54,6 +62,22 @@ export default withRouter (class CreateRecipe extends React.Component{
         this.setState({
             [name] : value
         })
+    }
+
+    callIngredientsAPI() {
+        axios.get("http://localhost:5000/ingredient/getIngredients")
+        .then((res => {
+            console.log(res.data);
+            this.setState({
+                arrayAmarillos: res.data.amarillos,
+                arrayMarrones: res.data.marrones,
+                arrayNaranjas: res.data.naranjas,
+                arrayRojos: res.data.rojos,
+                arrayVerdes: res.data.verdes,
+                arrayBlancos: res.data.blancos,
+                arrayMorados: res.data.morados,
+            })
+        }))
     }
 
     onAddIngrediente = (event) => {
@@ -112,31 +136,59 @@ export default withRouter (class CreateRecipe extends React.Component{
 
         event.preventDefault()
         this.setState({ isLoading:true })
+        if(this.state.image) {
+            const data = new FormData()
+            data.append('image', this.state.image)
+            axios({
+                method: 'post',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                url: 'https://api.imgbb.com/1/upload?key=eea05d9197d887f4d380d70fe9fcfa25',
+                data
+            }).then(res => {
+                const imageurl = res.data.data.url;
+                this.sendForm(imageurl);
+            }).catch(err => {
+                console.log('error', err);
+                alert("Ocurrio un error. Intente nuevamente");
+                this.setState({ isLoading:false })
+            })
+        } else {
+            this.sendForm()
+        }
 
-        if (this.state.nombre === "" && this.state.descripcion === "") {
+    }
+
+    sendForm(imageurl = ''){
+        if (this.state.nombre === "" || this.state.descripcion === "") {
             alert("Por favor, ingrese todos los campos")
+            this.setState({ isLoading:false })
+
         } else {
             axios.post("http://localhost:5000/recipes/addRecipe/", {
                 name: this.state.nombre,
                 description: this.state.descripcion,
                 ingredients: this.state.ingredientes,
                 steps: this.state.pasos,
-                usermail: this.sessionManager.getUserMail()
+                usermail: this.sessionManager.getUserMail(),
+                imageurl
             })
                 .then(res => {
                     console.log(res);
                     setTimeout(()=> { 
                         this.setState({isLoading:false}) 
-                        this.props.history.push(`/recipe/${res.data.recipeid}`)
-                         
-                    },2000)
-                                     
+                        this.props.history.push(`/recipe/${res.data.recipeid}`)                        
+                    },2000)                                    
                     }
 
                 )
-        }
-        // event.preventDefault()
-        // alert("Submit")
+        } 
+    }
+
+    handleChangeImage(event) {
+        console.log(event.target.files[0]);
+        this.setState({
+            image: event.target.files[0]
+        })
     }
 
     keyPressed(event) {
@@ -147,7 +199,13 @@ export default withRouter (class CreateRecipe extends React.Component{
 
     render(){
         const ingredientes = this.state.ingredientes.map((ing) =>
-             <Col data-aos="fade-up" lg="auto" sm="auto"> <Ingredient text={ing} method={this.removeItem}></Ingredient></Col>
+             <Col data-aos="fade-up" lg="auto" sm="auto"> 
+                <Ingredient arrayVerdes={this.state.arrayVerdes} arrayRojos={this.state.arrayRojos}
+                arrayAmarillos={this.state.arrayAmarillos} arrayMarrones={this.state.arrayMarrones}
+                arrayNaranjas={this.state.arrayNaranjas} arrayBlancos={this.state.arrayBlancos}
+                arrayMorados={this.state.arrayMorados}
+                text={ing} method={this.removeItem}></Ingredient>
+             </Col>
         )
         const pasos = this.state.pasos.map((paso,index) => 
             <Col lg="12" sm="12"> <Paso paso={index + 1}text={paso} method={this.removePaso}></Paso></Col>
@@ -185,7 +243,6 @@ export default withRouter (class CreateRecipe extends React.Component{
                                         name="descripcion"
                                         rows="4"
                                         maxLength="200"
-                                        onClick={this.handleClick}
                                         onChange={this.handleChange}
                                         value={this.state.descripcion}
                                         placeholder="Descripción de la receta"
@@ -193,7 +250,7 @@ export default withRouter (class CreateRecipe extends React.Component{
                                         >
                                 </textarea>
                                 <p data-aos="fade-up">Foto principal de la receta</p>
-                                <input data-aos="fade-up"id="file-input" type="file" />
+                                <input data-aos="fade-up"id="file-input" name="image" onChange={this.handleChangeImage} type="file" accept=".jpg, .jpeg, .png" />
                                 <div data-aos="fade-down">
                                     <div style={{display:"flex",justifyContent:"space-between",marginTop:"1rem"}}>
                                         <label>Pasos: </label>

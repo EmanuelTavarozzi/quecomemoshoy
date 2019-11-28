@@ -7,6 +7,7 @@ export default class NavBar extends Component{
     constructor(){
         super()
         this.handleLogout = this.handleLogout.bind(this)
+        
     }   
 
     handleLogout(){
@@ -28,7 +29,7 @@ export default class NavBar extends Component{
                                 <li>
                                     <Link className="link" to="/about">Nosotros</Link>
                                 </li>
-                                {this.props.isLogged &&
+                                {this.props.isLogged &&// this.props.isNutricionist &&
                                 <li>
                                     <Link className="link" to="/createRecipe">Crear Receta</Link>
                                 </li>

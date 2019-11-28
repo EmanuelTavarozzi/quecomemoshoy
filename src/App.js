@@ -21,8 +21,13 @@ export default  class App extends React.Component{
     this.sessionManager = new sessionManager() 
     this.state = {
         isLogged: this.sessionManager.isLogged(),  // esto es lo que hay que cambiar desde login para que se cargue la ruta del perfil y el nombre de la persona en la navbar
-        username: this.sessionManager.isLogged() ? this.sessionManager.getUserName() : ''
+        username: this.sessionManager.isLogged() ? this.sessionManager.getUserName() : '',
+        //isNutricionist: this.sessionManager.isLogged() ? this.sessionManager.getUserType() : ''
+        //isNutricionist: this.sessionManager.getUserType()
     }
+
+    console.log("test")
+    console.log(this.state.isNutricionist)
     this.logout = this.logout.bind(this)
     this.updateUser = this.updateUser.bind(this)
 
@@ -32,14 +37,16 @@ export default  class App extends React.Component{
     this.sessionManager.logout()
         this.setState({
             isLogged: this.sessionManager.isLogged(),  // esto es lo que hay que cambiar desde login para que se cargue la ruta del perfil y el nombre de la persona en la navbar
-            username: this.sessionManager.isLogged() ? this.sessionManager.getUserName() : ''
+            username: this.sessionManager.isLogged() ? this.sessionManager.getUserName() : '',
+            //isNutricionist: this.sessionManager.isLogged() ? this.sessionManager.getUserType() : ''
         })
         window.location.pathname = '/'
   }
   updateUser(){
     this.setState({
       isLogged: this.sessionManager.isLogged(),  // esto es lo que hay que cambiar desde login para que se cargue la ruta del perfil y el nombre de la persona en la navbar
-      username: this.sessionManager.isLogged() ? this.sessionManager.getUserName() : ''
+      username: this.sessionManager.isLogged() ? this.sessionManager.getUserName() : '',
+      isNutricionist: this.sessionManager.isLogged() ? this.sessionManager.getUserType() : ''
   })
   }
 
@@ -47,7 +54,7 @@ export default  class App extends React.Component{
     return (
         <Router>
           <ScrollToTop />
-          <NavBar isLogged={this.state.isLogged} username={this.state.username} logout={this.logout} />
+          <NavBar isLogged={this.state.isLogged} username={this.state.username} isNutricionist={this.state.isNutricionist} logout={this.logout} />
           <Switch>
             <Route exact path="/" >
               <Landing />

@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const recipesRouter = require('./routes/recipes')
 const userRouter = require('./routes/users')
 const contactRouter = require('./routes/contact')
+const ingredientRouter = require('./routes/ingredient')
 require('dotenv').config()
 const app = express()
 const port = process.env.PORT || 5000
@@ -31,3 +32,4 @@ app.get('/', function (req, res) {
 app.use('/recipes', recipesRouter)
 app.use('/users', userRouter)
 app.use('/contact', contactRouter)
+app.use('/ingredient', ingredientRouter)

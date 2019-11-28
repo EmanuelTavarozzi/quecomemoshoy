@@ -1,5 +1,4 @@
 import React from 'react'
-
 import Cross from '../../img/cross.png'
 
 export default class Ingredient extends React.Component{
@@ -7,17 +6,10 @@ export default class Ingredient extends React.Component{
         super()
         this.state = {
             opacity:0,
-            arrayVerdes:["lechuga"], // Arrays a llenar con la consulta a la base
-            arrayRojos:["tomate"],
-            arrayAmarillos:["banana","choclo"],
-            arrayNaranjas:["mandarina"],
-            arrayMarrones:["nueces"]
-        }
+        };
         this.handleMouseEnter = this.handleMouseEnter.bind(this)
         this.handleMouseLeave = this.handleMouseLeave.bind(this)
-    }
-
-    
+    }   
 
     handleMouseEnter(){
         this.setState({
@@ -30,9 +22,6 @@ export default class Ingredient extends React.Component{
         })
     }
 
-    
-    
-
     render(){
         let style = {
             borderRadius: "60px",
@@ -42,24 +31,32 @@ export default class Ingredient extends React.Component{
             padding: "1rem",
             backgroundColor: "",
             textTransform: "uppercase",
-            textAlign:"center"
+            textAlign:"center",
+            border: "1px solid black",
+            cursor: "pointer"
         }
         let string = this.props.text
         let stringlower = string.toLowerCase()
         switch(true){
-            case this.state.arrayVerdes.includes(stringlower):
+            case this.props.arrayVerdes.includes(stringlower):
                 style.backgroundColor = "#33FF57"
                 break
-            case this.state.arrayAmarillos.includes(this.props.text):
+            case this.props.arrayBlancos.includes(stringlower):
+                style.backgroundColor = "#FFFFFF"
+                break
+            case this.props.arrayMorados.includes(stringlower):
+                style.backgroundColor = "#803790"
+                break
+            case this.props.arrayAmarillos.includes(stringlower):
                 style.backgroundColor = "#e5e619"
                 break
-            case this.state.arrayRojos.includes(this.props.text):
+            case this.props.arrayRojos.includes(stringlower):
                 style.backgroundColor = "#FF4F33"
                 break
-            case this.state.arrayNaranjas.includes(this.props.text):
+            case this.props.arrayNaranjas.includes(stringlower):
                 style.backgroundColor = "#FFBD33"
                 break   
-            case this.state.arrayMarrones.includes(this.props.text):
+            case this.props.arrayMarrones.includes(stringlower):
                 style.backgroundColor = "#C6894C"
                 break
             default:
@@ -71,3 +68,14 @@ export default class Ingredient extends React.Component{
             )
         }
 }
+
+
+Ingredient.defaultProps = {
+    arrayVerdes:[], // Arrays a llenar con la consulta a la base
+    arrayRojos:[],
+    arrayAmarillos:[],
+    arrayNaranjas:[],
+    arrayMarrones:[],
+    arrayBlancos:[],
+    arrayMorados:[]
+};

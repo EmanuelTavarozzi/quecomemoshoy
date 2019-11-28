@@ -44,20 +44,23 @@ router.route('/:id').get((req,res) =>{
 
 router.route('/searchRecipe').post((req,res) =>{
 
+    const ingredients = req.body.ingredients ? req.body.ingredients : []
+    const ingredientsLower = ingredients.map((ingredient)=> ingredient.toLowerCase())
+
     if (req.body.name == '' || !req.body.name ){
-        Recipe.find({ingredients: { $all: req.body.ingredients}})    
+        Recipe.find({ingredients: { $all: ingredientsLower}})    
         .then(recipes => res.json(recipes))
         .catch(err => res.status(400).json('Error: ' + err))
     }
 
-    else if (!req.body.ingredients || req.body.ingredients.length == 0){
+    else if (!ingredientsLower || ingredientsLower.length == 0){
         Recipe.find({ name: {  $regex: '.*' + req.body.name.toLowerCase() + '.*' }})    
         .then(recipes => res.json(recipes))
         .catch(err => res.status(400).json('Error: ' + err))
     }
     else{
     //Ingredientes y nombre
-    Recipe.find({ingredients: { $all: req.body.ingredients}, name: {  $regex: '.*' + req.body.name.toLowerCase() + '.*' }})    
+    Recipe.find({ingredients: { $all: ingredientsLower}, name: {  $regex: '.*' + req.body.name.toLowerCase() + '.*' }})    
         .then(recipes => res.json(recipes))
         .catch(err => res.status(400).json('Error: ' + err))
     }
@@ -67,14 +70,16 @@ router.route('/searchRecipe').post((req,res) =>{
 router.route('/addRecipe').post((req,res) => {
 
     // to do a lowercase, nombres e ingredientes
+    const ingredients = req.body.ingredients ? req.body.ingredients : []
 
      const newRecipe = new Recipe({ // Creo nueva receta
         _id: mongoose.Types.ObjectId(),
-        name: req.body.name,
+        name: req.body.name.toLowerCase(),
         description: req.body.description,
-        ingredients: req.body.ingredients,
+        ingredients: ingredients.map((ingredient)=> ingredient.toLowerCase()),
         steps: req.body.steps,
-        usermail: req.body.usermail
+        usermail: req.body.usermail,
+        imageurl: req.body.imageurl
     })
 
     newRecipe.save()

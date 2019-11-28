@@ -11,7 +11,8 @@ const recipeSchema = new Schema({
     ingredients:{type:Array},
     likes:      {type:Number},
     steps:      {type:Array},
-    usermail:   {type:String}
+    usermail:   {type:String},
+    imageurl:      {type:String}
 }, {
     timestamps: true,
 } )

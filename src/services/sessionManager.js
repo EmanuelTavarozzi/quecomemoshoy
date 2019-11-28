@@ -4,6 +4,8 @@ export default class sessionManager{
 
     constructor(){
         this.localstorage=window.localStorage;
+
+        this.getUserData = this.getUserData.bind(this)
     }
 
     login(mail,name){
@@ -31,8 +33,13 @@ export default class sessionManager{
     }
     getUserMail(){ 
         return this.localstorage.getItem('usermail')        
+    }
+    getUserType(){          
+        this.getUserData().then((user)=> {
+            return  user.isNutricionist           
+        }
+        )
+      
 
     }
-
-
 }

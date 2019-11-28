@@ -11,6 +11,7 @@ const userSchema = new Schema({
     mail:            {type:String},
     recipes:         {type:Array},
     favoriteRecipes: {type:Array},
+    isNustricionist: {type:Boolean}
 
 })
 

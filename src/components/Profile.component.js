@@ -5,6 +5,7 @@ import { faClipboardList, faTimesCircle, faUserCircle } from '@fortawesome/free-
 import sessionManager from '../services/sessionManager'
 import {Link, withRouter} from 'react-router-dom'
 import axios from 'axios';
+const imageDefault = require("../img/recetas/polloalacrema.jpg");
 
 export default withRouter(class Profile extends React.Component{
     constructor(){
@@ -93,7 +94,8 @@ export default withRouter(class Profile extends React.Component{
                         <React.Fragment>
                            { this.state.myFavoriteRecipes.map((recipe, index) => 
                                 <Container key={index} className="contenedorRecetaFavoritaPerfil" onClick={() => this.handleGoToRecipe(recipe._id)}>
-                                    <img style={{borderRadius:"1rem"}}alt="Foto de la receta" src={require("../img/recetas/polloalacrema.jpg")}></img>
+                                    <div style={{borderRadius:"1rem", height: "150px", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundImage: `url("${recipe.imageurl || imageDefault}")`}}></div>
+                                    {/* <img style={{borderRadius:"1rem"}}alt="Foto de la receta" src={recipe.imageurl || imageDefault}></img> */}
                                     <h3>{recipe.name}</h3>
                                 </Container>
                            )} 

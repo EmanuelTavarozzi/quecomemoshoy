@@ -6,8 +6,7 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios'
 import sessionManager from '../../services/sessionManager'
-
-
+const imageDefault = require("../../img/recetas/polloalacrema.jpg");
 
 export default class Recipe extends React.Component {
     constructor() {
@@ -20,17 +19,13 @@ export default class Recipe extends React.Component {
         this.sessionManager = new sessionManager()
         this.handleFavorite = this.handleFavorite.bind(this)
         this.checkFavorite = this.checkFavorite.bind(this)
-
     }
 
-    checkFavorite(id){
-       
-            return  this.sessionManager.getUserData().then((user)=> user.favoriteRecipes.includes(id)) 
-       
+    checkFavorite(id){      
+            return  this.sessionManager.getUserData().then((user)=> user.favoriteRecipes.includes(id))      
     }
 
     callAPI() {
-        // const _id = "5da0996a1c9d4400009a43a2"
         const { match: { params } } = this.props;
         console.log(params)
         axios.get(`http://localhost:5000/recipes/${params.id}`)
@@ -89,7 +84,7 @@ export default class Recipe extends React.Component {
 
         return (
             <div>
-                <Container className="contenedorRecetaParticular" fluid="true" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="300" data-aos-offset="0">
+                <Container style={{backgroundImage: `url(${this.state.recipe.imageurl || imageDefault})`}} className="contenedorRecetaParticular" fluid="true" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="300" data-aos-offset="0">
                     <Row>
                         <Col>
                             <h3 style={{ fontSize: "4rem", marginBottom: "4rem", textTransform: "uppercase", color: "white" }}>{this.state.recipe.name}</h3>
@@ -152,7 +147,8 @@ export default class Recipe extends React.Component {
 
                         <h1 style={{ textAlign: "center" }}>A disfrutar!</h1>
                         <Row style={{ justifyContent: "center", marginBottom: "2rem", padding: "1rem" }} data-aos="zoom-out">
-                            <img style={{ textAlign: "center" }} alt="recetaFinal" className="picture-box" src={require("../../img/recetas/polloalacrema.jpg")}></img>
+                            <img style={{ textAlign: "center" }} alt="recetaFinal" className="picture-box" 
+                            src={this.state.recipe.imageurl || imageDefault}></img>
                         </Row>
                     </Container>
                 }

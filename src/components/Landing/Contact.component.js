@@ -34,17 +34,23 @@ export default class ContactComponent extends React.Component{
     }
 
     handleSubmit(event){
+        event.preventDefault();
         if(this.state.nombre === "" || this.state.email === "" || this.state.consulta === "")
             alert("Por favor, ingrese todos los campos!")
         else{
             axios.post("http://localhost:5000/contact/addMessage", {
                 name: this.state.nombre,
                 mail: this.state.email,
-                comments: this.state.consulta}
-                .then(res => alert("Se envió el mensaje correctamente"))
-                .catch(res => res.json("Hubo un error")))
+                comments: this.state.consulta})
+                .then(res => {
+                    alert("Se envió el mensaje correctamente");
+                    window.location.reload();
+                })
+                .catch(err => {
+                    console.log("Error:", err)
+                    alert("Hubo un error. Intente nuevamente.");
+                })
         }
-        event.preventDefault();
     }
 
     render(){
@@ -89,7 +95,7 @@ export default class ContactComponent extends React.Component{
                                         placeholder="Por favor, escriba su consulta">
                                     </textarea>
                                     </label>
-                                    <button className="btnEnviar" >Enviar</button>
+                                    <button type="submit" className="btnEnviar" >Enviar</button>
                                 </form>
                             </Container>
                         </Col>

@@ -32,7 +32,6 @@ export default class Ingredient extends React.Component{
             backgroundColor: "",
             textTransform: "uppercase",
             textAlign:"center",
-            border: "1px solid black",
             cursor: "pointer"
         }
         let string = this.props.text
@@ -42,7 +41,7 @@ export default class Ingredient extends React.Component{
                 style.backgroundColor = "#33FF57"
                 break
             case this.props.arrayBlancos.includes(stringlower):
-                style.backgroundColor = "#FFFFFF"
+                style.backgroundColor = "#ccc"
                 style.color="black"
                 break
             case this.props.arrayMorados.includes(stringlower):
@@ -61,19 +60,12 @@ export default class Ingredient extends React.Component{
             case this.props.arrayMarrones.includes(stringlower):
                 style.backgroundColor = "#C6894C"
                 break
-            case this.props.arrayMorados.includes(this.props.text):
-                style.backgroundColor = "#AB3CE7"
-                break
-            case this.props.arrayBlancos.includes(this.props.text):
-                style.backgroundColor = "#E3E0DE"
-                style.color = "black"
-                break
             default:
                 style.backgroundColor = "#3EC5BD"
         }
         
         return(
-            <p onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} style={style}> {this.props.text} <img key={this.props.text} onClick={() => this.props.method(this.props.text)} style={{opacity:this.state.opacity,maxWidth:"15px", maxHeight:"15px",transition: "opacity 0.2s ease"}} alt="No hay imagen"src={Cross}></img> </p>
+            <p onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} style={style}> {this.props.text} <img key={this.props.text} onClick={() => this.props.method(this.props.text)} style={{opacity:this.state.opacity,maxWidth:"15px", maxHeight:"15px",transition: "opacity 0.2s ease",color:`${style.color}`}} alt="No hay imagen"src={Cross}></img> </p>
             )
         }
 }

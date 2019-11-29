@@ -217,30 +217,31 @@ export default withRouter (class CreateRecipe extends React.Component{
             <Loading />
             :
             <div>
-                <div className="banner" data-aos="fade-right">
-                    <Row style={{display:"flex",justifyContent:"center",alignItems:"center",letterSpacing:"1.4rem",fontSize:"3rem",color:"white",textTransform:"uppercase"}}>
+                <div className="banner" data-aos="fade-right" data-aos-once="true">
+                    <Row style={{display:"flex",justifyContent:"center",alignItems:"center",letterSpacing:"1rem",fontSize:"2rem",color:"white",textTransform:"uppercase"}}>
                         <Col xs="12">
                         <p>Crear es compartir</p>
                         </Col> 
                     </Row>
                 </div>
                 <Container className="contenedorFormulario">
-                    <Row style={{justifyContent:"center",margin:"0rem 1rem 0 1rem"}} data-aos="zoom-in">
-                        <h1 >Es hora de crear tu propia receta</h1>
+                    <Row style={{justifyContent:"center",margin:"0rem 1rem 0 1rem"}} data-aos="zoom-in" data-aos-once="true">
+                        <h1>Es hora de crear tu propia receta</h1>
                     </Row>
                     <Row>
                         <Col lg="12">
                             <form onSubmit={this.handleSubmit}>
-                                <label data-aos="fade-up">Nombre: </label>
-                                <input data-aos="fade-up" type="text" name="nombre" value={this.state.nombre} onChange={this.handleChange} placeholder="Ingrese nombre de la receta"></input>
-                                <div data-aos="fade-right" style={{display:"flex",justifyContent:"space-between"}}>
+                                <label  data-aos="fade-up" data-aos-once="true">Nombre: </label>
+                                <input data-aos="fade-up" type="text" name="nombre" value={this.state.nombre} onChange={this.handleChange} placeholder="Ingrese nombre de la receta" data-aos-once="true"></input>
+                                <div data-aos="fade-right" style={{display:"flex",justifyContent:"space-between"}} data-aos-once="true">
                                     <label>Ingredientes: </label>
                                     <button onClick={this.onAddIngrediente}style={{border:0,backgroundColor:"white"}}><FontAwesomeIcon style={{color:"#3EC5BD"}} className="iconos"icon={faPlusCircle} size="1x"/></button>
                                 </div>
-                                <input data-aos="fade-right" type="text" name="ingrediente" value={this.state.ingrediente} onChange={this.handleChange} placeholder="Ingrese los ingredientes"></input>
+                                <input data-aos="fade-right" type="text" name="ingrediente" value={this.state.ingrediente} onChange={this.handleChange} placeholder="Ingrese los ingredientes" data-aos-once="true"></input>
                                 <Row>{ingredientes}</Row>
-                                <label data-aos="fade-left">Descripción: </label>
+                                <label data-aos="fade-left" data-aos-once="true">Descripción: </label>
                                 <textarea
+                                        data-aos-once="true"
                                         style={{resize:"none"}}
                                         name="descripcion"
                                         rows="4"
@@ -252,10 +253,10 @@ export default withRouter (class CreateRecipe extends React.Component{
                                         >
                                 </textarea>
                                 <label>Recomendaciones:</label>
-                                <input data-aos="fade-right" type="text" name="recomendacion" value={this.state.recomendacion} onChange={this.handleChange} placeholder="Ingrese recomendaciones para hacer la receta"></input>
-                                <p data-aos="fade-up">Foto principal de la receta</p>
-                                <input data-aos="fade-up"id="file-input" name="image" onChange={this.handleChangeImage} type="file" accept=".jpg, .jpeg, .png" />
-                                <div data-aos="fade-down">
+                                <input data-aos="fade-right" data-aos-once="true" type="text" name="recomendacion" value={this.state.recomendacion} onChange={this.handleChange} placeholder="Ingrese recomendaciones para hacer la receta"></input>
+                                <p data-aos="fade-up" data-aos-once="true">Foto principal de la receta</p>
+                                <input data-aos="fade-up" data-aos-once="true"id="file-input" name="image" onChange={this.handleChangeImage} type="file" accept=".jpg, .jpeg, .png" />
+                                <div data-aos="fade-down" data-aos-once="true">
                                     <div style={{display:"flex",justifyContent:"space-between",marginTop:"1rem"}}>
                                         <label>Pasos: </label>
                                     </div>

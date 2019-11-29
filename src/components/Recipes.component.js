@@ -130,7 +130,7 @@ constructor(){
 
     render(){
         let ingredients = this.state.ingredientes.map((ing) =>
-            <Col data-aos="fade-down" lg="auto" sm="auto"> 
+            <Col className="animated fadeInDown" lg="auto" sm="auto"> 
                 <Ingredient arrayVerdes={this.state.arrayVerdes} arrayRojos={this.state.arrayRojos}
                 arrayAmarillos={this.state.arrayAmarillos} arrayMarrones={this.state.arrayMarrones}
                 arrayNaranjas={this.state.arrayNaranjas} arrayBlancos={this.state.arrayBlancos}

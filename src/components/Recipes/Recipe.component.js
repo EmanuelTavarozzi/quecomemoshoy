@@ -110,16 +110,16 @@ export default class Recipe extends React.Component {
                 <Container style={{backgroundImage: `url(${this.state.recipe.imageurl || imageDefault})`}} className="contenedorRecetaParticular" fluid="true" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="300" data-aos-offset="0">
                     <Row>
                         <Col>
-                            <h3 style={{ fontSize: "4rem", marginBottom: "4rem", textTransform: "uppercase", color: "black" }}>{this.state.recipe.name}</h3>
+                            <h3 style={{ fontSize: "3rem", marginBottom: "4rem", textTransform: "uppercase", color: "black"}}>{this.state.recipe.name}</h3>
                         </Col>
                     </Row>
-                    <Row style={{ borderRadius: "1rem", border: "5px solid grey ", alignItems: "center", padding: "2rem" }} className="contenedorIngredientes" >
+                    <Row style={{ borderRadius: "1rem", border: "5px solid grey ", alignItems: "center", padding: "2rem"}} className="contenedorIngredientes" >
                         <Col xs="12">
                             <p>{this.state.recipe.description}</p>
                         </Col>
                     </Row>
                 </Container>
-                <Container style={{ textAlign: "center", backgroundColor: "#00AAC1", marginTop: "2rem", marginBottom: "2rem", padding: "1rem", borderRadius: "2rem", color: "white" }} data-aos="zoom-out">
+                <Container style={{ textAlign: "center", backgroundColor: "#00AAC1", marginTop: "2rem", marginBottom: "2rem", padding: "1rem", borderRadius: "2rem", color: "white",width:"95%" }} data-aos="zoom-out">
                     <Row style={{ justifyContent: "center", backgroundColor: "00AAC1" }}>
                         <p style={{ fontSize: "2rem" }}>Lista de ingredientes</p>
                     </Row>
@@ -162,7 +162,7 @@ export default class Recipe extends React.Component {
                                         </p>
                                     </div>
                                 </Col>
-                                <Col lg="4" xs="12">
+                                <Col lg="4" xs="6" style={{margin:"0 auto"}}>
                                     <img  alt="Foto de la receta" src={img[index]}></img> 
                                 </Col>
                             </Row>

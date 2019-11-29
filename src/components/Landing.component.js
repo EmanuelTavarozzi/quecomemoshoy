@@ -82,7 +82,7 @@ export default withRouter(class Landing extends Component{
                 } 
                 </div>
                 <Banner title={"Nosotros"}/>
-                <Container style={{padding:"2rem",borderRadius:"2rem"}} className="contenedorReceta" data-aos="fade-up" data-aos-duration="500">
+                <Container style={{padding:"2rem",borderRadius:"2rem",width:"95%"}} className="contenedorReceta" data-aos="fade-up" data-aos-duration="500" data-aos-once="true">
                     <Row style={{alignItems:"center"}}xs="12" lg="12">
                         <Col lg="8" xs="8">
                             <p> <span style={{color:"#3EC5BD",textTransform:"uppercase"}}> ¿qué comemos hoy? </span> nace como un proyecto que busca mejorar la alimentación de las personas haciendo más simple y rápida la forma de encontrar recetas que venzan las típicas dietas tradicionales. Nuestro objetivo es lograr que la alimentación saludable y variada no sea un peso en la vida de las personas, si no, que sea un objetivo por el cual las personas luchen y disfruten a la vez. 

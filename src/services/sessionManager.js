@@ -8,9 +8,10 @@ export default class sessionManager{
         this.getUserData = this.getUserData.bind(this)
     }
 
-    login(mail,name){
+    login(mail,name,isNutricionist){
         this.localstorage.setItem('usermail',mail)
         this.localstorage.setItem('username',name)
+        this.localstorage.setItem('isNutricionist',isNutricionist)
     }
 
     logout(){
@@ -19,6 +20,10 @@ export default class sessionManager{
 
     isLogged(){
         return Boolean(this.localstorage.getItem('username'))
+    }
+
+    isNutricionist(){
+        return this.localstorage.getItem('isNutricionist')
     }
 
     getUserData(){
@@ -33,13 +38,5 @@ export default class sessionManager{
     }
     getUserMail(){ 
         return this.localstorage.getItem('usermail')        
-    }
-    getUserType(){          
-        this.getUserData().then((user)=> {
-            return  user.isNutricionist           
-        }
-        )
-      
-
     }
 }

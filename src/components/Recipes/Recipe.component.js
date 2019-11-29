@@ -110,7 +110,7 @@ export default class Recipe extends React.Component {
                 <Container style={{backgroundImage: `url(${this.state.recipe.imageurl || imageDefault})`}} className="contenedorRecetaParticular" fluid="true" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="300" data-aos-offset="0">
                     <Row>
                         <Col>
-                            <h3 style={{ fontSize: "4rem", marginBottom: "4rem", textTransform: "uppercase", color: "white" }}>{this.state.recipe.name}</h3>
+                            <h3 style={{ fontSize: "4rem", marginBottom: "4rem", textTransform: "uppercase", color: "black" }}>{this.state.recipe.name}</h3>
                         </Col>
                     </Row>
                     <Row style={{ borderRadius: "1rem", border: "5px solid grey ", alignItems: "center", padding: "2rem" }} className="contenedorIngredientes" >
@@ -133,13 +133,13 @@ export default class Recipe extends React.Component {
                     </Row>
                 </Container>
                 {
-                    this.state.recipe.recomendations &&
+                    this.state.recipe.recomendation &&
                     <Container style={{ textAlign: "center", backgroundColor: "#3EC5BD", marginTop: "2rem", marginBottom: "2rem", padding: "1rem", borderRadius: "2rem", color: "white" }} data-aos="zoom-out">
                         <Row style={{ justifyContent: "center" }}>
                             <p style={{ fontSize: "2rem" }}>Recomendaciones</p>
                         </Row>
                         <Row style={{ fontSize: "1.2rem", padding: "1rem" }}>
-                            {this.state.recipe.recomendations}
+                            {this.state.recipe.recomendation}
                         </Row>
                     </Container>
                 }

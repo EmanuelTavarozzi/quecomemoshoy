@@ -144,7 +144,7 @@ constructor(){
             <LoadingPage / >
             :
             <div>
-                <Container className="contenedorBusqueda" fluid="true" data-aos="fade-zoom-in" data-aos-easing="ease-in-back"data-aos-delay="300" data-aos-offset="0">
+                <Container className="contenedorBusqueda" fluid={true} data-aos="fade-zoom-in" data-aos-easing="ease-in-back"data-aos-delay="300" data-aos-offset="0">
                     <Row className="contenedorIngredientes">
                         <Col className="borde">
                             <p className="titulo">Agregar ingredientes</p>
@@ -162,7 +162,7 @@ constructor(){
                         </Col>
                     </Row>
                     <Row className="contenedorIngredientes">                       
-                        <button style={{width:"auto"}}disabled={!this.state.nombre && this.state.ingredientes.length === 0} onClick={this.buscarRecetas}class="btn-buscar">Buscar Receta</button>
+                        <button style={{width:"auto"}}disabled={!this.state.nombre && this.state.ingredientes.length === 0} onClick={this.buscarRecetas} className="btn-buscar">Buscar Receta</button>
                     </Row>
                 </Container>
                 

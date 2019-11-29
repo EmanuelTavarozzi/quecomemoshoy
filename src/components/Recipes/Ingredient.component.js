@@ -43,6 +43,7 @@ export default class Ingredient extends React.Component{
                 break
             case this.props.arrayBlancos.includes(stringlower):
                 style.backgroundColor = "#FFFFFF"
+                style.color="black"
                 break
             case this.props.arrayMorados.includes(stringlower):
                 style.backgroundColor = "#803790"

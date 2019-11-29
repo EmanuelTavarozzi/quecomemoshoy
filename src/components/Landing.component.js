@@ -46,7 +46,7 @@ export default withRouter(class Landing extends Component{
     render(){
         return( 
             <div>
-                <Container fluid= "true" className="landing-image">
+                <Container fluid={true} className="landing-image">
                         <h1 data-aos="fade-in" className="landing-title">Aprender comiendo</h1>
                         <h3 className="motivation-phrase" data-aos="fade-right">Si comes bien <span>hoy</span> tu cuerpo te lo agradecerá <span>mañana</span></h3>
                 </Container>
@@ -54,7 +54,7 @@ export default withRouter(class Landing extends Component{
                     <h2 style={{textAlign:"center"}}data-aos="fade-in"className="landing-title">Encontra la comida ideal para el momento ideal</h2>
                 </Container>
 
-                <Container fluid="true">
+                <Container fluid={true}>
                     
                         <Row>
                             <Col data-aos="fade-right" data-aos-once="true" data-aos-delay="15050" xs="12" sm="12" md="4">
@@ -75,7 +75,7 @@ export default withRouter(class Landing extends Component{
                 this.state.recipes.map((item,i) => 
                     <div key={i} style={{cursor:'pointer', display:"inline-block", width: "80%"}} onClick= {()=> this.redirectTo(item._id)}>
                         <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="500">
-                        <FavoriteRecipe image={item.imageurl} color="#efb810" likes={item.likes} title={item.name} procedure={item.description} index={i}/>
+                        <FavoriteRecipe image={item.imageurl} color="#efb810" likes={item.likes} title={item.name} description={item.description} index={i}/>
                         </div>
                     </div>   
                 )

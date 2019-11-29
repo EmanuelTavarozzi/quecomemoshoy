@@ -107,8 +107,8 @@ export default withRouter(class Profile extends React.Component{
                             <Row>
                             <React.Fragment>
                             { this.state.myFavoriteRecipes.map((recipe, index) => 
-                                    <Col xs="11"key={index} className="contenedorRecetaFavoritaPerfil" onClick={() => this.handleGoToRecipe(recipe._id)}>
-                                        <div style={{borderRadius:"1rem", height: "150px", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundImage: `url("${recipe.imageurl || imageDefault}")`}}></div>
+                                    <Col lg="3"xs="11"key={index} className="contenedorRecetaFavoritaPerfil" onClick={() => this.handleGoToRecipe(recipe._id)}>
+                                        <div style={{borderRadius:"1rem", height: "150px", backgroundRepeat: "no-repeat", backgroundPosition:"center",backgroundSize: "cover", backgroundImage: `url("${recipe.imageurl || imageDefault}")`}}></div>
                                         <h3>{recipe.name}</h3>
                                     </Col>
                             )} 

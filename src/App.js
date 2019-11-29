@@ -22,12 +22,9 @@ export default  class App extends React.Component{
     this.state = {
         isLogged: this.sessionManager.isLogged(),  // esto es lo que hay que cambiar desde login para que se cargue la ruta del perfil y el nombre de la persona en la navbar
         username: this.sessionManager.isLogged() ? this.sessionManager.getUserName() : '',
-        //isNutricionist: this.sessionManager.isLogged() ? this.sessionManager.getUserType() : ''
-        //isNutricionist: this.sessionManager.getUserType()
+        isNutricionist: this.sessionManager.isNutricionist()
     }
 
-    console.log("test")
-    console.log(this.state.isNutricionist)
     this.logout = this.logout.bind(this)
     this.updateUser = this.updateUser.bind(this)
 
@@ -38,7 +35,7 @@ export default  class App extends React.Component{
         this.setState({
             isLogged: this.sessionManager.isLogged(),  // esto es lo que hay que cambiar desde login para que se cargue la ruta del perfil y el nombre de la persona en la navbar
             username: this.sessionManager.isLogged() ? this.sessionManager.getUserName() : '',
-            //isNutricionist: this.sessionManager.isLogged() ? this.sessionManager.getUserType() : ''
+            isNutricionist: this.sessionManager.isNutricionist()
         })
         window.location.pathname = '/'
   }
@@ -46,15 +43,16 @@ export default  class App extends React.Component{
     this.setState({
       isLogged: this.sessionManager.isLogged(),  // esto es lo que hay que cambiar desde login para que se cargue la ruta del perfil y el nombre de la persona en la navbar
       username: this.sessionManager.isLogged() ? this.sessionManager.getUserName() : '',
-      isNutricionist: this.sessionManager.isLogged() ? this.sessionManager.getUserType() : ''
+      isNutricionist: this.sessionManager.isNutricionist()
   })
   }
 
   render(){
+    const isNutricionist = this.state.isNutricionist === "false" ? false : true;
     return (
         <Router>
           <ScrollToTop />
-          <NavBar isLogged={this.state.isLogged} username={this.state.username} isNutricionist={this.state.isNutricionist} logout={this.logout} />
+          <NavBar isLogged={this.state.isLogged} username={this.state.username} isNutricionist={isNutricionist} logout={this.logout} />
           <Switch>
             <Route exact path="/" >
               <Landing />

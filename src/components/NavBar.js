@@ -29,10 +29,10 @@ export default class NavBar extends Component{
                                 <li>
                                     <Link className="link" to="/about">Nosotros</Link>
                                 </li>
-                                {this.props.isLogged &&// this.props.isNutricionist &&
-                                <li>
-                                    <Link className="link" to="/createRecipe">Crear Receta</Link>
-                                </li>
+                                { this.props.isLogged && this.props.isNutricionist &&
+                                    <li>
+                                        <Link className="link" to="/createRecipe">Crear Receta</Link>
+                                    </li>
                                 }
                                 <li>
                                     {!this.props.isLogged ?

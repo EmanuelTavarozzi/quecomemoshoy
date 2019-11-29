@@ -14,6 +14,7 @@ export default class FavoriteRecipe extends React.Component{
     }
 
     render(){
+
         return(
                <Container className="contenedorReceta" width="80%">
                    <Row xs="12" lg="12" styles={{alignItems:"center"}}>
@@ -32,15 +33,16 @@ export default class FavoriteRecipe extends React.Component{
                    </Row>
                     <Row xs="12" lg="12" style={{alignItems:"center"}}>
                             <Col xs="12" lg="6" styles={{textAlign:"right"}}>
-                                < p className= "procedure" >{this.props.procedure } </p>
+                                < p className= "description" >{this.props.description } </p>
                             </Col>
                             <Col xs="12" lg="6">
                                 <img style={{borderRadius:"1.5rem",maxWidth:"100%"}} alt={this.props.name} src={this.props.image || imageDefault }></img>
                             </Col>
                     </Row>
 
-               </Container>          
+               </Container>       
         )
+        
     }
 }
 

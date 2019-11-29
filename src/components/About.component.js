@@ -36,7 +36,7 @@ export default class About extends Component{
             <LoadingPage / >
             :
             <div>
-                <Container className="contenedorAbout" fluid= "true" data-aos="fade-zoom-in" data-aos-easing="ease-in-back"data-aos-delay="300" data-aos-offset="0">
+                <Container className="contenedorAbout" fluid={true} data-aos="fade-zoom-in" data-aos-easing="ease-in-back"data-aos-delay="300" data-aos-offset="0">
                 
                     <h1 style={styles}>Que comemos hoy</h1>
                     

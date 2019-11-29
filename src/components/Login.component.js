@@ -62,7 +62,7 @@ export default withRouter(class Landing extends Component {
                         alert("Usuario existente")
                     }
                     else {
-                        this.sessionManager.login(this.state.mail,this.state.name)
+                        this.sessionManager.login(this.state.mail,this.state.name, res.data.isNutricionist)
                         this.props.updateUser()
                         this.props.history.push('/')
                     }
@@ -82,14 +82,17 @@ export default withRouter(class Landing extends Component {
             axios.post("http://localhost:5000/users/login/", {
                 mail: this.state.mail,
                 password: this.state.password
+
             })
                 .then(res => {
                     console.log(res);
                     if (res.data === "Usuario no encontrado") {
                         alert("Usuario no encontrado")
                     }
-                    else {                        
-                        this.sessionManager.login(this.state.mail,res.data.name)
+                    else {            
+                        console.log(res.data.isNutricionist);
+                        console.log(typeof res.data.isNutricionist);            
+                        this.sessionManager.login(this.state.mail,res.data.name, res.data.isNutricionist)
                         this.props.updateUser()
                         this.props.history.push('/')
                     }
@@ -133,7 +136,7 @@ export default withRouter(class Landing extends Component {
                                             <form style={{ display: "flex", flexDirection: "column" }} onSubmit={this.handleLogIn}>
                                                 <label><input value={this.state.mail} name="mail" placeholder="Correo electrónico" type="email" onChange={this.handleChange}></input></label>
                                                 <label><input value={this.state.password} name="password" type="password"placeholder="Contraseña" onChange={this.handleChange}></input></label>
-                                                <button className="btn-log">Log In</button>
+                                                <button type="submit" className="btn-log">Log In</button>
                                             </form>
                                         </Col>
                                     </Row>

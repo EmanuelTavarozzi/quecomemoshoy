@@ -79,18 +79,20 @@ export default withRouter(class Profile extends React.Component{
                         </Row>
                     </div>
                     {this.state.isNutricionist && 
-                    <Container style={{textAlign: "center"}}>
+                    <Container style={{textAlign: "center",width:"95%"}}>
                         <h1 style={{textAlign:"center",margin:"4rem 0 2rem 0",fontSize:"4rem"}}>Mis recetas</h1>
                         { this.state.myRecipes.length ?
+                            
                             <React.Fragment>
                             { this.state.myRecipes.map((recipe, index) => 
-                                <Container style={{textAlign: "left", textTransform: 'capitalize'}} key={index} className="contenedorRecetaPerfil" width="80%" data-aos="fade-down" data-aos-once={true}>  
-                                    <h3>{recipe.name}</h3>
-                                    <FontAwesomeIcon className="icono" color="red" onClick={() => this.handleDeleteRecipe(recipe._id)} icon={faTimesCircle} size="2x"/>
-                                    <FontAwesomeIcon className="icono" color="#3EC5BD" onClick={() => this.handleGoToRecipe(recipe._id)} icon={faClipboardList} size="2x"/>
-                                </Container>
+                                <Row style={{justifyContent: "center", textTransform: 'capitalize'}} key={index} className="contenedorRecetaPerfil" width="80%" data-aos="fade-down" data-aos-once={true}>  
+                                    <Col lg="10" md="10" xs="12"><h3>{recipe.name}</h3></Col>
+                                    <Col lg="1"  md="1"  xs="5"><FontAwesomeIcon style={{marginTop:"0.5rem"}}className="icono" color="red" onClick={() => this.handleDeleteRecipe(recipe._id)} icon={faTimesCircle} size="2x"/></Col>
+                                    <Col lg="1" md="1" xs="5"><FontAwesomeIcon style={{ marginTop: "0.5rem" }}className="icono" color="#3EC5BD" onClick={() => this.handleGoToRecipe(recipe._id)} icon={faClipboardList} size="2x"/></Col>
+                                </Row>
                             )}
                             </React.Fragment>
+                            
                         :
                             <React.Fragment>
                             <h4 style={{marginBottom: "1rem"}}>No creaste recetas aún</h4>
@@ -107,7 +109,7 @@ export default withRouter(class Profile extends React.Component{
                             <Row>
                             <React.Fragment>
                             { this.state.myFavoriteRecipes.map((recipe, index) => 
-                                    <Col lg="3"xs="11"key={index} className="contenedorRecetaFavoritaPerfil" onClick={() => this.handleGoToRecipe(recipe._id)}>
+                                    <Col lg="4"xs="11"key={index} className="contenedorRecetaFavoritaPerfil" onClick={() => this.handleGoToRecipe(recipe._id)}>
                                         <div style={{borderRadius:"1rem", height: "150px", backgroundRepeat: "no-repeat", backgroundPosition:"center",backgroundSize: "cover", backgroundImage: `url("${recipe.imageurl || imageDefault}")`}}></div>
                                         <h3>{recipe.name}</h3>
                                     </Col>
